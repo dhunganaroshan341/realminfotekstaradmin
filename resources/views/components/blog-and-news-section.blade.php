@@ -1,4 +1,4 @@
-<section class="section-3 py-5">
+<section class="section-3 py-6">
     <div class="container">
         <div class="divider mb-3"></div>
         <h2 class="title-color mb-4 h1">{{ $title ?? 'Blogs & News' }}</h2>
@@ -6,20 +6,30 @@
         <div class="position-relative">
             <div class="overflow-hidden">
                 <div id="blogCardSlider" class="d-flex transition-all" style="gap: 1rem; transition: transform 0.5s ease;">
-                    @foreach ($posts as $post)
-                        <div class="card border-0 flex-shrink-0 blog-card">
-                            @if (isset($post->postImages[0]) && !empty($post->postImages[0]->image))
-                                <img src="{{ asset('uploads/' . $post->postImages[0]->image) }}"
-                                    class="card-img-top img-fluid" alt=""
-                                    style="height: 200px; object-fit: cover;">
-                            @else
-                                <img src="{{ asset('assets/images/default-blog.jpg') }}" class="card-img-top img-fluid"
-                                    alt="" style="height: 200px; object-fit: cover;">
-                            @endif
+                    @if (!isset($posts) || empty($posts))
+                        <div class="carousel-item active">
+                            <div class="text-center">
+                                <p class="text-muted">No New Posts available at the moment.</p>
+                            </div>
+                        </div>
+                    @else
+                        @foreach ($posts as $post)
+                            <div class="card border-0 flex-shrink-0 blog-card">
+                                <a href="{{ route('blog-detail', ['id' => $post->id]) }}">
+                                    @if (isset($post->postImages[0]) && !empty($post->postImages[0]->image))
+                                        <img src="{{ asset('uploads/' . $post->postImages[0]->image) }}"
+                                            class="card-img-top img-fluid" alt=""
+                                            style="height: 200px; object-fit: cover;">
+                                    @else
+                                        <img src="{{ asset('assets/images/default-blog.jpg') }}"
+                                            class="card-img-top img-fluid" alt=""
+                                            style="height: 200px; object-fit: cover;">
+                                    @endif
+                                </a>
 
-                            <div class="card-body p-3 d-flex flex-column">
-                                <h1 class="card-title-blog mt-2 mb-2"
-                                    style="
+                                <div class="card-body p-3 d-flex flex-column">
+                                    <h1 class="card-title-blog mt-2 mb-2"
+                                        style="
                     height: 3rem;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -27,28 +37,31 @@
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                     font-size: 1.25rem;">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        {{ $post->title ?? 'Untitled' }}
-                                    </a>
-                                </h1>
-                                <div class="content pt-2 flex-grow-1"
-                                    style="
+                                        <a href="{{ route('blog-detail', ['id' => $post->id]) }}"
+                                            class="text-decoration-none text-dark">
+                                            {{ $post->title ?? 'Untitled' }}
+                                        </a>
+                                    </h1>
+                                    <div class="content pt-2 flex-grow-1"
+                                        style="
                     height: 5rem;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     display: -webkit-box;
                     -webkit-line-clamp: 4;
                     -webkit-box-orient: vertical;">
-                                    <p class="card-text mb-0">
-                                        {!! Str::limit($post->description ?? '', 100, '...') !!}
-                                    </p>
+                                        <p class="card-text mb-0">
+                                            {!! Str::limit($post->description ?? '', 100, '...') !!}
+                                        </p>
+                                    </div>
+                                    <a href="{{ route('blog-detail', ['id' => $post->id]) }}"
+                                        class="btn btn-primary mt-4 align-self-start">
+                                        Read More <i class="fa-solid fa-angle-right"></i>
+                                    </a>
                                 </div>
-                                <a href="#" class="btn btn-primary mt-4 align-self-start">
-                                    Read More <i class="fa-solid fa-angle-right"></i>
-                                </a>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
 

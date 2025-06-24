@@ -222,6 +222,7 @@ Route::get('/service', [UserFrontendController::class, 'service'])->name('servic
 Route::get('/service/detail/{id}', [UserFrontendController::class, 'servicedetail'])->name('service-detail');
 Route::get('/blog/detail/{id}', [UserFrontendController::class, 'blogdetail'])->name('blog-detail');
 Route::get('/blog', [UserFrontendController::class, 'blog'])->name('blog');
+Route::get('/blog/category/{category_id}', [UserFrontendController::class, 'blogsByCategory'])->name('blogsByCategory');
 Route::get('/search-posts', [UserFrontendController::class, 'searchBlogs'])->name('search.posts');
 
 // Route::get('/post', [UserFrontendController::class, 'post'])->name('post');
@@ -229,7 +230,9 @@ Route::get('/search-posts', [UserFrontendController::class, 'searchBlogs'])->nam
 
 // Comment
 
-Route::get('/gallery', [FrontGalleryController  ::class, 'index'])->name('gallery');
+Route::get('/gallery', [FrontGalleryController  ::class, 'gallery'])->name('gallery');
+// Route::get('/gallery', [FrontGalleryController::class, 'gallery'])->name('galleryType');
+
 
 Route::get('gallery-album/{id}', [FrontGalleryController::class, 'show'])->name('gallery-album.singleJson');
 Route::get('gallery-album/client/{id}', [FrontGalleryController::class, 'showClient'])->name('gallery-album.singleJsonclient');

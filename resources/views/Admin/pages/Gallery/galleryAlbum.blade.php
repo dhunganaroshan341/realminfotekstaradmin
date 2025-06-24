@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container-fluid">
-        <button class="btn btn-primary addGalleryAlbumBtn mb-4" data-bs-toggle="modal" data-bs-target="#galleryAlbumModal">Add Gallery</button>
+        <button class="btn btn-primary addGalleryAlbumBtn mb-4" data-bs-toggle="modal" data-bs-target="#galleryAlbumModal">Add
+            Gallery</button>
 
         {{-- Modal --}}
         @include('Admin.pages.Gallery.albumModal')
@@ -15,6 +16,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Gallery</th>
                         <th scope="col">Type</th>
+                        <th scope="col">URL</th>
                         <th scope="col">Client</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>

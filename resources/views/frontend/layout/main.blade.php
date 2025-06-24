@@ -18,17 +18,42 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('mdn/css/mdb.min.css') }}" />
     {{-- @vite('resources/css/app.css') --}}
+    <script>
+        // window.baseUrl = "{{ url('') }}";
+    </script>
     <style>
         .btn-primary {
             background-color: var(--realm-blue);
-            color: var(--realm-yellow);
-            /* border-color: #007bff; */
+            color: white !important;
+            border-color: var(--realm-yellow-dark);
+            box-shadow: 3px 3px 5px 5px var(--realm-blue);
         }
 
+        .btn-secondary {
+            background-color: var(--realm-blue);
+            color: white !important;
+            border-color: var(--realm-yellow-dark);
+            /* box-shadow: 3px 3px 5px 5px var(--realm-blue); */
+        }
+
+
+
         .btn-primary:hover {
-            background-color: var(--realm-blue-light);
-            color: var(--realm-yellow);
-            /* border-color: #0056b3; */
+            background-color: var(--realm-blue-dark);
+            /* border: 1px solid var(--realm-yellow); */
+            /* border-radius: 5px; */
+            box-shadow: 2px 4px 4px var(--realm-blue-dark) !important;
+            transition: all 0.3s ease-in-out;
+            color: var(--realm-yellow) !important;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--realm-blue-dark);
+            /* border: 1px solid var(--realm-yellow); */
+            /* border-radius: 5px; */
+            /* box-shadow: 2px 4px 4px var(--realm-blue-dark) !important; */
+            transition: all 0.3s ease-in-out;
+            color: var(--realm-yellow) !important;
         }
 
         .dropdown-item .active {
@@ -140,6 +165,10 @@
     .btn-primary:active {
         background-color: var(--realm-blue-dark);
         box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
+
+    .card-body {
+        min-height: 205px;
     }
 </style>
 <script>

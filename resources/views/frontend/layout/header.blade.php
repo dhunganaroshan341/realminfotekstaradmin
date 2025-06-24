@@ -20,8 +20,8 @@
             </div>
         </div>
     </div>
-
     {{-- Main Navbar --}}
+    {{-- @include('frontend.layout.working-navbar') --}}
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ route('first.index') }}">
@@ -77,6 +77,7 @@
             </div>
         </div>
     </nav>
+
 </header>
 
 {{-- If you want breadcrumb, you can place it like this after the header --}}
@@ -90,33 +91,3 @@
     </nav>
 </div>
 --}}
-
-@push('styles')
-    <style>
-        @media (min-width: 992px) {
-            .navbar .dropdown:hover .dropdown-menu {
-                display: block;
-            }
-        }
-
-        .nav-link.active {
-            font-weight: bold;
-            color: #0d6efd !important;
-        }
-
-
-
-        .navbar-brand img {
-            max-height: 60px;
-            height: auto;
-        }
-
-        .header-top-bar a {
-            font-size: 14px;
-        }
-
-        #servicesDropdown:hover .dropdown-menu {
-            display: block;
-        }
-    </style>
-@endpush

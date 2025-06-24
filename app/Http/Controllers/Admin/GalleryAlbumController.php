@@ -52,8 +52,8 @@ class GalleryAlbumController extends Controller
                 // ->addColumn('title', fn($tit) => Str::limit($tit->title, 20) ?? '')
                 ->addColumn('client', fn($client) => $client->client->name ?? '')
                 ->addColumn('type', fn($type) => $type->type ?? '')
-                ->addColumn('action', fn($data) => '<button class="btn btn-secondary editAlbumButton" data-id="' . $data->id . '" type="button">Edit</button>
-                                                     <button class="btn btn-danger deleteData" data-id="' . $data->id . '" type="button">Delete</button>')
+                ->addColumn('action', fn($data) => '<button class="btn  editAlbumButton" data-id="' . $data->id . '" type="button"><i class  = "fas fa-pencil text-primary"></i></button>
+                                                     <button class="btn  deleteData" data-id="' . $data->id . '" type="button"><i class  = "fas fa-trash text-danger"></i></button>')
                 ->addColumn('comment', fn($data) => '<button class="btn btn-info commentinfoBtn" data-id="' . $data->id . '" type="button">View Comments</button>')
                 ->addColumn('status', fn($status) => '<div class="form-check form-switch">
                                                         <input class="form-check-input statusIdData d-flex mx-auto" type="checkbox" data-id="' . $status->id . '" role="switch" id="flexSwitchCheckChecked" ' . ($status->status == 'Active' ? 'checked' : '') . '>
@@ -63,31 +63,43 @@ class GalleryAlbumController extends Controller
         }
     }
 
-    public function store(GalleryAlbumRequest $request)
-    {
-        DB::beginTransaction();
-        try {
-            $gallery=GalleryAlbum::create($request->validated());
-            if ($request->hasFile('media_path')) {
-                foreach ($request->media_path as $key => $value) {
-                    $file = $request->file('media_path')[$key];
-                    $filename = time() . '_' . $key . '.' . $file->getClientOriginalExtension();
+public function store(GalleryAlbumRequest $request)
+{
+    DB::beginTransaction();
+    try {
+        $gallery = GalleryAlbum::create($request->validated());
+
+        if ($request->hasFile('media_path')) {
+            foreach ($request->media_path as $key => $value) {
+                $file = $request->file('media_path')[$key];
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '_' . $key . '.' . $extension;
+
+                if (in_array(strtolower($extension), ['pdf'])) {
+                    $file->move(public_path('docs/gallery-media'), $filename);
+                    $path = 'docs/gallery-media/' . $filename;
+                } else {
                     $file->move(public_path('images/gallery-media'), $filename);
-                    $image = 'images/gallery-media/' . $filename;
-                    GalleryMedia::create([
-                        'gallery_album_id' => $gallery->id,
-                        'media_path' => $image,
-                        'status' => 'Active',
-                    ]);
+                    $path = 'images/gallery-media/' . $filename;
                 }
+
+                GalleryMedia::create([
+                    'gallery_album_id' => $gallery->id,
+                    'media_path' => $path,
+
+                    'status' => 'Active',
+                ]);
             }
-            DB::commit();
-            return response()->json(['success' => true]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
+
+        DB::commit();
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return response()->json(['success' => false, 'message' => $e->getMessage()]);
     }
+}
+
 
 
     public function upload(Request $request, $id = null)
@@ -109,7 +121,7 @@ class GalleryAlbumController extends Controller
 
         $album = GalleryAlbum::findOrFail($id);
 
-        // Delete the old file if it exists
+        // DeleteDelete the old file if it exists
         $this->deleteIfExists($album->thumbnail);
 
         // Update with new file name
@@ -143,33 +155,57 @@ class GalleryAlbumController extends Controller
     }
 
     public function update(GalleryAlbumRequest $request, $id)
-    {
-        DB::beginTransaction();
-        try {
-            $album = GalleryAlbum::findOrFail($id);
+{
+    DB::beginTransaction();
+    try {
+        $album = GalleryAlbum::findOrFail($id);
 
-            $album->update($request->validated());
-            $gallery = $album;
-            if ($request->hasFile('media_path')) {
-                foreach ($request->media_path as $key => $value) {
-                    $file = $request->file('media_path')[$key];
-                    $filename = time() . '_' . $key . '.' . $file->getClientOriginalExtension();
-                    $file->move(public_path('images/gallery-media'), $filename);
-                    $image = 'images/gallery-media/' . $filename;
-                    GalleryMedia::create([
-                        'gallery_album_id' => $gallery->id,
-                        'media_path' => $image,
-                        'status' => 'Active',
-                    ]);
+        // Update album info
+        $album->update($request->validated());
+
+        // Check if new media files are uploaded
+        if ($request->hasFile('media_path')) {
+            // Delete existing media files from storage and DB
+            $existingMedia = GalleryMedia::where('gallery_album_id', $album->id)->get();
+
+            foreach ($existingMedia as $media) {
+                $existingPath = public_path($media->media_path);
+                if (file_exists($existingPath)) {
+                    unlink($existingPath);
                 }
+                $media->delete();
             }
-            DB::commit();
-            return response()->json(['success' => true]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+
+            // Save new media files
+            foreach ($request->media_path as $key => $value) {
+                $file = $request->file('media_path')[$key];
+                $extension = strtolower($file->getClientOriginalExtension());
+                $filename = time() . '_' . $key . '.' . $extension;
+
+                if ($extension === 'pdf') {
+                    $file->move(public_path('docs/gallery-media'), $filename);
+                    $path = 'docs/gallery-media/' . $filename;
+                } else {
+                    $file->move(public_path('images/gallery-media'), $filename);
+                    $path = 'images/gallery-media/' . $filename;
+                }
+
+                GalleryMedia::create([
+                    'gallery_album_id' => $album->id,
+                    'media_path' => $path,
+                    'status' => 'Active',
+                ]);
+            }
         }
+
+        DB::commit();
+        return response()->json(['success' => true]);
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return response()->json(['success' => false, 'message' => $e->getMessage()]);
     }
+}
 
     public function statusToggle($id)
     {

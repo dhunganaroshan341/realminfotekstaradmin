@@ -27,8 +27,7 @@
                     </div>
 
                     <div class="col-md-12 mb-4">
-                        <label for="" class="form-label">Gallery Images<span
-                                class="text-danger">*</span></label>
+                        <label for="" class="form-label">Gallery Files<span class="text-danger">*</span></label>
                         <input type="file" name="media_path[]" id="galleryMedia" class="form-control" multiple
                             placeholder="" aria-describedby="helpId" />
                         <span class="text-danger infoPostImageText"></span>
@@ -52,7 +51,11 @@
                             <option value="">Select Type</option>
                             <option value="image">Image</option>
                             <option value="video">Video</option>
-                            <option value="url">url</option>
+                            <option value="pdf">PDF</option>
+                            <option value="website">website</option>
+                            <option value="url">URL</option>
+                            <option value="other_link">other link</option>
+
                             {{-- <option value="pdf">Pdf</option> --}}
                         </select>
                     </div>

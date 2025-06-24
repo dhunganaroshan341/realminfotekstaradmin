@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -25,6 +26,18 @@ class GallerySeeder extends Seeder
             }
         }
 
+        for ($clientId = 1; $clientId <= 10; $clientId++) {
+            for ($albumNum = 1; $albumNum <= 10; $albumNum++) {
+                $album = GalleryAlbum::create([
+                    'title' => "Client{$clientId} Album {$albumNum}",
+                    'type' => 'pdf',
+                    'client_id' => $clientId,
+                ]);
+
+                $this->seedGalleryMedia($album->id);
+            }
+        }
+
         // 2. Albums with no client
         for ($albumNum = 1; $albumNum <= 10; $albumNum++) {
             $album = GalleryAlbum::create([
@@ -38,14 +51,20 @@ class GallerySeeder extends Seeder
     }
 
     /**
-     * Seed 10 media items for each album.
+     * Seed 20 media items for each album randomly as jpg or pdf.
      */
     private function seedGalleryMedia($albumId): void
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
+            $isPdf = rand(0, 1); // 0 for image, 1 for pdf
+
+            $mediaPath = $isPdf
+                ? 'uploads/documents/default-document.pdf'
+                : 'assets/images/default-gallery.jpg';
+
             GalleryMedia::create([
                 'gallery_album_id' => $albumId,
-                'media_path' => 'assets/images/default-gallery.jpg',
+                'media_path' => $mediaPath,
             ]);
         }
     }

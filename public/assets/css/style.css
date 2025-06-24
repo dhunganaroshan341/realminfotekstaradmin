@@ -521,7 +521,9 @@ a{
     padding-bottom: 10px;
 }
 
-
+a:hover {
+	color: var(--realm-yellow);
+}
 
 .footer-menu a {
     color: #e4e0e0;
@@ -534,16 +536,22 @@ a{
 
 
 .footer-socials li a {
-    width: 45px;
-    height: 45px;
-    background: #6F8BA4;
-    color: #fff;
-    display: inline-block;
-    text-align: center;
-    border-radius: 100%;
-    padding-top: 12px;
+	width: 45px;
+	height: 45px;
+	background: var(--realm-blue-light);
+	color: #fff;
+	display: inline-block;
+	text-align: center;
+	border-radius: 100%;
+	padding-top: 12px;
 }
 
+.footer-socials li  :hover{
+    background: var(--realm-yellow-light);
+	/* background: var(--realm-blue-light); */
+	color: var(--realm-blue);
+
+}
 
 .footer h4 {
     color:#223a66;

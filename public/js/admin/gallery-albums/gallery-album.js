@@ -3,12 +3,12 @@ $(document).ready(function () {
     function toggleMediaFields() {
             var selectedType = $('#type').val();
 
-            if (selectedType === 'image') {
+            if (selectedType === 'image'||selectedType === 'pdf') {
                 // Show image-related fields
                 $('#galleryMedia').closest('.col-md-12').show();
                 $('#thumbnailImage').parent().show();
                 $('#url-group').hide();
-            } else if (selectedType === 'video' || selectedType === 'url') {
+            } else if (selectedType === 'other_link' ||selectedType === 'website' ||selectedType === 'video' || selectedType === 'url') {
                 // Show URL field, hide image-related
                 $('#url-group').show();
                 $('#galleryMedia').closest('.col-md-12').hide();
@@ -64,7 +64,7 @@ $(document).ready(function () {
             { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false },
             { data: "title", name: "title" },
              { data: "gallery", name: "gallery" },
-            { data: "type", name: "type" },
+            { data: "type", name: "type" }, { data: "url", name: "url" },
             { data: "client", name: "client" },
             { data: "status", name: "status" },
             { data: "action", name: "action", orderable: false, searchable: false }
@@ -347,32 +347,45 @@ $(document).on("change", ".statusIdData", function () {
 
 
  // Show Multiple Image Modal
- $(document).on("click", ".imageListPopup", function () {
+$(document).on("click", ".imageListPopup", function () {
     $("#imageModal").modal("show");
-    $("#postImageTitle").text("Image List");
+
+    $("#postImageTitle").text("File List");
 
     let id = $(this).data('id');
 
     $.ajax({
-        type: "get", // fixed typo
-        url: "/admin/gallery-albums/" + id + "/detail",
-        success: function (response) {
-            $(".fetch-post-image-data").html("");
+    type: "get",
+    url: "/admin/gallery-albums/" + id + "/detail",
+    success: function (response) {
+        $(".fetch-post-image-data").html("");
 
-            // Access gallery_media from the response
-            if (response.message.gallery_media && response.message.gallery_media.length > 0) {
-                response.message.gallery_media.forEach((media, index) => {
-                    let imagePath = media.media_path; // it's already a full URL
+        // ✅ Check if album type is 'image'
+        if (response.message.type === "image") {
+            let mediaList = response.message.gallery_media;
+
+            if (mediaList && mediaList.length > 0) {
+                mediaList.forEach((media, index) => {
+                    let imagePath = media.media_path;
                     $(".fetch-post-image-data").append(`
                         <div class="carousel-item ${index === 0 ? 'active' : ''}">
                             <img src="/${imagePath}" class="d-block w-100" alt="...">
                         </div>
                     `);
                 });
+            } else {
+                $(".fetch-post-image-data").html("<div class='text-center py-4'>No images found in this album.</div>");
             }
+
+        } else {
+            // 🧠 Future use: video, pdf, youtube, etc.
+            $(".fetch-post-image-data").html("<div class='text-center py-4'>This album is not an image album.</div>");
         }
-    });
+    }
 });
+
+});
+
 
 // delete media from Gallery edit button modal
 $(document).on("click", ".remove-image", function () {

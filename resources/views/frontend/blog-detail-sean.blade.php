@@ -66,7 +66,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active"
-                    style="background-image: url({{ $pageBanner->image ? asset('uploads/' . $pageBanner->image) : asset('assets/images/banner1.jpg') }});">
+                    style="background-image: url({{ $pageBanner->image ? asset('uploads/' . $pageBanner->image) : asset('assets/images/default-blog.jpg') }});">
                     <div class="hero-small-background-overlay"></div>
                     <div class="container h-100">
                         <div class="row align-items-center d-flex h-100">
@@ -92,8 +92,8 @@
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item active">{{ optional($post->category)->title }}</li>
                         </ul>
-                        <h4 class="post-title">
-                            <a href="#">{{ $post->title }}</a>
+                        <h4 class="post-title text-realm-blue">
+                            {{ $post->title }}
                         </h4>
                         <div class="post-by">
                             Posted By <a href="#">admin</a>
@@ -205,7 +205,9 @@
                         <h4 class="section-title"><span>Categories</span></h4>
                         <ul class="sidebar-list overflow-auto" style="max-height: 360px;">
                             @foreach ($categories as $category)
-                                <li><a href="#">{{ $category->title }} ({{ $category->post_count }})</a></li>
+                                <li><a href="{{ route('blogsByCategory', ['category_id' => $category->id]) }}">{{ $category->title }}
+                                        ({{ $category->post_count }})
+                                    </a></li>
                             @endforeach
                         </ul>
                     </div>

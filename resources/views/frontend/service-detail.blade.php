@@ -4,7 +4,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active"
-                    style="background-image: url('{{ $pageBanner->image ? asset('uploads/' . $pageBanner->image) : asset('assets/images/banner22.jpg') }}');">
+                    style="background-image: url('{{ $pageBanner->image ? asset('uploads/' . $pageBanner->image) : asset('assets/images/default-blog.jpg') }}');">
                     <div class="hero-small-background-overlay"></div>
                     <div class="container h-100">
                         <div class="row align-items-center d-flex h-100">
