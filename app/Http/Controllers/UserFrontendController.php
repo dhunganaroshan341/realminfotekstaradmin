@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
+use App\Http\Requests\StoreServiceQueryRequest;
 use App\Models\CallToAction;
 use App\Models\Category;
+use App\Models\ServiceQuery;
 use Illuminate\Http\Request;
 use App\Models\frontend;
 use App\Models\User;
@@ -212,5 +214,17 @@ public function searchBlogs(Request $request)
             return response()->json(['status'=>false,'message' => 'Something went wrong']);
         }
     }
+public function store(StoreServiceQueryRequest $request)
+{
+    $validated = $request->validated();
+    $query = ServiceQuery::create($validated);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Your query has been submitted successfully!',
+        'data' => $query
+    ]);
+}
+
 
 }

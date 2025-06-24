@@ -154,12 +154,39 @@
 
                     <!-- Album & Media with collapse toggle -->
 
+
+
+
+
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.contact') }}">
-                            <i class="mdi mdi-contacts menu-icon"></i>
-                            <span class="menu-title">Contact </span>
+                        <a class="nav-link" data-bs-toggle="collapse" href="#bannerMenu" role="button"
+                            aria-expanded="false" aria-controls="bannerMenu">
+                            <i class="mdi mdi-folder menu-icon"></i>
+                            <span class="menu-title"> Messages</span>
+                            <i class="menu-arrow"></i>
                         </a>
+                        <div class="collapse" id="bannerMenu">
+                            <ul class="nav flex-column sub-menu list-unstyled ">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.contact') }}">
+                                        <i class="mdi mdi-contacts menu-icon"></i>
+                                        <span class="menu-title">Contact </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.service-query') }}">
+                                        <i class="mdi mdi-contacts menu-icon"></i>
+                                        <span class="menu-title"> Query </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
                     </li>
+
+
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.logout') }}">
                             <i class="mdi mdi-logout  menu-icon"></i>

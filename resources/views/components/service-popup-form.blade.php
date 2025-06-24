@@ -9,6 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="popupForm">
+                {{-- @csrf --}}
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -55,7 +56,7 @@
                         phone: $('#phone').val(),
                         message: $('#message').val(),
                         service_id: $('input[name="service_id"]').val(),
-                        _token: $('meta[name="csrf-token"]').attr('content')
+                        _token: $('meta[name="csrf-token"]').attr('content') // ✅ Add this line
                     },
                     success: function(response) {
                         if (response.success) {
@@ -71,6 +72,7 @@
                         alert('Failed to send message. Check console for errors.');
                     }
                 });
+
             });
         });
     </script>

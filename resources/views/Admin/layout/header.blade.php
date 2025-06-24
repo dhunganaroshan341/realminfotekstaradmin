@@ -1,7 +1,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Realm Info Tech | Content Management System </title>
 
 
@@ -22,8 +24,15 @@
     {{-- Sweet Alert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- Sweet Alert --}}
-<!-- Then app.js -->
-@vite(['resources/js/app.js'])
+    <!-- Then app.js -->
+    @vite(['resources/js/app.js'])
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 
     @isset($extraCs)
         @foreach ($extraCs as $css)
