@@ -30,6 +30,8 @@ class UserRequest extends FormRequest
             'phonenumber'=>'required|min:7|max:11',
             'password'=>$this->route('id') ? 'nullable': ['required',Password::min(8)->mixedCase()->numbers()->symbols()],
             'image'=>'image|mimes:png,jpg,jpeg,webp',
+          // Added order field validation but non negative
+            'order' => 'nullable|integer|min:0', // Non-negative integer validation
 
         ];
     }

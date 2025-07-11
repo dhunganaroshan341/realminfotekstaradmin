@@ -79,7 +79,7 @@ $(document).ready(function () {
             $("#validationErrors").addClass("d-none").html("");
             let formdata = new FormData(this);
             $.ajax({
-                type: "post",
+                type: "POST",
                 url: "/admin/user/store/",
                 data: formdata,
                 contentType: false,
@@ -165,7 +165,7 @@ $(document).ready(function () {
                 $(".updateBtn").prop("disabled", true);
                 // console.log(formdata);
                 $.ajax({
-                    type: "post",
+                    type: "POST",
                     url: "/admin/user/update/" + id,
                     data: formdata,
                     contentType: false,
@@ -227,7 +227,7 @@ $(document).ready(function () {
                 let confirmPassword = $("#swal-input3").val();
 
                 $.ajax({
-                    type: "post",
+                    type: "POST",
                     url: "/admin/user/reset-password/" + id,
                     data: {
                         _token: $('meta[name="csrf-token"]').attr("content"),

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'full_name',
         'password',
         'image',
+        'order',
         'role','position','email','email_link','facebook_link','instagram_link','twitter_link','phonenumber','notes','google_id'
     ];
 
