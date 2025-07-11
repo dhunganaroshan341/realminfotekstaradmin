@@ -4,11 +4,10 @@
             <div class="col-lg-3 mr-auto col-sm-6 text-center text-lg-start">
                 <div class="widget mb-5 mb-lg-0">
                     <div class="logo mb-4">
-                        @if ($logo != null)
-                            <img src="{{ asset('uploads/' . $logo) }}" alt="" class="img-fluid">
+                        @if ($logo)
+                            <img src="{{ asset('uploads/' . $logo) }}" alt="Logo" class="img-fluid">
                         @else
-                            <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="" width="100"
-                                height="100" class="img-fluid">
+                            <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="Default Logo" class="img-fluid">
                         @endif
                     </div>
                 </div>
