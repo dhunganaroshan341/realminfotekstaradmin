@@ -230,7 +230,7 @@ Route::get('/search-posts', [UserFrontendController::class, 'searchBlogs'])->nam
 
 // Comment
 
-Route::get('/gallery', [FrontGalleryController  ::class, 'gallery'])->name('gallery');
+Route::get('/portfolio', [FrontGalleryController  ::class, 'gallery'])->name('gallery');
 // Route::get('/gallery', [FrontGalleryController::class, 'gallery'])->name('galleryType');
 
 

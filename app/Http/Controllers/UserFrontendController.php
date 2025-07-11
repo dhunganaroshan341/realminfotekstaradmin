@@ -47,21 +47,28 @@ class UserFrontendController extends Controller
     }
     public function aboutUs()
 {
+    // Fetch users whose role is not 'Admin'
+   $members = User::where('role', '!=', 'Admin')->paginate(8); // You can adjust the number as needed
 
-    // Fetch rest of members excluding top members, paginated
-    $members = User::whereNotIn('id', [1, 2])->paginate(6);
 
-    $pageBanner = PageBanner::where('page','about')->first();
+    $pageBanner = PageBanner::where('page', 'about')->first();
     $frontend = Setting::first();
     $cta = CallToAction::where('page', 'about')->first();
-    $pageDescription = Setting::first()->work_description;
-    $pageDescriptionImage  = Setting::first()->about_image;
-    $content_title="About Us";
+    $pageDescription = $frontend->work_description;
+    $pageDescriptionImage = $frontend->about_image;
+    $content_title = "About Us";
 
     return view('frontend.about', compact(
-        'pageDescription', 'pageDescriptionImage', 'cta',  'members', 'frontend', 'content_title', 'pageBanner'
+        'pageDescription',
+        'pageDescriptionImage',
+        'cta',
+        'members',
+        'frontend',
+        'content_title',
+        'pageBanner'
     ));
 }
+
 
 
     public function service()

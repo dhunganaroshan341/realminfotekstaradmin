@@ -26,11 +26,9 @@
         <div class="container">
             <a class="navbar-brand" href="{{ route('first.index') }}">
                 @if ($logo)
-                    <img src="{{ asset('storage/' . $logo) }}" alt="Logo" class="img-fluid"
-                        style="max-height: 80px;">
+                    <img src="{{ asset('uploads/' . $logo) }}" alt="Logo" class="img-fluid">
                 @else
-                    <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="Default Logo" class="img-fluid"
-                        style="max-height: 80px;">
+                    <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="Default Logo" class="img-fluid">
                 @endif
             </a>
 
@@ -64,8 +62,8 @@
                             @endforeach
                         </ul>
                     </li>
-                    <li class="nav-item {{ request()->is('gallery*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('gallery') }}">Gallery</a>
+                    <li class="nav-item {{ request()->is('portfolio*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('gallery') }}">Portfolio</a>
                     </li>
                     <li class="nav-item {{ request()->is('blog*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('blog') }}">Blog</a>

@@ -1,59 +1,62 @@
 <footer class="footer section bg-realm-blue">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 mr-auto col-sm-6">
+            <div class="col-lg-3 mr-auto col-sm-6 text-center text-lg-start">
                 <div class="widget mb-5 mb-lg-0">
                     <div class="logo mb-4">
-                        @if ($logo!=null)
-                        <img src="{{ asset('storage/' . $logo) }}" alt=""  class="img-fluid">
+                        @if ($logo != null)
+                            <img src="{{ asset('storage/' . $logo) }}" alt="" class="img-fluid">
                         @else
-                        <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="" width="100" height="100" class="img-fluid">
+                            <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="" width="100"
+                                height="100" class="img-fluid">
                         @endif
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+
+            <div class="col-lg-3 col-md-6 col-sm-6 text-center text-lg-start">
                 <div class="widget mb-5 mb-lg-0">
                     <h4 class="text-capitalize mb-3 text-white">Services</h4>
-                    <div class="divider mb-4"></div>
+                    <div class="divider mb-4 mx-auto mx-lg-0"></div>
 
                     <ul class="list-unstyled footer-menu lh-35">
                         @foreach ($services as $service)
-                        <li><a class="footer-service-detail" href="{{ route('service-detail', $service->id) }}">{{ $service->name }}</a></li>
+                            <li>
+                                <a class="footer-service-detail d-inline-block"
+                                    href="{{ route('service-detail', $service->id) }}">
+                                    {{ $service->name }}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6 text-center text-lg-start">
                 <div class="widget mb-5 mb-lg-0">
                     <h4 class="text-capitalize mb-3 text-white">Quick Links</h4>
-                    <div class="divider mb-4"></div>
+                    <div class="divider mb-4 mx-auto mx-lg-0"></div>
 
                     <ul class="list-unstyled footer-menu lh-35">
-                        {{-- <li><a href="#!">Terms &amp; Conditions</a></li>
-                        <li><a href="#!">Privacy Policy</a></li> --}}
                         <li><a href="{{ route('about-us') }}">About Us</a></li>
                         <li><a href="#!">Blog</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6 text-center text-lg-start">
                 <div class="widget widget-contact mb-5 mb-lg-0">
                     <h4 class="text-capitalize mb-3 text-white">Get in Touch</h4>
-                    <div class="divider mb-4"></div>
+                    <div class="divider mb-4 mx-auto mx-lg-0"></div>
 
                     <div class="footer-contact-block mb-4">
-
                         <h4 class="mt-2"><i class="fa-solid fa-envelope"></i> <a
                                 href="mailto:{{ $email }}">{{ $email }}</a></h4>
                         <h4 class="mt-2"><i class="fa-solid fa-phone-square" aria-hidden="true"></i> <a
-                                href="tel:{{ $contact }}"> {{ $contact }}</a></h4>
+                                href="tel:{{ $contact }}">{{ $contact }}</a></h4>
                     </div>
 
                     <div class="footer-contact-block">
-
                         <ul class="list-inline footer-socials mt-4">
                             <li class="list-inline-item">
                                 <a href="{{ $facebook }}"><i class="fa-brands fa-facebook-f"></i> </a>
@@ -71,27 +74,27 @@
         </div>
 
         <div class="footer-btm py-4 mt-5">
-            <div class="row align-items-center justify-content-between">
+            <div class="row align-items-center justify-content-center">
                 <div class="col-lg-12">
                     <div class="copyright text-center text-white">
                         Copyright © {{ date('Y') }} {{ $title }}
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </footer>
-@push('styles')
-<style>
-    .footer-service-detail {
-        color: #fff;
-        text-decoration: none;
-    }
-    .footer-service-detail:hover {
-        color: #f0f0f0;
-        text-decoration: underline;
-    }
-</style>
 
+@push('styles')
+    <style>
+        .footer-service-detail {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-service-detail:hover {
+            color: #f0f0f0;
+            text-decoration: underline;
+        }
+    </style>
 @endpush

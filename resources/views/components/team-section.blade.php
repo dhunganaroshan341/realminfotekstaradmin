@@ -8,8 +8,8 @@
                 <div class="card h-100 team-card">
                     <div class="team-img-wrapper">
                         <img class="card-img-top" style="height: 256px; object-fit: cover;"
-                             src="{{ $member->image ?? 'https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft12.svg' }}"
-                             alt="{{ $member->full_name }}">
+                            src="{{ $member->image ? asset('uploads/' . $member->image) : asset('images/user.png') }}"
+                            alt="{{ $member->full_name }}">
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-semibold member-name">{{ $member->full_name }}</h5>
@@ -20,11 +20,11 @@
         @endforeach
     </div>
 
-    <!-- Bootstrap Pagination -->
     <div class="d-flex justify-content-center mt-4">
         {{ $members->withQueryString()->fragment('team-section')->links('pagination::bootstrap-4') }}
     </div>
 </div>
+
 
 <!-- Custom Hover Styles -->
 <style>
@@ -43,20 +43,22 @@
     }
 
     .team-card:hover .member-name {
-        color: var(--realm-blue); /* Bootstrap's primary blue or change to your custom realm-blue */
+        color: var(--realm-blue);
+        /* Bootstrap's primary blue or change to your custom realm-blue */
     }
-
 </style>
 
 @push('scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        if (window.location.hash === '#team-section') {
-            const el = document.getElementById('team-section');
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.location.hash === '#team-section') {
+                const el = document.getElementById('team-section');
+                if (el) {
+                    el.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 @endpush

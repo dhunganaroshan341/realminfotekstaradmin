@@ -1,6 +1,6 @@
 <div class="container my-5">
     <div class="divider mb-3 text-center"></div>
-    <h2 class="title-color mb-4 ">Our Partners</h2>
+    <h2 class="title-color mb-4 ">Our Clients</h2>
     <section class="customer-logos slider">
         @if (!isset($clients) || $clients->isEmpty())
             <div class="text-center">

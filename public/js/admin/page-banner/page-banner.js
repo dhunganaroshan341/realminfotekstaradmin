@@ -1,5 +1,8 @@
 $(document).ready(function () {
     $(".summernote").summernote({ height: 300 });
+  $(".fa-trash").hide(); // jQuery shortcut for display: none
+
+
 
     // Initialize DataTable
     var table = $("#show-page-banner-data").DataTable({

@@ -15,7 +15,7 @@ class UserFactory extends Factory
             'full_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => bcrypt('password123'), // Can use Hash::make too
-            'image' => 'front/images/team/team6.jpg', // ✅ Use relative path from public folder
+            // 'image' => 'front/images/team/team6.jpg', // ✅ Use relative path from public folder
             'role' => $this->faker->randomElement(['Admin', 'User']),
             'position' => $this->faker->jobTitle(),
             'email_link' => $this->faker->email(),

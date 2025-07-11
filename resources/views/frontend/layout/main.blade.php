@@ -94,7 +94,7 @@
         }
 
         .navbar-brand img {
-            max-height: 60px;
+            max-height: 100px;
             height: auto;
         }
 
@@ -151,7 +151,7 @@
 
     .btn-primary:hover {
         background-color: var(--realm-blue-dark);
-        border: 1px solid var(--realm-yellow);
+        /* border: 1px solid var(--realm-yellow); */
         border-radius: 5px;
         box-shadow: 20px 4px 4px var(--realm-blue-dark);
         transition: all 0.3s ease-in-out;

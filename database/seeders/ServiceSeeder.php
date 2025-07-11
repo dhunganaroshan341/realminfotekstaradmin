@@ -43,6 +43,19 @@ class ServiceSeeder extends Seeder
                 'description' => 'Our graphic design services involve creating visual content that effectively communicates your brand message and engages your audience.',
                 'status' => 1,
             ],
+            [
+    'name' => 'Email Hosting',
+    'short_desc' => 'Professional and secure business email services.',
+    'description' => 'Our email hosting service provides reliable, secure, and custom domain-based email solutions for your business communication needs.',
+    'status' => 1,
+],
+[
+    'name' => 'Videography',
+    'short_desc' => 'Telling your story through high-quality video production.',
+    'description' => 'We offer professional videography services that capture, edit, and deliver compelling videos to effectively showcase your brand, products, or events.',
+    'status' => 1,
+],
+
 
         ];
 

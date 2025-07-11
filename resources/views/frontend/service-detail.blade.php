@@ -52,13 +52,14 @@
             {{-- Other services and sections --}}
             @include('components.other-services-component', ['otherServicetitle' => 'Other Services'])
 
-            {{-- Do you need help section --}}
-            @include('components.cta-section')
 
-            {{-- Blog and news section --}}
-            @include('components.blog-and-news-section')
-
-            {{-- Team section --}}
         </div>
     </section>
+    {{-- Do you need help section --}}
+    @include('components.cta-section')
+
+    {{-- Blog and news section --}}
+    @include('components.blog-and-news-section')
+
+    {{-- Team section --}}
 @endsection
