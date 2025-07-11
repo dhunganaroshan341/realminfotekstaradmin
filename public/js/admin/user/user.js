@@ -70,7 +70,24 @@ $(document).ready(function () {
         $(".form").attr("id", "storeForm");
         $("#storeForm")[0].reset();
         $("#formModal").modal("show");
+        addLatestOrderToTheInput(); // Add latest order to the input field
+
     });
+function addLatestOrderToTheInput() {
+    $.ajax({
+        type: "get",
+        url: "/admin/user/latest-order",
+        success: function (response) {
+            if (response.success) {
+                $("#order").val(response.message ); // Set the order field to the next available number
+            }
+        },
+        error: function (xhr) {
+            console.error("Error fetching latest order:", xhr);
+        },
+    });
+}
+
 
     // Add and Store User Data
     $(document).off("submit", "#storeForm").on("submit", "#storeForm", function (event) {
@@ -146,7 +163,9 @@ $(document).ready(function () {
                 $("#facebook_link").val(response.message.facebook_link);
                 $("#twitter_link").val(response.message.twitter_link);
                 $("#instagram_link").val(response.message.instagram_link);
+                $("#order").val(response.message.order);
                 $("#notes_user").summernote("code", response.message.notes);
+
 
                 $("#userImage").html(
                     `<img src="/uploads/${response.message.image}" alt="User Image" width="100" height="100">`

@@ -126,6 +126,7 @@
 </head>
 
 <body>
+
     @include('frontend.layout.header')
     {{-- Breadcrumb Section --}}
 

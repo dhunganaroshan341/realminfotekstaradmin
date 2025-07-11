@@ -16,6 +16,13 @@ use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
+    protected $latestOrder = 1;
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->latestOrder = User::max('order') ?? 0; // Get the maximum order value
+        $this->latestOrder++; // Increment it for the next user
+    }
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -37,6 +44,7 @@ class UserController extends Controller
                 })
                 ->addColumn('action', function ($data) {
                     $user="User";
+                    $latestOrder = $this->latestOrder;
                     return view('Admin.Button.button', compact('data','user'));
                 })
                 ->rawColumns(['action', 'image'])
@@ -100,6 +108,15 @@ class UserController extends Controller
         try {
             $data = User::find($id);
             return response()->json(data: ['success' => true, 'message' => $data]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+    public function latestOrder()
+    {
+        try {
+
+            return response()->json(data: ['success' => true, 'message' => $this->latestOrder]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }

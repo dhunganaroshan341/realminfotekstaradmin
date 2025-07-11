@@ -24,6 +24,12 @@
                             <input type="text" name="position" id="position" class="form-control" placeholder=""
                                 aria-describedby="helpId" />
                         </div>
+                        <div class="col-md-6">
+                            <label for="order" class="form-label">Order<span class="text-danger">*</span></label>
+                            <input type="number" name="order" id="order" class="form-control"
+                                placeholder="Enter display order" aria-describedby="helpId" />
+                        </div>
+
 
                         <div class="col-md-6 mt-2 mb-2">
                             <label for="" class="form-label">Email<span class="text-danger">*</span></label>

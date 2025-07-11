@@ -66,7 +66,7 @@ Route::middleware('isLogin')->group(function () {
         return redirect()->route('first.index');
     });
 });
-
+Route::get('/user/latest-order', [UserController::class, 'latestOrder'])->name('user.latest-order');
 
 // User
 
@@ -76,6 +76,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard.index');
 
     Route::get('/admin/user', [UserController::class, 'index'])->name('admin.user');
+    Route::get('/admin/user/latest-order', [UserController::class, 'latestOrder'])->name('admin.user.latest-order');
     Route::post('/admin/user/reset-password/{id}', [UserController::class, 'passwordReset'])->name('admin.user.reset-password');
     Route::post('/admin/user/store', [UserController::class, 'store'])->name('admin.store');
     Route::get('/admin/user/detail/{id}', [UserController::class, 'userDetail'])->name('admin.detail');

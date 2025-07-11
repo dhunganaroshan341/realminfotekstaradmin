@@ -513,7 +513,7 @@ a{
 
 .footer{
     padding-top: 70px;
-    padding-bottom: 70px;
+    /* padding-bottom: 70px; */
 }
 
 .footer.gray-bg{

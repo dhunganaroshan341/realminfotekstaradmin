@@ -5,7 +5,7 @@
                 <div class="widget mb-5 mb-lg-0">
                     <div class="logo mb-4">
                         @if ($logo != null)
-                            <img src="{{ asset('storage/' . $logo) }}" alt="" class="img-fluid">
+                            <img src="{{ asset('uploads/' . $logo) }}" alt="" class="img-fluid">
                         @else
                             <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="" width="100"
                                 height="100" class="img-fluid">
@@ -39,7 +39,9 @@
 
                     <ul class="list-unstyled footer-menu lh-35">
                         <li><a href="{{ route('about-us') }}">About Us</a></li>
-                        <li><a href="#!">Blog</a></li>
+                        <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
+                        <li><a href="{{ route('blog') }}">Blog & news</a></li>
+                        <li><a href="{{ route('gallery') }}">Portfio</a></li>
                     </ul>
                 </div>
             </div>
