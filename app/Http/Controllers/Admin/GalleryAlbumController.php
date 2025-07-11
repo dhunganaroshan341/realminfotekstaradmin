@@ -30,7 +30,7 @@ class GalleryAlbumController extends Controller
             config('js-map.admin.summernote.style'),
         );
         $albums = GalleryAlbum::all();
-        return view('admin.pages.Gallery.galleryAlbum',compact('clients','albums','extraJs','extraCs'));
+        return view('Admin.pages.Gallery.galleryAlbum',compact('clients','albums','extraJs','extraCs'));
     }
         public function getData(Request $request)
         {
