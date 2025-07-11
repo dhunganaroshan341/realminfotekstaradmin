@@ -6,7 +6,7 @@
             <div class="row">
                 @if (isset($services) && count($services) > 0)
                     @foreach ($services as $service)
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-4 service-img-parent">
                             <div class="card border-0">
                                 @if (!empty($service->image))
                                     <img src="{{ asset('uploads/' . $service->image) }}" class="card-img-top"
@@ -44,6 +44,7 @@
     </div>
 
     <div class="text-center mt-4">
-        <a href="http://127.0.0.1:81/service" class="btn btn-primary text-white p-2">View All Services</a>
+        <a href="{{ url('/') }}" class="text-realm-blue p-2"> <i class="fas fa-eye"></i> All
+            Services</a>
     </div>
 </section>
