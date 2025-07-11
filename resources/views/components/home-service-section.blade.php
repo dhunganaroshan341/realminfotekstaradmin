@@ -44,7 +44,7 @@
     </div>
 
     <div class="text-center mt-4">
-        <a href="{{ url('/') }}" class="text-realm-blue p-2"> <i class="fas fa-eye"></i> All
+        <a href="{{ route('service') }}" class="text-realm-blue p-2"> <i class="fas fa-eye"></i> All
             Services</a>
     </div>
 </section>
