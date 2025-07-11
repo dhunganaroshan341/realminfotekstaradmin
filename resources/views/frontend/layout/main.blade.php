@@ -172,7 +172,7 @@
     }
 
     .card-img-top {
-        height: 120px;
+        height: 250px;
         object-fit: cover;
     }
 </style>
