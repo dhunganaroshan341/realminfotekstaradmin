@@ -170,6 +170,11 @@
     .card-body {
         min-height: 205px;
     }
+
+    .service-img-parent img {
+        height: 120px;
+        object-fit: cover;
+    }
 </style>
 <script>
     $(document).ready(function() {
