@@ -1,8 +1,8 @@
-"adding"
+#"adding"
 git add .
-"commiting"
+#"commiting"
 git commit -m "Add changes"
-"pushing"
+#"pushing"
 git push origin main
-"done"
+#"done"
 echo "Changes have been pushed to the main branch."
