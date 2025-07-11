@@ -171,7 +171,7 @@
         min-height: 205px;
     }
 
-    .service-img-parent img {
+    ..card-img-top {
         height: 120px;
         object-fit: cover;
     }
