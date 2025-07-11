@@ -171,7 +171,7 @@
         min-height: 205px;
     }
 
-    ..card-img-top {
+    .card-img-top {
         height: 120px;
         object-fit: cover;
     }
