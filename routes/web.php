@@ -166,7 +166,7 @@ Route::get('/get-call-to-action-data', [CallToActionController::class, 'all'])->
     // Gallery Album Resource Routes
     Route::get('/gallery-albums', [GalleryAlbumController::class, 'index'])->name('gallery-albums.index');
     Route::get('/gallery-albums/data', [GalleryAlbumController::class, 'getData'])->name('gallery-albums.data');
-    Route::post('/gallery-albums/{id}/upload', [GalleryAlbumController::class, 'upload'])->name('gallery-albums.store');
+    Route::post('/gallery-albums/{id}/upload', [GalleryAlbumController::class, 'upload'])->name('gallery-albums.upload');
     Route::post('/gallery-albums', [GalleryAlbumController::class, 'store'])->name('gallery-albums.store');
     Route::get('/gallery-albums/{id}/detail', [GalleryAlbumController::class, 'detailGalleryAlbum'])->name('gallery-albums.detail');
     Route::put('/gallery-albums/{id}', [GalleryAlbumController::class, 'update'])->name('gallery-albums.update');
