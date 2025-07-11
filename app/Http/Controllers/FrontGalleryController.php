@@ -113,7 +113,7 @@ public function gallery(Request $request)
     }
     public function showClient($id)
     {
-        $albums = GalleryAlbum::with(['galleryMedia', 'client'])->where('client_id', $id)->get();
+        $albums = GalleryAlbum::with(['galleryMedia', 'client'])->where('client_id', $id)->where('status','Active')->get();
 
 
 
