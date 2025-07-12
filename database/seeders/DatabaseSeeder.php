@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             // HomeSlideSeeder::class,
             // TestimonialSeeder::class,
-            ServiceQuerySeeder::class,
+            // ServiceQuerySeeder::class,
         ]);
     }
 }

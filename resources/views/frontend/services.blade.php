@@ -11,8 +11,9 @@
                         <div class="row align-items-center d-flex h-100">
                             <div class="col-md-12">
                                 <div class="block text-center">
+
                                     <h1 class="mb-3 mt-3 text-center">{{ $pageBanner->title ?? 'Services' }}</h1>
-                                    <p>{{ $pageBanner->description ?? 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' }}
+                                    <p>{{ $pageBanner->description ?? 'View our Services' }}
                                     </p>
                                 </div>
                             </div>

@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
+use App\Models\ServiceQuery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
+  use App\Models\User;
+
 
 class ServiceController extends Controller
 {
@@ -191,4 +194,59 @@ class ServiceController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
     }
+
+
+public function storeServiceQuery(Request $request)
+{
+    try {
+        // Step 1: Validate form input
+        $request->validate([
+            'name'       => 'required|string|max:255',
+            'email'      => 'required|email|max:255',
+            'phone'      => 'required|string|max:20',
+            'message'    => 'required|string|min:5|max:1000',
+            'service_id' => 'required|exists:services,id',
+        ]);
+
+        // Step 2: Check if email is registered
+
+
+        // Optional: Also check if the user's email is verified
+
+
+        // Step 3: Check for recent duplicate submissions (same email+phone+message)
+        $duplicate = ServiceQuery::where('email', $request->email)
+            ->where('phone', $request->phone)
+            ->where('message', $request->message)
+            ->where('created_at', '>=', now()->subMinutes(10))
+            ->exists();
+
+        if ($duplicate) {
+            return response()->json([
+                'success' => false,
+                'message' => 'You have already sent this message recently. Please wait 10 minutes before trying again.'
+            ]);
+        }
+
+        // Step 4: Save the service query
+        $data = $request->only(['name', 'email', 'phone', 'message', 'service_id']);
+        ServiceQuery::create($data);
+
+        $serviceDetail = Service::find($request->service_id);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Query submitted successfully.',
+            'serviceName' => $serviceDetail?->name ?? 'Unknown Service'
+        ]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => $e->getMessage()
+        ]);
+    }
+}
+
+
 }

@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="popupForm">
-                {{-- @csrf --}}
+                @csrf
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -51,28 +51,45 @@
                     url: '/service-query',
                     method: 'POST',
                     data: {
-                        name: $('#name').val(),
-                        email: $('#email').val(),
-                        phone: $('#phone').val(),
-                        message: $('#message').val(),
+                        name: $('#name').val().trim(),
+                        email: $('#email').val().trim(),
+                        phone: $('#phone').val().trim(),
+                        message: $('#message').val().trim(),
                         service_id: $('input[name="service_id"]').val(),
-                        _token: $('meta[name="csrf-token"]').attr('content') // ✅ Add this line
+                        _token: $('meta[name="csrf-token"]').attr('content')
                     },
+                    beforeSend: function() {
+                        $('#popupForm button[type="submit"]').prop('disabled', true);
+                    }, // ✅ ← FIXED: comma added here
+
                     success: function(response) {
                         if (response.success) {
-                            alert('Message sent successfully!');
+                            Swal.fire({
+                                icon: "success",
+                                title: "Success",
+                                text: `Query for ${response.serviceName} has been sent successfully.`,
+                                showConfirmButton: false,
+                                timer: 1800,
+                            });
+
                             $('#popupForm')[0].reset();
                             $('#contactFormModal').modal('hide');
                         } else {
-                            alert('Something went wrong. Please try again.');
+                            Swal.fire({
+                                icon: "warning",
+                                title: "Something went wrong!",
+                                text: response.message || "Please try again.",
+                            });
                         }
                     },
                     error: function(xhr) {
                         console.log(xhr.responseText);
                         alert('Failed to send message. Check console for errors.');
-                    }
+                    },
+                    complete: function() {
+                        $('#popupForm button[type="submit"]').prop('disabled', false);
+                    } // ✅ ← FIXED: comma before this was missing
                 });
-
             });
         });
     </script>
