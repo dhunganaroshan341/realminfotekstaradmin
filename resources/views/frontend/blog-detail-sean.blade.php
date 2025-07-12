@@ -57,6 +57,11 @@
         .post-title a {
             color: var(--realm-blue-dark);
         }
+
+        .post-desc {
+
+            color: rgb(32, 37, 42) !important;
+        }
     </style>
 @endpush
 
