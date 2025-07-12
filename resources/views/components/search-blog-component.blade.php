@@ -1,4 +1,4 @@
-<div class="col-lg-3 d-none d-lg-block position-sticky top-0" style="z-index: 100;">
+<div class="col-lg-3 d-none d-lg-block  top-0">
     <div class="section-container p-3 shadow-sm bg-white rounded">
         <div class="input-group sidebar-search">
             <input type="text" id="storySearchInput" class="form-control" placeholder="Search Our Blogs..." />
