@@ -46,12 +46,27 @@
                     </a>
                     <hr>
                     @foreach ($clientsWithAlbums as $clientId => $clientAlbums)
-                        <button class="list-group-item list-group-item-action"
+                        @php
+                            $client = optional($clientAlbums->first())->client;
+                            $clientName = $client->name ?? 'Unknown Client';
+                            $clientImage = $client->image ?? null;
+                        @endphp
+
+                        <button class="list-group-item list-group-item-action d-flex align-items-center gap-2"
                             onclick="showClientAlbums({{ $clientId }})">
-                            <i class="fas fa-user me-2"></i>
-                            {{ optional($clientAlbums->first()->client)->name ?? 'Unknown Client' }}
+
+                            @if ($clientImage)
+                                <img src="{{ asset($clientImage) }}" alt="Client Image"
+                                    class="client-thumb rounded-circle" />
+                            @else
+                                <i
+                                    class="fas fa-user client-thumb text-secondary d-flex align-items-center justify-content-center rounded-circle bg-light"></i>
+                            @endif
+
+                            <span>{{ $clientName }}</span>
                         </button>
                     @endforeach
+
                 </div>
             </aside>
 
@@ -159,9 +174,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                            <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                <i class="fas fa-download"></i>
-                                                                            </a>` : ''
+                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                        <i class="fas fa-download"></i>
+                                                                                    </a>` : ''
                                         }
                                     </div>
                                 </div>
