@@ -17,6 +17,7 @@ return new class extends Migration
             // $table->enum('type',['Header','Footer'])->nullable();
             $table->string('logo')->nullable();
             $table->string('title')->nullable();
+            $table->string('contact_2')->nullable();
             $table->string('contact')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();

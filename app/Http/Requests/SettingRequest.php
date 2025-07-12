@@ -27,6 +27,7 @@ class SettingRequest extends FormRequest
             'description'=>'nullable|string',
             'work_description'=>'nullable|string',
             'contact'=>'nullable|numeric|min:7',
+            'contact_2'=>'nullable|numeric|min:7',
             'email'=>'nullable|email',
             'address'=>'nullable|string',
             'facebook_url'=>'nullable|url',

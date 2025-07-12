@@ -97,6 +97,15 @@
                             @enderror
                         </div>
                         <div class="col-md-4 mt-3 mb-3">
+                            <label for="" class="form-label">Other Contact<span class="text-danger">*</span></label>
+                            <input type="number" name="contact_2" id=""
+                                class="form-control @error('contact_2') is-invalid @enderror" placeholder=""
+                                value="{{ $setting->contact_2 ?? '' }}" aria-describedby="helpId" />
+                            @error('contact_2')
+                                <small id="helpId" class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="col-md-4 mt-3 mb-3">
                             <label for="" class="form-label">Email<span class="text-danger">*</span></label>
                             <input type="email" name="email" id=""
                                 class="form-control @error('email') is-invalid @enderror" placeholder=""

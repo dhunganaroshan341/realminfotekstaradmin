@@ -96,7 +96,7 @@
                             {{ $post->title }}
                         </h4>
                         <div class="post-by">
-                            Posted By <a href="#">admin</a>
+                            Posted By <a href="#">RealmInfotech</a>
                             <span class="divider">|</span> {{ $post->created_at->format('Y-m-d') }}
                             <span class="divider">|</span>
                             @foreach ($post->tags ?? ['News'] as $tag)
@@ -116,7 +116,7 @@
                         @endforeach
 
                         <div class="post-desc">
-                            <p>{{ $post->description }}</p>
+                            <p>{!! $post->description !!}</p>
                         </div>
                     </div>
 
