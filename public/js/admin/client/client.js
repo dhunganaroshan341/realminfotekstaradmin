@@ -73,7 +73,7 @@ $(document).ready(function () {
             $("#validationErrors").addClass("d-none").html("");
             let formdata = new FormData(this);
             $.ajax({
-                type: "post",
+                type: "POST",
                 url: "/admin/client/",
                 data: formdata,
                 contentType: false,
@@ -155,7 +155,7 @@ $(document).ready(function () {
                 $(".updateBtn").prop("disabled", true);
                 // console.log(formdata);
                 $.ajax({
-                    type: "post",
+                    type: "POST",
                     url: "/admin/client/" + id,
                     data: formdata,
                     contentType: false,
