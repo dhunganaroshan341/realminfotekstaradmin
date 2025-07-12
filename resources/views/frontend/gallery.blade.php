@@ -15,7 +15,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active"
-                    style="background-image: url({{ $pageBanner ? asset('uploads/' . $pageBanner->image) : asset('assets/images/banner1.jpg') }}) ;">
+                    style="background-image: url({{ isset($pageBanner->image) ? asset('uploads/' . $pageBanner->image) : asset('assets/images/banner1.jpg') }}) ;">
                     <div class="hero-small-background-overlay"></div>
                     <div class="container  h-100">
                         <div class="row align-items-center d-flex h-100">
@@ -174,9 +174,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                        <i class="fas fa-download"></i>
-                                                                                    </a>` : ''
+                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                    <i class="fas fa-download"></i>
+                                                                                                </a>` : ''
                                         }
                                     </div>
                                 </div>
