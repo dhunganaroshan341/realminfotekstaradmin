@@ -11,7 +11,7 @@
     @endpush
 
     @section('content')
-        <button class="btn btn-outline-primary d-md-none position-fixed start-0 top-50 translate-middle-y"
+        <button class="gallery-btn btn btn-outline-primary d-md-none position-fixed start-0 top-50 translate-middle-y"
             style="z-index: 1100; border-radius: 0 50px 50px 0; border-color: var(--realm-blue);" type="button"
             data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
             <i class="fas fa-images me-1 text-realm-blue"></i> Albums
@@ -228,9 +228,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                    </a>` : ''
+                                                                                                                                                                                                                                                                                                                                                                                                            <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                                                <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                            </a>` : ''
                                         }
                                     </div>
                                 </div>
@@ -367,6 +367,20 @@
             .offcanvas-body .list-group-item {
                 border: none;
                 padding: 12px 16px;
+            }
+
+            .offcanvas-body .list-group-item {
+                border: none;
+                padding: 12px 16px;
+                color: var(--realm-yellow);
+            }
+
+            .gallery-btn {
+                z-index: 1100;
+                border-radius: 0 12px 12px 0;
+                border-color: var(--realm-blue);
+                color: var(--realm-yellow);
+                /* border: none; */
             }
         </style>
     @endpush
