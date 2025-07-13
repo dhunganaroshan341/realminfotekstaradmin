@@ -25,12 +25,10 @@
                         <div class="container  h-100">
                             <div class="row align-items-center d-flex h-100">
                                 <div class="col-md-12">
-                                    <div class="block">
-                                        <span class="text-uppercase text-sm letter-spacing"></span>
-                                        <h1 class="mb-3 mt-3 text-center">
-                                            {{ $pageBanner->title ?? 'Portfolio' }}
-                                            <p>{{ $pageBanner->description ?? 'Reliable tech. Real results.' }}</p>
-                                        </h1>
+
+                                    <div class="block text-center">
+                                        <h1 class="mb-3 mt-3 text-center">{{ $pageBanner->title ?? 'Portfolio' }}</h1>
+                                        <p>{{ $pageBanner->description ?? 'Reliable tech. Real results.' }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -229,9 +227,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    </a>` : ''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </a>` : ''
                                         }
                                     </div>
                                 </div>
