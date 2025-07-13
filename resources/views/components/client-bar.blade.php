@@ -14,8 +14,8 @@
                 @endphp
                 <div class="slide text-center">
                     <a href="{{ $galleryUrl }}" @if (!$hasAlbums) onclick="return false;" @endif>
-                        <img src="{{ $client->image ?? asset('assets/images/logo.png') }}" alt="{{ $client->name }}"
-                            class="logo-img rounded-circle border">
+                        <img src="{{ $client->image ? 'uploads/' . $client->image : asset('assets/images/logo.png') }}"
+                            alt="{{ $client->name }}" class="logo-img rounded-circle border">
                     </a>
                     <div class="logo-name">{{ $client->name }}</div>
                 </div>
