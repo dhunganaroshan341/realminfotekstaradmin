@@ -3,7 +3,7 @@
         <div class="divider mb-3"></div>
         <h2 class="title-color mb-4 h1">Services</h2>
         <div class="cards">
-            <div class="row">
+            <div class="row service-wrapper">
                 @if (isset($services) && count($services) > 0)
                     @foreach ($services as $service)
                         <div class="col-md-4 mb-4 service-img-parent">
@@ -41,10 +41,36 @@
                 @endif
             </div>
         </div>
-    </div>
 
-    <div class="text-center mt-4">
-        <a href="{{ route('service') }}" class="text-realm-blue p-2"> <i class="fas fa-eye"></i> All
-            Services</a>
+        <!-- Mobile-only View More Button -->
+        <div class="text-center mt-4 d-block d-md-none">
+            <button class="btn btn-outline-primary" id="viewMoreBtn" style="display:none;">
+                <i class="fas fa-eye"></i> View More
+            </button>
+        </div>
+
+        <!-- All Services Link -->
+        <div class="text-center mt-3">
+            <a href="{{ route('service') }}" class="text-realm-blue p-2"> <i class="fas fa-eye"></i> All Services</a>
+        </div>
     </div>
 </section>
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            let $services = $('.service-wrapper .service-img-parent');
+            let itemsToShow = 4;
+
+            // Only on mobile
+            if ($(window).width() <= 768 && $services.length > itemsToShow) {
+                $services.slice(itemsToShow).hide(); // hide after 4
+                $('#viewMoreBtn').show(); // show "View More" button
+
+                $('#viewMoreBtn').on('click', function() {
+                    $services.slideDown(); // animate reveal
+                    $(this).hide(); // hide "View More"
+                });
+            }
+        });
+    </script>
+@endpush
