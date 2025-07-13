@@ -28,7 +28,8 @@
                                     <div class="block">
                                         <span class="text-uppercase text-sm letter-spacing"></span>
                                         <h1 class="mb-3 mt-3 text-center">
-                                            {{ $pageBanner->title ? $pageBanner->title : 'Portfolio' }}
+                                            {{ $pageBanner->title ?? 'Portfolio' }}
+                                            <p>{{ $pageBanner->description ?? 'Reliable tech. Real results.' }}</p>
                                         </h1>
                                     </div>
                                 </div>
@@ -228,9 +229,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                                                                                            </a>` : ''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    </a>` : ''
                                         }
                                     </div>
                                 </div>
