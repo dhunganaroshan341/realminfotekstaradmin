@@ -1,58 +1,55 @@
 @extends('frontend.layout.main')
 @section('content')
-
     <section class="hero-small">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
 
-            <div class="carousel-item active" style="background-image: url({{ $pageBanner->image?asset('uploads/'.$pageBanner->image):asset('assets/images/banner1.jpg') }}) ;">
-                <div class="hero-small-background-overlay"></div>
-                <div class="container h-100">
-                    <div class="row align-items-center d-flex h-100">
-                        <div class="col-md-12">
-                            <div class="block text-center">
-                                <h1 class="mb-3 mt-3 text-center">{{ $pageBanner->title??'About Us' }}</h1>
-                                <p>{{ $pageBanner->description??"Lorem ipsum dolor sit amet consectetur adipisicing elit." }}</p>
+                <div class="carousel-item active"
+                    style="background-image: url({{ $pageBanner->image ? asset('uploads/' . $pageBanner->image) : asset('assets/images/banner1.jpg') }}) ;">
+                    <div class="hero-small-background-overlay"></div>
+                    <div class="container h-100">
+                        <div class="row align-items-center d-flex h-100">
+                            <div class="col-md-12">
+                                <div class="block text-center">
+                                    <h1 class="mb-3 mt-3 text-center">{{ $pageBanner->title ?? 'About Us' }}</h1>
+                                    <p>{{ $pageBanner->description ?? '' }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
-@if(!empty($pageDescription))
-<section class="section-2 py-5">
-    <div class="container py-2">
-        <div class="row">
-            <div class="col-md-6 align-items-center d-flex">
-                <div class="about-block">
-                    <h1 class="title-color mb-3">About Realm-Infotech</h1>
-                    <p>{!! $pageDescription !!}</p>
+    @if (!empty($pageDescription))
+        <section class="section-2 py-5">
+            <div class="container py-2">
+                <div class="row">
+                    <div class="col-md-6 align-items-center d-flex">
+                        <div class="about-block">
+                            <h1 class="title-color mb-3">About Realm-Infotech</h1>
+                            <p>{!! $pageDescription !!}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="image-red-background">
+                            <img src="{{ asset('uploads/' . $pageDescriptionImage) }}" alt="" class="w-100">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="image-red-background">
-                    <img src="{{ asset('uploads/' . $pageDescriptionImage) }}" alt="" class="w-100">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
+        </section>
+    @endif
 
 
 
-  {{-- do you need help section --}}
-@include('components.cta-section')
+    {{-- do you need help section --}}
+    @include('components.cta-section')
 
 
-   <x-team-section :members="$members"  title="Our Team" />
-
-
-
+    <x-team-section :members="$members" title="Our Team" />
 @endsection
 @push('styles')
     <style>
@@ -249,5 +246,4 @@
             }
         }
     </style>
-
 @endpush
