@@ -13,7 +13,7 @@
                             <div class="col-md-12">
                                 <div class="block text-center">
                                     <h1 class="mb-3 mt-3 text-center">
-                                        <a class="text-decoration-none" href="{{ route('blog') }}">
+                                        <a class="text-decoration-none text-white" href="{{ route('blog') }}">
                                             {{ $pageBanner->title ?? 'Blog & News' }}</a>
                                         @if (isset($category_title) && $category_title != '')
                                             &nbsp;<i class="fa-solid fa-angle-right"></i>&nbsp;
