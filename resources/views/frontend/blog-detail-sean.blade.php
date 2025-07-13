@@ -236,11 +236,12 @@
                 </div>
             </div>
         </div>
-
-        @include('components.blog-and-news-section', [
-            'title' => 'Other Blogs',
-            'posts' => $relatedPosts,
-        ])
+        @if ($relatedPosts->count() > 0)
+            @include('components.blog-and-news-section', [
+                'title' => 'Other Blogs',
+                'posts' => $relatedPosts,
+            ])
+        @endif
     @endsection
     @push('scripts')
         <script>
