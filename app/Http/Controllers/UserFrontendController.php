@@ -210,7 +210,7 @@ public function searchBlogs(Request $request)
         $pageBanner = PageBanner::where('page','contact')->first();
         $services = Service::all();
 
-        return view('frontend.contact',compact('content_title','pageBanner','service'));
+        return view('frontend.contact',compact('content_title','pageBanner','services'));
     }
 
     public function storeContactUs(ContactRequest $request)
