@@ -9,9 +9,9 @@
                     <div class="container  h-100">
                         <div class="row align-items-center d-flex h-100">
                             <div class="col-md-12">
-                                <div class="block">
+                                <div class="block text-center">
                                     <span class="text-uppercase text-sm letter-spacing"></span>
-                                    <h1 class="mb-3 mt-3 text-center">{{ $pageBanner->title ?? 'About Us' }}
+                                    <h1 class="mb-3 mt-3 text-center">{{ $pageBanner->title ?? 'Contact Us' }}
                                     </h1>
                                     <p>{{ $bannerDescription ?? 'Get in touch with the Realm Infotech team — we\'re here to help.' }}
                                     </p>

@@ -12,8 +12,10 @@
                             <div class="col-md-12">
                                 <div class="block text-center">
                                     <h1 class="mb-3 mt-3 text-center">{{ $pageBanner->title ?? 'About Us' }}</h1>
-                                    <p>{{ $pageBanner->description ?? '' }}</p>
+                                    <p>{{ $pageBanner->description ?? 'We build smart solutions with purpose and precision' }}
+                                    </p>
                                 </div>
+
                             </div>
                         </div>
                     </div>
