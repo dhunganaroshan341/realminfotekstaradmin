@@ -65,7 +65,7 @@ class TeamMemberSeeder extends Seeder
                     'full_name' => $user['full_name'],
                     'password' => bcrypt('admin@123#'), // strong password matching validation
                     'image' => 'https://via.placeholder.com/150',
-                    'role' => 'Staff',
+                    'role' => 'User',
                     'position' => $user['position'],
                     'email_link' => $user['email'],
                     'facebook_link' => 'https://facebook.com/' . Str::slug($user['full_name']),
