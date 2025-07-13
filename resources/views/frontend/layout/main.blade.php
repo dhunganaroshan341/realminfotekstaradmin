@@ -129,6 +129,10 @@
         .nav-link:hover {
             color: #0d6efd;
         }
+
+        .footer {
+            background: var(--realm-blue) !important
+        }
     </style>
 
     @stack('styles')
