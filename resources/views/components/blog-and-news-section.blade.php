@@ -110,7 +110,7 @@
                 currentIndex++;
                 updateSliderPosition();
 
-                if (currentIndex === totalCards) {
+                if (currentIndex === totalCards - 1) {
                     setTimeout(() => {
                         currentIndex = 1;
                         updateSliderPosition(false);
