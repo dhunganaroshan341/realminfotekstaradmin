@@ -197,12 +197,14 @@
         padding-bottom: 5px !important;
     }
 
-    .header-top-bar a {
-        font-size: 12px;
-    }
+    @media screen and (max-width: 768px) {
+        .header-top-bar a {
+            font-size: 12px;
+        }
 
-    .email-header {
-        font-size: 16px;
+        .email-header {
+            font-size: 16px;
+        }
     }
 </style>
 <script>
