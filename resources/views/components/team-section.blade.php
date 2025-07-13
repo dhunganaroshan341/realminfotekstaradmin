@@ -50,7 +50,7 @@
     }
 
     .card-body {
-        height: auto !important;
+        min-height: 120px !important;
     }
 </style>
 
