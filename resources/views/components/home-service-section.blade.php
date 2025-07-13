@@ -59,7 +59,7 @@
     <script>
         $(document).ready(function() {
             let $services = $('.service-wrapper .service-img-parent');
-            let itemsToShow = 4;
+            let itemsToShow = 3;
 
             // Only on mobile
             if ($(window).width() <= 768 && $services.length > itemsToShow) {
