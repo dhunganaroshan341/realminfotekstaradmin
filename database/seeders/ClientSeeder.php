@@ -181,9 +181,14 @@ class ClientSeeder extends Seeder
 
         ];
 
-        foreach ($clients as $client) {
-            Client::updateOrCreate(['name' => $client['name']], $client);
+       foreach ($clients as $client) {
+    if (!is_array($client) || !isset($client['name'])) {
+        dump("Invalid entry:", $client); // Or log this
+        continue;
+    }
 
-        }
+    Client::updateOrCreate(['name' => $client['name']], $client);
+}
+
     }
 }
