@@ -17,7 +17,8 @@
                         <i class="bi bi-telephone-fill me-1"></i><span class="fw-bold">{{ $contact }}</span>
                     </a>
                     <a href="tel:{{ $contact_2 }}" class="text-realm-yellow text-decoration-none">
-                        <i class="bi bi-telephone-fill me-1"></i><span class="fw-bold">{{ $contact_2 }}</span>
+
+                        | <span class="fw-bold">{{ $contact_2 }}</span>
                     </a>
                 </div>
             </div>
