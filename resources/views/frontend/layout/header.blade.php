@@ -8,7 +8,8 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-6 text-md-start text-center mb-2 mb-md-0">
-                    <a href="mailto:{{ $email }}" class="text-realm-yellow text-decoration-none me-3">
+                    <a href="mailto:{{ $email }}"
+                        class=" email-header text-realm-yellow text-decoration-none me-3">
                         <i class="bi bi-envelope-fill me-1"></i>{{ $email }}
                     </a>
                 </div>

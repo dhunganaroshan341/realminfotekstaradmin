@@ -196,6 +196,14 @@
 
         padding-bottom: 5px !important;
     }
+
+    .header-top-bar a {
+        font-size: 12px;
+    }
+
+    .email-header {
+        font-size: 16px;
+    }
 </style>
 <script>
     $(document).ready(function() {
