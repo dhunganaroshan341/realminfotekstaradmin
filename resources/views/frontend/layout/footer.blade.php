@@ -107,5 +107,10 @@
             /* box-shadow: 2px 2px 2px 2px white; */
             filter: drop-shadow(-2px 3px 1px #a1842c) !important;
         }
+
+        .footer {
+            padding-top: 70px;
+            padding-bottom: 5px;
+        }
     </style>
 @endpush
