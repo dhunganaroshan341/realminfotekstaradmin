@@ -11,9 +11,10 @@
                             <div class="col-md-12">
                                 <div class="block">
                                     <span class="text-uppercase text-sm letter-spacing"></span>
-                                    <h1 class="mb-3 mt-3 text-center">{{ $pageBanner ? $pageBanner->title : 'About Us' }}
+                                    <h1 class="mb-3 mt-3 text-center">{{ $pageBanner->title ?? 'About Us' }}
                                     </h1>
-                                    <p>{{ $bannerDescription ?? '' }}</p>
+                                    <p>{{ $bannerDescription ?? 'Get in touch with the Realm Infotech team — we\'re here to help.' }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
