@@ -54,7 +54,7 @@
                         <h4 class="mt-2"><i class="fa-solid fa-envelope"></i> <a
                                 href="mailto:{{ $email }}">{{ $email }}</a></h4>
                         <h4 class="mt-2"><i class="fa-solid fa-phone-square" aria-hidden="true"></i> <a
-                                href="tel:{{ $contact }}">{{ $contact }}</a><a
+                                href="tel:{{ $contact }}">{{ $contact }}</a>,<a
                                 href="tel:{{ $contact }}">{{ $contact_2 }}</a></h4>
                     </div>
 

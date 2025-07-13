@@ -13,9 +13,10 @@
                     </a>
                 </div>
                 <div class="col-md-6 text-md-end text-center">
-                    <a href="tel:{{ $contact }}" class="text-realm-yellow text-decoration-none">
-                        <i class="bi bi-telephone-fill me-1"></i><span class="fw-bold">{{ $contact }}</span>
-                    </a>
+                    <a href="tel:{{ $contact }}" class="text-realm-yellow text-decoration-none">,
+                        <a href="tel:{{ $contact_2 }}" class="text-realm-yellow text-decoration-none">
+                            <i class="bi bi-telephone-fill me-1"></i><span class="fw-bold">{{ $contact }}</span>
+                        </a>
                 </div>
             </div>
         </div>
