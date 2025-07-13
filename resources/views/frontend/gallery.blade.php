@@ -33,28 +33,41 @@
         </div>
     </section>
     <div class="container-fluid py-4">
-        <div class="row">
-            <!-- Sidebar -->
-            <aside class="col-md-3 d-none d-md-block border-end pe-3" style="height: calc(100vh - 4rem); overflow-y: auto;">
-                <h4 class="text-realm-blue mb-3">Albums</h4>
+
+        <!-- Sticky Mobile Toggle Button (Mobile Only) -->
+        <button class="btn btn-outline-primary d-md-none position-fixed start-0 top-50 translate-middle-y z-1030"
+            style="border-radius: 0 50px 50px 0;" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar"
+            aria-controls="mobileSidebar">
+            <i class="fas fa-bars"></i> <!-- changed to hamburger icon -->
+        </button>
+
+
+        <!-- Offcanvas Sidebar for Mobile -->
+        <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="mobileSidebar"
+            aria-labelledby="mobileSidebarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="mobileSidebarLabel">Albums</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
                 <div class="list-group">
-                    <a class=" text-realm-yellow list-group-item list-group-item-action" href="{{ route('gallery') }}">
-                        <img style="width:20px;height:20px justify-self:center align-item:center"
-                            src="{{ asset('assets/images/logo.png') }}" alt=""> Realm Albums
-
-
+                    <a class="text-realm-yellow list-group-item list-group-item-action" href="{{ route('gallery') }}">
+                        <img class="realm-logo" src="{{ asset('assets/images/logo.png') }}" alt="">
+                        Realm Albums
                     </a>
                     <hr>
                     @foreach ($clientsWithAlbums as $clientId => $clientAlbums)
                         @php
                             $client = optional($clientAlbums->first())->client;
                             $clientName = $client->name ?? 'Unknown Client';
+                            // dd($client->image);
                             $clientImage = $client->image ?? null;
+                            // pre client image add uploads/
+                            $clientImage = 'uploads/' . $clientImage;
                         @endphp
-
-                        <button class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+                        <button type="button"
+                            class="list-group-item list-group-item-action d-flex align-items-center gap-2"
                             onclick="showClientAlbums({{ $clientId }})">
-
                             @if ($clientImage)
                                 <img src="{{ asset($clientImage) }}" alt="Client Image"
                                     class="client-thumb rounded-circle" />
@@ -62,18 +75,50 @@
                                 <i
                                     class="fas fa-user client-thumb text-secondary d-flex align-items-center justify-content-center rounded-circle bg-light"></i>
                             @endif
-
                             <span>{{ $clientName }}</span>
                         </button>
                     @endforeach
+                </div>
+            </div>
+        </div>
 
+
+        <div class="row">
+            <!-- Sidebar for Desktop -->
+            <aside class="col-md-3 d-none d-md-block border-end pe-3" style="height: calc(100vh - 4rem); overflow-y: auto;">
+                <h4 class="text-realm-blue mb-3">Albums</h4>
+                <div class="list-group">
+                    <a class="text-realm-yellow list-group-item list-group-item-action" href="{{ route('gallery') }}">
+                        <img class  = "realm-logo" src="{{ asset('assets/images/logo.png') }}" alt="">
+                        Realm Albums
+                    </a>
+                    <hr>
+                    @foreach ($clientsWithAlbums as $clientId => $clientAlbums)
+                        @php
+                            $client = optional($clientAlbums->first())->client;
+                            $clientName = $client->name ?? 'Unknown Client';
+                            $clientImage = $client->image ?? null;
+                            $clientImage = 'uploads/' . $clientImage;
+                        @endphp
+                        <button class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+                            onclick="showClientAlbums({{ $clientId }})">
+                            @if ($clientImage)
+                                <img src="{{ asset($clientImage) }}" alt="Client Image"
+                                    class="client-thumb rounded-circle" />
+                            @else
+                                <i
+                                    class="fas fa-user client-thumb text-secondary d-flex align-items-center justify-content-center rounded-circle bg-light"></i>
+                            @endif
+                            <span>{{ $clientName }}</span>
+                        </button>
+                    @endforeach
                 </div>
             </aside>
 
             <!-- Main Content -->
             <main class="col-md-9" id="mainContent">
                 <div class="divider mb-3"></div>
-                <h2 class="title-color mb-4 h1"> Realm Albums</h2>
+                <h2 class="title-color mb-4 h1">Realm Albums</h2>
                 <div class="row g-4">
                     @foreach ($albumsWithNoClients as $album)
                         <div class="col-sm-6 col-lg-3">
@@ -93,19 +138,18 @@
                                         No Image
                                     </div>
                                 @endif
+
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $album->title }}</h5>
-
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </main>
-            <!-- Bottom Type Navigation -->
 
+            <!-- Album Type Bar -->
             <x-album-type-bar />
-
         </div>
     </div>
 @endsection
@@ -115,6 +159,7 @@
 
     {{-- Bootstrap JS --}}
 
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
     <script>
@@ -174,9 +219,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                    <i class="fas fa-download"></i>
-                                                                                                </a>` : ''
+                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                </a>` : ''
                                         }
                                     </div>
                                 </div>
@@ -200,6 +245,9 @@
 
                     content += `</div>`;
                     mainContent.html(content);
+
+
+
                 },
                 error: function() {
                     alert('Failed to load client albums.');
@@ -291,4 +339,13 @@
             });
         }
     </script>
+@endpush
+@push('styles')
+    <style>
+        .client-thumb,
+        .realm-logo {
+            width: 40px !important;
+            height: 40px !important;
+        }
+    </style>
 @endpush

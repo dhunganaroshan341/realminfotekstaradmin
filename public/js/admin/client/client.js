@@ -61,8 +61,10 @@ $(document).ready(function () {
         $("#password").prop("disabled", false);
         $(".updateBtn").hide();
         $(".labelPassword").show();
-        $(".form").attr("id", "storeForm");
+
+        $(".form").attr("id", "storeForm"); // safer
         $("#storeForm")[0].reset();
+
         $("#formModal").modal("show");
     });
 
@@ -72,6 +74,7 @@ $(document).ready(function () {
             $(".submitBtn").prop("disabled", true);
             $("#validationErrors").addClass("d-none").html("");
             let formdata = new FormData(this);
+             if (formId === "storeForm") {
             $.ajax({
                 type: "POST",
                 url: "/admin/client/",
@@ -112,6 +115,7 @@ $(document).ready(function () {
                     $(".submitBtn").prop("disabled", false);
                 },
             });
+             }
         });
 
     // Click and Edit User
@@ -154,6 +158,7 @@ $(document).ready(function () {
                  formdata.append("_method","put");
                 $(".updateBtn").prop("disabled", true);
                 // console.log(formdata);
+                if (formId === "updateForm") {
                 $.ajax({
                     type: "POST",
                     url: "/admin/client/" + id,
@@ -189,8 +194,9 @@ $(document).ready(function () {
                     complete: function () {
                         $(".updateBtn").prop("disabled", false);
                     },
-                });
+                });}
             });
+
     });
 
 
