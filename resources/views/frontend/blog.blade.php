@@ -21,7 +21,7 @@
                                         @endif
                                     </h1>
 
-                                    <p>{{ $pageBanner->description ?? '' }}
+                                    <p>{{ $pageBanner->description ?? 'Discover what\'s new at Realm Infotech.' }}
                                     </p>
                                 </div>
                             </div>
