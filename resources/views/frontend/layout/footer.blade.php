@@ -98,5 +98,12 @@
             color: #f0f0f0;
             text-decoration: underline;
         }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            /* box-shadow: 2px 2px 2px 2px white; */
+            filter: drop-shadow(-2px 3px 1px #a1842c) !important;
+        }
     </style>
 @endpush
