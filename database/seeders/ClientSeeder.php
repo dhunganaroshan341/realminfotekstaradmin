@@ -12,7 +12,7 @@ class ClientSeeder extends Seeder
         $clients = [
             [
                 'name' => 'SUJAL FOODS PVT. LTD.',
-                'email' => null,
+                'email' => 'info@sujal.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -20,7 +20,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'HINWA WINE',
-                'email' => null,
+                'email' => 'info@hinwa.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -28,7 +28,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'BROADLINK',
-                'email' => null,
+                'email' => 'info@broadlink.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -36,7 +36,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'UHS HOLDINGS',
-                'email' => null,
+                'email' => 'info@uhs.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -44,7 +44,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'CG ELECTRONICS',
-                'email' => null,
+                'email' => 'info@cg.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -52,7 +52,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'AITM COLLEGE',
-                'email' => null,
+                'email' => 'info@aitm.com',
                 'address' => 'Lalitpur',
                 'contact' => null,
                 'image' => null,
@@ -60,7 +60,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'CG EDUCATION',
-                'email' => null,
+                'email' => 'info@cg.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -68,7 +68,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'MODERN NEPAL COLLEGE',
-                'email' => null,
+                'email' => 'info@modern.com',
                 'address' => 'Sorhakhutte, Kathmandu',
                 'contact' => null,
                 'image' => null,
@@ -76,7 +76,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'NON-RESIDENT NEPALI ASSOCIATION-HLC',
-                'email' => null,
+                'email' => 'info@nonresident.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -84,7 +84,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'KARMA RESIDENCES',
-                'email' => null,
+                'email' => 'info@karma.com',
                 'address' => 'Kathmandu',
                 'contact' => null,
                 'image' => null,
@@ -92,7 +92,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'LE GLAMOUR LUXURY RESORT & WELLNESS SPA',
-                'email' => null,
+                'email' => 'info@le.com',
                 'address' => 'Methlang, Sarangkot, Pokhara-18, Gandaki Province',
                 'contact' => null,
                 'image' => null,
@@ -100,7 +100,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'INNER SIGHT',
-                'email' => null,
+                'email' => 'info@inner.com',
                 'address' => 'Sanepa, Lalitpur',
                 'contact' => null,
                 'image' => null,
@@ -108,7 +108,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'LAW LAB NEPAL',
-                'email' => null,
+                'email' => 'info@law.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -116,7 +116,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'IPTM NEPAL',
-                'email' => null,
+                'email' => 'info@iptm.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -124,7 +124,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'NANGSA ART GALLERY',
-                'email' => null,
+                'email' => 'info@nangsa.com',
                 'address' => 'Baudha, Kathmandu',
                 'contact' => null,
                 'image' => null,
@@ -132,7 +132,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'BAGMATI ARTS & HANDICRAFTS',
-                'email' => null,
+                'email' => 'info@bagmati.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -140,7 +140,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'SAMSARA HOLIDAYS',
-                'email' => null,
+                'email' => 'info@samsara.com',
                 'address' => 'Lainchaur, Kathmandu',
                 'contact' => null,
                 'image' => null,
@@ -148,7 +148,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'BISHWOJYOTI MALL CINEPLEX',
-                'email' => null,
+                'email' => 'info@bishwojyoti.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -156,7 +156,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'SHAKTI PANEL INDUSTRIES PVT. LTD',
-                'email' => null,
+                'email' => 'info@shakti.com',
                 'address' => null,
                 'contact' => null,
                 'image' => null,
@@ -164,7 +164,7 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'SURYA KIRAN FIBER INDUSTRIES',
-                'email' => null,
+                'email' => 'info@surya.com',
                 'address' => 'Bharatpur-8, Chitwan',
                 'contact' => null,
                 'image' => null,
@@ -172,27 +172,27 @@ class ClientSeeder extends Seeder
             ],
             [
                 'name' => 'HOARDING BOARD NEPAL',
-                'email' => null,
+                'email' => 'info@hoarding.com',
                 'address' => 'Anamnagar, Kathmandu',
                 'contact' => null,
                 'image' => null,
                 'description' => 'Advertising and marketing company specializing in hoarding boards',
             ],
-            [ 'name' => 'AUSTRALIAN NATIONAL INSTITUTE OF EDUCATION', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'CHARUSAT', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'KAILASH GROUP', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => 'Established since 2001, 27 years of excellence' ],
-            [ 'name' => 'HIMALAYA KAILASH HELI SERVICES', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => 'Helicopter services company' ],
-            [ 'name' => 'ROYAL PENGUIN BOUTIQUE HOTEL', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'TRAVA BRICKS PVT. LTD', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'INVITE KHABAR', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'SMARTHAJIR', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'IBZ TRAVELS AND TOURS PVT. LTD', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'IBZ INTERNATIONAL EDUCATION CONSULTANCY', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'HANEUL', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'INDO ARAB MANPOWER PVT. LTD', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'NASSER INTERNATIONAL PLACEMENT SERVICES', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'AURORA HUMAN RESOURCE PVT. LTD', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ],
-            [ 'name' => 'OSA CONSULTANCY OVERSEAS EDUCATIONAL CENTER', 'email' => null, 'address' => null, 'contact' => null, 'image' => null, 'description' => null ]
+                'email' => 'info@australian.com',
+                'email' => 'info@charusat.com',
+                'email' => 'info@kailash.com',
+                'email' => 'info@himalaya.com',
+                'email' => 'info@royal.com',
+                'email' => 'info@trava.com',
+                'email' => 'info@invite.com',
+                'email' => 'info@smarthajir.com',
+                'email' => 'info@ibz.com',
+                'email' => 'info@ibz.com',
+                'email' => 'info@haneul.com',
+                'email' => 'info@indo.com',
+                'email' => 'info@nasser.com',
+                'email' => 'info@aurora.com',
+                'email' => 'info@osa.com',
         ];
 
         foreach ($clients as $client) {
