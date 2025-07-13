@@ -38,13 +38,8 @@
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmain"
                 aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
-
-                    </span>
-                    <i class="fas fa-bars"></i>
-                </button>
+                <span class="navbar-toggler-icon"></span>
+                <i class="fas fa-bars"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarmain">
