@@ -59,7 +59,7 @@
 
                                         </div>
                                         <a href="{{ route('blog-detail', $post->id ?? 0) }}" class="btn btn-primary mt-4">
-                                            Details <i class="fa-solid fa-angle-right"></i>
+                                            Read More <i class="fa-solid fa-angle-right"></i>
                                         </a>
                                     </div>
                                 </div>
