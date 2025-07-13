@@ -1,5 +1,5 @@
 @if (!empty($posts) && count($posts) > 0)
-    <section class="section-3 py-6">
+    <section class="mt-4  section-3 py-6">
         <div class="container">
             <div class="divider mb-3"></div>
             <h2 class="title-color mb-4 h1">{{ $title ?? 'Blogs & News' }}</h2>
