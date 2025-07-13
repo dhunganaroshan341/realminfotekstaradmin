@@ -54,8 +54,9 @@
                                         </h1>
                                         <div class="content pt-2">
                                             <p class="card-text">
-                                                {!! \Illuminate\Support\Str::limit($post->description ?? 'No description available.', 100, '...') !!}
+                                                {{ \Illuminate\Support\Str::limit(strip_tags($post->description ?? 'No description available.'), 100, '...') }}
                                             </p>
+
                                         </div>
                                         <a href="{{ route('blog-detail', $post->id ?? 0) }}" class="btn btn-primary mt-4">
                                             Details <i class="fa-solid fa-angle-right"></i>
