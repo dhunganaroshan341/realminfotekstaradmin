@@ -15,11 +15,11 @@
                 </div>
                 <div class="col-md-6 text-md-end text-center">
                     <a href="tel:{{ $contact }}" class="phone-header text-realm-yellow text-decoration-none">
-                        <i class="bi bi-telephone-fill me-1"></i><span class="fw-bold"> +977 {{ $contact }}</span>
+                        <i class="bi bi-telephone-fill me-1"></i><span class=""> +977 {{ $contact }}</span>
                     </a>
                     <a href="tel:{{ $contact_2 }}" class="phone-header text-realm-yellow text-decoration-none">
 
-                        | <span class="fw-bold">{{ $contact_2 }}</span>
+                        | <span class="">{{ $contact_2 }}</span>
                     </a>
                 </div>
             </div>
