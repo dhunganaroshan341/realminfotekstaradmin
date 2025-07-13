@@ -30,6 +30,10 @@
 
 <!-- Custom Hover Styles -->
 <style>
+    .title-color {
+        color: var(--realm-blue);
+    }
+
     .team-card {
         transition: transform 0.3s ease;
         /* cursor: pointer; */
