@@ -48,6 +48,10 @@
         color: var(--realm-blue);
         /* Bootstrap's primary blue or change to your custom realm-blue */
     }
+
+    .card-body {
+        height: auto !important;
+    }
 </style>
 
 @push('scripts')
