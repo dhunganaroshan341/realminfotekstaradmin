@@ -11,7 +11,8 @@
                             <div class="col-md-12">
                                 <div class="block">
                                     <span class="text-uppercase text-sm letter-spacing"></span>
-                                    <h1 class="mb-3 mt-3 text-center">{{ $pageBanner ? $pageBanner->title : 'About Us' }}</h1>
+                                    <h1 class="mb-3 mt-3 text-center">{{ $pageBanner ? $pageBanner->title : 'About Us' }}
+                                    </h1>
                                     <p>{{ $bannerDescription ?? '' }}</p>
                                 </div>
                             </div>
@@ -95,7 +96,7 @@
                     <form id="storeContact">
                         <!-- Name -->
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 @csrf
                                 <div class="mb-4 bg-light-input">
                                     <label for="yourName" class="form-label">Your name *</label>
@@ -104,7 +105,7 @@
                                     <span class="text-danger error-message" id="name-validation"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="mb-4 bg-light-input">
                                     <label for="emailInput" class="form-label">Email address *</label>
                                     <input type="email" class="form-control form-control-lg" name="email" id="email"
