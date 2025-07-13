@@ -178,21 +178,7 @@ class ClientSeeder extends Seeder
                 'image' => null,
                 'description' => 'Advertising and marketing company specializing in hoarding boards',
             ],
-                'email' => 'info@australian.com',
-                'email' => 'info@charusat.com',
-                'email' => 'info@kailash.com',
-                'email' => 'info@himalaya.com',
-                'email' => 'info@royal.com',
-                'email' => 'info@trava.com',
-                'email' => 'info@invite.com',
-                'email' => 'info@smarthajir.com',
-                'email' => 'info@ibz.com',
-                'email' => 'info@ibz.com',
-                'email' => 'info@haneul.com',
-                'email' => 'info@indo.com',
-                'email' => 'info@nasser.com',
-                'email' => 'info@aurora.com',
-                'email' => 'info@osa.com',
+
         ];
 
         foreach ($clients as $client) {
