@@ -6,11 +6,12 @@
         @foreach ($members as $member)
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 team-card">
-                    <div class="team-img-wrapper">
-                        <img class="card-img-top" style="height: 256px; object-fit: cover;"
+                    <div class="team-img-wrapper" style="height: 256px; overflow: hidden;">
+                        <img class="card-img-top w-100 h-100 object-cover"
                             src="{{ !empty($member->image) && file_exists(public_path('uploads/' . $member->image)) ? asset('uploads/' . $member->image) : asset('images/user.png') }}"
                             alt="{{ $member->full_name }}">
                     </div>
+
                     <div class="card-body text-center">
                         <h5 class="card-title fw-semibold member-name">{{ $member->full_name }}</h5>
                         <p class="card-text text-muted member-position">{{ $member->position }}</p>
@@ -45,6 +46,10 @@
     .team-card:hover .member-name {
         color: var(--realm-blue);
         /* Bootstrap's primary blue or change to your custom realm-blue */
+    }
+
+    .object-cover {
+        object-fit: cover;
     }
 </style>
 
