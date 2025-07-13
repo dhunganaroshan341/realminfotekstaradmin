@@ -109,8 +109,8 @@
         }
 
         .footer {
-            padding-top: 70px;
-            padding-bottom: 5px;
+
+            padding-bottom: 5px !important;
         }
     </style>
 @endpush
