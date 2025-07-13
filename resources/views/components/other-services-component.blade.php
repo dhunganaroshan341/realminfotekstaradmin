@@ -34,3 +34,11 @@
         </div>
     </div>
 </section>
+@push('styles')
+    <style>
+        .section-3 {
+            background: none !important;
+
+        }
+    </style>
+@endpush
