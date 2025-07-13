@@ -98,7 +98,7 @@
                     <form id="storeContact">
                         <!-- Name -->
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 @csrf
                                 <div class="mb-4 bg-light-input">
                                     <label for="yourName" class="form-label">Your name *</label>
@@ -107,7 +107,7 @@
                                     <span class="text-danger error-message" id="name-validation"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-4 bg-light-input">
                                     <label for="emailInput" class="form-label">Email address *</label>
                                     <input type="email" class="form-control form-control-lg" name="email" id="email"
@@ -116,15 +116,19 @@
 
                                 </div>
                             </div>
-                            {{-- <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="mb-4 bg-light-input">
-                                    <label for="emailInput" class="form-label">Subject *</label>
-                                    <input type="text" class="form-control form-control-lg" name="subject" id="subject"
-                                        placeholder="" value="{{ old('subject') }}">
-                                    <span class="text-danger error-message" id="subject-validation"></span>
-
+                                    <label for="service" class="form-label">Select Service *</label>
+                                    <select name="service" id="service" class="form-select form-select-lg">
+                                        <option value="">-- Select a Service --</option>
+                                        @foreach ($services as $service)
+                                            <option value="{{ $service->title }}">{{ $service->title }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-message" id="service-validation"></span>
                                 </div>
-                            </div> --}}
+                            </div>
+
                         </div>
 
                         <!-- Message -->
@@ -168,8 +172,8 @@
                 console.log(message);
                 let formdata = new FormData(this);
                 $.ajax({
-                    type: "post",
-                    url: "{{ route('store.contact-us') }}",
+                    type: "POST",
+                    url: "contact-us",
                     data: formdata,
                     contentType: false,
                     processData: false,
@@ -177,9 +181,19 @@
                         console.log(response);
                         if (response.status === true) {
                             $("#storeContact").trigger("reset");
-                            alert("Message has been sent");
+                            Swal.fire({
+                                icon: "success",
+                                title: "Success",
+                                text: `Message has been sent successfully.`,
+                                showConfirmButton: false,
+                                timer: 1800,
+                            });
                         } else {
-                            alert("Something went wrong!");
+                            Swal.fire({
+                                icon: "warning",
+                                title: "Something went wrong!",
+                                text: response.message || "Please try again.",
+                            });
                         }
 
                     },
