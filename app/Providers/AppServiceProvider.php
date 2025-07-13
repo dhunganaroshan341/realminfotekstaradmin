@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
                 'title' => $setting->title ?? '',
                 'address' => $setting->address ?? '',
                 'contact' => $setting->contact ?? ' +977 01-5529237 | 9851056649',
-                'contact_2' => $setting->contact ?? ' +977 01-5529237 | 9851056649',
+                'contact_2' => $setting->contact_2 ?? ' +977 01-5529237 | 9851056649',
                 'description' => $setting->description ?? '',
                 'logo' => $setting->logo ?? '',
                 'work_description' => $setting->work_description ?? '',
