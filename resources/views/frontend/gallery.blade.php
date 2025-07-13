@@ -35,12 +35,12 @@
         </section>
         <div class="container-fluid py-4">
 
-            <!-- Toggle Button -->
             <button class="btn btn-outline-primary d-md-none position-fixed start-0 top-50 translate-middle-y z-1030"
                 style="border-radius: 0 50px 50px 0;" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-images me-1"></i> Albums
             </button>
+
 
             <!-- Clean Offcanvas Sidebar -->
             <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="mobileSidebar" data-bs-backdrop="false"
@@ -225,9 +225,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                    </a>` : ''
+                                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                    </a>` : ''
                                         }
                                     </div>
                                 </div>
