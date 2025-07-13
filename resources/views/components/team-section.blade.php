@@ -8,7 +8,7 @@
                 <div class="card h-100 team-card">
                     <div class="team-img-wrapper">
                         <img class="card-img-top" style="height: 256px; object-fit: cover;"
-                            src="{{ $member->image ? asset('uploads/' . $member->image) : asset('images/user.png') }}"
+                            src="{{ !empty($member->image) && file_exists(public_path('uploads/' . $member->image)) ? asset('uploads/' . $member->image) : asset('images/user.png') }}"
                             alt="{{ $member->full_name }}">
                     </div>
                     <div class="card-body text-center">
