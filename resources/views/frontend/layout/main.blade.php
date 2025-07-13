@@ -191,6 +191,11 @@
         height: 250px;
         object-fit: cover;
     }
+
+    .footer {
+
+        padding-bottom: 5px !important;
+    }
 </style>
 <script>
     $(document).ready(function() {
