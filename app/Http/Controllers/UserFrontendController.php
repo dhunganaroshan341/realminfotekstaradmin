@@ -159,15 +159,7 @@ $relatedPosts = Post::with('postImages')
     ->latest()
     ->take(3)
     ->get();
-    if($relatedPosts==null){
-        $relatedPosts = Post::with('postImages')
-    ->where('status', 'Active')
 
-    ->whereNotIn('id', $recentIds)
-    ->latest()
-    ->take(3)
-    ->get();
-    }
 
 // Step 3: If none found from same category, take 3 random excluding recent
 if ($relatedPosts->count() === 0) {
@@ -175,7 +167,7 @@ if ($relatedPosts->count() === 0) {
         ->where('status', 'Active')
         ->whereNotIn('id', $recentIds)
         ->inRandomOrder()
-        ->take(3)
+        ->take(2)
         ->get();
 }
 
