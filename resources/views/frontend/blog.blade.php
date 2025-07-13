@@ -20,7 +20,7 @@
                                         @endif
                                     </h1>
 
-                                    <p>{{ $pageBanner->description ?? 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' }}
+                                    <p>{{ $pageBanner->description ?? '' }}
                                     </p>
                                 </div>
                             </div>
