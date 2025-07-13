@@ -56,94 +56,94 @@
             </div>
         </div>
     </section>
-@endif
-@push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const slider = document.getElementById('blogCardSlider');
-            const cards = slider.querySelectorAll('.blog-card');
-            let currentIndex = 0;
-            let cardWidth = cards[0].offsetWidth + 16;
 
-            // Clone first and last few cards for infinite effect
-            for (let i = 0; i < 3; i++) {
-                const cloneStart = cards[i].cloneNode(true);
-                const cloneEnd = cards[cards.length - 1 - i].cloneNode(true);
-                slider.appendChild(cloneStart);
-                slider.prepend(cloneEnd);
-            }
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const slider = document.getElementById('blogCardSlider');
+                const cards = slider.querySelectorAll('.blog-card');
+                let currentIndex = 0;
+                let cardWidth = cards[0].offsetWidth + 16;
 
-            let totalCards = slider.querySelectorAll('.blog-card').length;
-            currentIndex = 3;
-            slider.style.transition = 'none';
-            slider.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
+                // Clone first and last few cards for infinite effect
+                for (let i = 0; i < 3; i++) {
+                    const cloneStart = cards[i].cloneNode(true);
+                    const cloneEnd = cards[cards.length - 1 - i].cloneNode(true);
+                    slider.appendChild(cloneStart);
+                    slider.prepend(cloneEnd);
+                }
 
-            function updateSliderPosition(smooth = true) {
-                slider.style.transition = smooth ? 'transform 0.5s ease' : 'none';
+                let totalCards = slider.querySelectorAll('.blog-card').length;
+                currentIndex = 3;
+                slider.style.transition = 'none';
                 slider.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
-            }
 
-            function moveNext() {
-                currentIndex++;
-                updateSliderPosition();
-
-                if (currentIndex >= totalCards - 3) {
-                    setTimeout(() => {
-                        currentIndex = 3;
-                        updateSliderPosition(false);
-                    }, 510);
+                function updateSliderPosition(smooth = true) {
+                    slider.style.transition = smooth ? 'transform 0.5s ease' : 'none';
+                    slider.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
                 }
-            }
 
-            function movePrev() {
-                currentIndex--;
-                updateSliderPosition();
+                function moveNext() {
+                    currentIndex++;
+                    updateSliderPosition();
 
-                if (currentIndex < 3) {
-                    setTimeout(() => {
-                        currentIndex = totalCards - 4;
-                        updateSliderPosition(false);
-                    }, 510);
+                    if (currentIndex >= totalCards - 3) {
+                        setTimeout(() => {
+                            currentIndex = 3;
+                            updateSliderPosition(false);
+                        }, 510);
+                    }
                 }
-            }
 
-            document.getElementById('nextBtn').addEventListener('click', moveNext);
-            document.getElementById('prevBtn').addEventListener('click', movePrev);
+                function movePrev() {
+                    currentIndex--;
+                    updateSliderPosition();
 
-            // Auto Slide
-            let interval = setInterval(moveNext, 5000);
+                    if (currentIndex < 3) {
+                        setTimeout(() => {
+                            currentIndex = totalCards - 4;
+                            updateSliderPosition(false);
+                        }, 510);
+                    }
+                }
 
-            slider.addEventListener('mouseenter', () => clearInterval(interval));
-            slider.addEventListener('mouseleave', () => interval = setInterval(moveNext, 5000));
+                document.getElementById('nextBtn').addEventListener('click', moveNext);
+                document.getElementById('prevBtn').addEventListener('click', movePrev);
 
-            // Resize observer to fix cardWidth dynamically
-            window.addEventListener('resize', () => {
-                cardWidth = slider.querySelector('.blog-card').offsetWidth + 16;
-                updateSliderPosition(false);
+                // Auto Slide
+                let interval = setInterval(moveNext, 5000);
+
+                slider.addEventListener('mouseenter', () => clearInterval(interval));
+                slider.addEventListener('mouseleave', () => interval = setInterval(moveNext, 5000));
+
+                // Resize observer to fix cardWidth dynamically
+                window.addEventListener('resize', () => {
+                    cardWidth = slider.querySelector('.blog-card').offsetWidth + 16;
+                    updateSliderPosition(false);
+                });
             });
-        });
-    </script>
-@endpush
+        </script>
+    @endpush
 
 
 
-@push('styles')
-    <style>
-        .blog-card {
-            width: 100%;
-            max-width: calc(33.333% - 0.66rem);
-            flex: 0 0 auto;
-        }
-
-        #blogCardSlider {
-            transition: transform 0.5s ease-in-out;
-        }
-
-        @media (max-width: 768px) {
+    @push('styles')
+        <style>
             .blog-card {
-                max-width: 100%;
+                width: 100%;
+                max-width: calc(33.333% - 0.66rem);
+                flex: 0 0 auto;
             }
-        }
-    </style>
-@endpush
+
+            #blogCardSlider {
+                transition: transform 0.5s ease-in-out;
+            }
+
+            @media (max-width: 768px) {
+                .blog-card {
+                    max-width: 100%;
+                }
+            }
+        </style>
+    @endpush
 @endif
