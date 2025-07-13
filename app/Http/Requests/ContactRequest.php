@@ -24,7 +24,7 @@ class ContactRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'subject' => 'required',
+            'subject' => 'nullable',
             'message' => 'required|max:1000',
         ];
     }
@@ -35,7 +35,7 @@ class ContactRequest extends FormRequest
             'name.required' => 'Please Enter your name',
             'email.required' => 'Please Enter your email',
             'email.email' => 'Please Enter valid email address',
-            'subject.required'=>'Please Enter the Subject',
+
             'message.required' => 'Please Enter the message',
             'message.max' => 'Max limit for message is 1000',
 

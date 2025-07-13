@@ -118,16 +118,20 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-4 bg-light-input">
-                                    <label for="service" class="form-label">Select Service *</label>
-                                    <select name="service" id="service" class="form-select form-select-lg">
+                                    <label for="subject" class="form-label">Select Service *</label>
+                                    <select name="subject" id="subject" class="form-select form-select-lg">
                                         <option value="">-- Select a Service --</option>
                                         @foreach ($services as $service)
-                                            <option value="{{ $service->title }}">{{ $service->title }}</option>
+                                            <option value="{{ $service->title }}"
+                                                {{ old('subject') == $service->title ? 'selected' : '' }}>
+                                                {{ $service->title }}
+                                            </option>
                                         @endforeach
                                     </select>
-                                    <span class="text-danger error-message" id="service-validation"></span>
+                                    <span class="text-danger error-message" id="subject-validation"></span>
                                 </div>
                             </div>
+
 
                         </div>
 
@@ -154,15 +158,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4425.791097184029!2d85.31862677628256!3d27.677986976199414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19799ecafa79%3A0xbd693a1616123b1f!2sRealm%20Infotech%20Pvt.%20Ltd.!5e1!3m2!1sen!2snp!4v1743856965231!5m2!1sen!2snp"
-                        width="1300" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="ratio ratio-16x9">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4425.791097184029!2d85.31862677628256!3d27.677986976199414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19799ecafa79%3A0xbd693a1616123b1f!2sRealm%20Infotech%20Pvt.%20Ltd.!5e1!3m2!1sen!2snp!4v1743856965231!5m2!1sen!2snp"
+                            class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
+@endsection
+@push('scripts')
     <script>
         $(document).ready(function() {
             $("#storeContact").submit(function(event) {
@@ -212,4 +219,4 @@
             })
         })
     </script>
-@endsection
+@endpush
