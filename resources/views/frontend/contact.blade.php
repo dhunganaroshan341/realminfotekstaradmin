@@ -57,7 +57,9 @@
                             <!-- Phone number -->
                             <li class="list-item mb-3 h6 fw-light">
                                 <a href="tel:+977-{{ $contact }}"> <i
-                                        class="fas fa-fw fa-phone-alt me-2"></i>{{ $contact }} </a>
+                                        class="fas fa-fw fa-phone-alt me-2"></i>{{ $contact }}
+                                </a> <a href="tel:+977-{{ $contact_2 }}"> <i
+                                        class="fas fa-fw fa-phone-alt me-2"></i>{{ $contact_2 }} </a>
                             </li>
 
                         </ul>
