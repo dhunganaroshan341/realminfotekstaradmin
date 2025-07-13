@@ -40,7 +40,7 @@
                         <li><a href="{{ route('about-us') }}">About Us</a></li>
                         <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
                         <li><a href="{{ route('blog') }}">Blog & news</a></li>
-                        <li><a href="{{ route('gallery') }}">Portfio</a></li>
+                        <li><a href="{{ route('gallery') }}">Portfolio</a></li>
                     </ul>
                 </div>
             </div>

@@ -189,7 +189,7 @@
                         <h2 class="title-color mb-0">
                             ${clientAlbums[0]?.client?.name || 'Unknown Client'} Albums
                         </h2>
-                        <button onclick="window.location.href='gallery'" class="btn btn-secondary">← Back</button>
+                        <button onclick="window.location.href='portfolio'" class="btn btn-secondary">← Back</button>
                     </div>
 
                     <div class="divider mb-3"></div>
@@ -228,9 +228,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                                                                    </a>` : ''
+                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                            </a>` : ''
                                         }
                                     </div>
                                 </div>
