@@ -198,7 +198,7 @@
     }
 
     @media screen and (max-width: 768px) {
-        .header-top-bar a {
+        .phone-header {
             font-size: 12px;
         }
 
