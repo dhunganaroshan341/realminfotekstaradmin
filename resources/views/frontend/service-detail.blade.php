@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="col-md-6 mt-4">
-                    <div class="image-realm-background-before">
+                    <div class="image-realm-service-div image-realm-background-before">
 
                         <img src="{{ $serviceDetail->image ? asset('uploads/' . $serviceDetail->image) : asset('assets/images/digital-marketing.jpg') }}"
                             alt="" class="w-100">
@@ -65,3 +65,11 @@
 
     {{-- Team section --}}
 @endsection
+@push('styles')
+    <style>
+        .image-realm-service-div img {
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+@endpush
