@@ -1,17 +1,16 @@
 <div id="team-section" class="container py-5">
     <div class="divider mb-3"></div>
-    <h2 class="title-color mb-4 h1">{{ $title ?? 'Our Team' }}</h2>
+    <h2 class="title-color mb-4 h1 text-center">{{ $title ?? 'Our Team' }}</h2>
 
     <div class="row g-4 justify-content-center">
         @foreach ($members as $member)
             <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 team-card">
+                <div class="card h-100 team-card overflow-hidden">
                     <div class="ratio ratio-1x1">
-                        <img class="card-img-top object-fit-cover"
-                            src="{{ !empty($member->image) && file_exists(public_path('uploads/' . $member->image)) ? asset('uploads/' . $member->image) : asset('images/user.png') }}"
-                            alt="{{ $member->full_name }}">
+                        <img src="{{ !empty($member->image) && file_exists(public_path('uploads/' . $member->image)) ? asset('uploads/' . $member->image) : asset('images/user.png') }}"
+                            alt="{{ $member->full_name }}" class="card-img-top"
+                            style="object-fit: cover; object-position: top center;">
                     </div>
-
 
                     <div class="card-body text-center">
                         <h5 class="card-title fw-semibold member-name">{{ $member->full_name }}</h5>
@@ -26,6 +25,7 @@
         {{ $members->withQueryString()->fragment('team-section')->links('pagination::bootstrap-4') }}
     </div>
 </div>
+
 
 
 <!-- Custom Hover Styles -->
