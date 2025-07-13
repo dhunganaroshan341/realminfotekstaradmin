@@ -85,7 +85,7 @@
             const $slider = $('.customer-logos');
 
             $slider.slick({
-                slidesToShow: 5,
+                slidesToShow: 4,
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 1500,
