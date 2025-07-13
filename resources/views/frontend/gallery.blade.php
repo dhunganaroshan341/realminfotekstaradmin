@@ -35,18 +35,16 @@
         </section>
         <div class="container-fluid py-4">
 
-            <!-- Sticky Mobile Toggle Button (Mobile Only) -->
+            <!-- Toggle Button -->
             <button class="btn btn-outline-primary d-md-none position-fixed start-0 top-50 translate-middle-y z-1030"
                 style="border-radius: 0 50px 50px 0;" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
-                <i class="fas fa-bars"></i> <!-- changed to hamburger icon -->
+                <i class="fas fa-bars"></i>
             </button>
 
-
-            <!-- Offcanvas Sidebar for Mobile -->
-
-            <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="mobileSidebar" data-bs-backdrop="static"
-                data-bs-keyboard="false" aria-labelledby="mobileSidebarLabel">
+            <!-- Clean Offcanvas Sidebar -->
+            <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="mobileSidebar" data-bs-backdrop="false"
+                data-bs-scroll="true" data-bs-keyboard="false" aria-labelledby="mobileSidebarLabel">
 
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="mobileSidebarLabel">Albums</h5>
@@ -227,9 +225,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                                                                                                                                                                                            <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                            </a>` : ''
+                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                    </a>` : ''
                                         }
                                     </div>
                                 </div>
@@ -354,6 +352,18 @@
             .realm-logo {
                 width: 40px !important;
                 height: 40px !important;
+            }
+
+            .offcanvas {
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                /* subtle shadow */
+                border-right: 1px solid #ddd;
+                /* light border */
+            }
+
+            .offcanvas-body .list-group-item {
+                border: none;
+                padding: 12px 16px;
             }
         </style>
     @endpush
