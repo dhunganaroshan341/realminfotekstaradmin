@@ -55,7 +55,7 @@
                     -webkit-line-clamp: 4;
                     -webkit-box-orient: vertical;">
                                             <p class="card-text mb-0">
-                                                {{ \Illuminate\Support\Str::limit(strip_tags(html_entity_decode($post->description ?? 'No description available.')), 100, '...') }}
+                                                {{ \Illuminate\Support\Str::limit(strip_tags(html_entity_decode($post->description ?? '')), 100, '...') }}
                                             </p>
                                         </div>
                                         <a href="{{ route('blog-detail', ['id' => $post->id]) }}"
