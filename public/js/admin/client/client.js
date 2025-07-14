@@ -4,15 +4,7 @@ $(document).ready(function () {
         height: 300,
     });
 
-    let currentAction = "";
 
-$(document).on("click", ".submitBtn", function () {
-    currentAction = "store";
-});
-
-$(document).on("click", ".updateBtn", function () {
-    currentAction = "update";
-});
 
 
     // Data Table
