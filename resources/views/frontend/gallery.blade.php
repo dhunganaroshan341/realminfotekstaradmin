@@ -218,7 +218,7 @@
                                 const isPdf = album.type === "pdf";
                                 const thumbnail = isPdf ?
                                     "/front/images/pdf-image.png" :
-                                    "/front/images/website-thumbnail.jpeg";
+                                    "/front/images/website-thumbnail.jpg";
 
                                 const downloadLink = hasMedia ? `/${galleryMedia[0].media_path}` : "#";
                                 const websiteUrl = album.website_url || "#";
@@ -233,9 +233,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                            <i class="fas fa-download"></i>
-                                        </a>` : ''}
+                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                    <i class="fas fa-download"></i>
+                                                </a>` : ''}
                 </div>
             </div>
         </div>
