@@ -90,5 +90,17 @@
                 font-size: 1rem;
             }
         }
+
+        /* Default color */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            color: white;
+        }
+
+        /* Hover effect */
+        .carousel-control-prev-icon:hover,
+        .carousel-control-next-icon:hover {
+            color: var(--realm-blue);
+        }
     </style>
 @endpush
