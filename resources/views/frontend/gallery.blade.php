@@ -227,9 +227,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </a>` : ''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </a>` : ''
                                         }
                                     </div>
                                 </div>
@@ -302,19 +302,38 @@
                             if (galleryMedia.length > 0) {
                                 galleryMedia.forEach(media => {
                                     content += `
-                                <div class="col-sm-6 col-md-4 text-center">
-                                    <img src="/images/pdf.webp" class="img-fluid mb-2" style="max-height:180px;" alt="PDF" />
-                                    <br />
-                                    <a href="/${media.media_path}" class="btn btn-sm btn-outline-primary" download>
-                                        <i class="fas fa-download me-1"></i> Download PDF
-                                    </a>
-                                </div>
-                            `;
+    <div class="col-sm-6 col-md-4 text-center">
+        <img src="/front/images/pdf-image.png" class="img-fluid mb-2" style="max-height:180px;" alt="PDF" />
+        <br />
+        <a href="/${media.media_path}" class="btn btn-sm btn-outline-primary" download>
+            <i class="fas fa-download me-1"></i> Download PDF
+        </a>
+    </div>
+`;
+
                                 });
                             } else {
                                 content += `<div class="col-12 text-muted text-center">No PDFs Available</div>`;
                             }
 
+                        } else if (album.type === 'website') {
+                            const websiteThumbnail =
+                                `/front/images/website-thumbnail.jpg`; // make sure this image exists
+                            const websiteUrl = album.url || '#'; // assume the album object has this field
+
+                            content += `
+        <div class="col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm">
+                <img src="${websiteThumbnail}" class="card-img-top" alt="Website Thumbnail" />
+                <div class="card-body text-center">
+                    <h5 class="card-title">${album.title}</h5>
+                    <a href="${websiteUrl}" target="_blank" class="btn btn-outline-primary">
+                        <i class="fas fa-external-link-alt me-1"></i> Visit Website
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
                         } else {
                             // 🖼️ Default: display images
                             if (galleryMedia.length > 0) {
