@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-6 align-items-center d-flex">
                         <div class="about-block">
-                            <h1 class="title-color mb-3">About Realm-Infotech</h1>
+                            <h1 class="title-color mb-3">About US</h1>
                             <p>{!! $pageDescription !!}</p>
                         </div>
                     </div>
