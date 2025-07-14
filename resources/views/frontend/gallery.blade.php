@@ -214,27 +214,45 @@
                                 </div>
                             </div>
                         `;
-                            } else if (album.type === "pdf") {
-                                const pdfThumbnail = `/images/pdf.webp`;
-                                const downloadLink = hasMedia ? `/${galleryMedia[0].media_path}` : '#';
+                            } else if (album.type === "pdf" || album.type === "website") {
+                                const isPdf = album.type === "pdf";
+                                const thumbnail = isPdf ?
+                                    "/front/images/pdf-image.png" :
+                                    "/front/images/website-thumbnail.jpeg";
 
-                                content += `
-                            <div class="col-sm-6 col-md-4">
-                                <div class="card h-100 shadow-sm">
-                                    <div onclick="loadAlbumDetails(${album.id}, '${album.title}')">
-                                        <img src="${pdfThumbnail}" class="card-img-top" alt="PDF Thumbnail" />
-                                    </div>
-                                    <div class="card-body d-flex justify-content-between align-items-center">
-                                        <h5 class="card-title mb-0">${album.title}</h5>
-                                        ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </a>` : ''
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        `;
+                                const downloadLink = hasMedia ? `/${galleryMedia[0].media_path}` : "#";
+                                const websiteUrl = album.website_url || "#";
+
+                                content += isPdf ?
+                                    `
+        <div class="col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div onclick="loadAlbumDetails(${album.id}, '${album.title}')">
+                    <img src="${thumbnail}" class="card-img-top" alt="PDF Thumbnail" />
+                </div>
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">${album.title}</h5>
+                    ${hasMedia ? `
+                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                            <i class="fas fa-download"></i>
+                                        </a>` : ''}
+                </div>
+            </div>
+        </div>
+    ` :
+                                    `
+        <div class="col-sm-6 col-md-4">
+            <a href="${websiteUrl}" target="_blank" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm">
+                    <img src="${thumbnail}" class="card-img-top" alt="Website Thumbnail" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">${album.title}</h5>
+                        <small class="text-muted">Click to visit</small>
+                    </div>
+                </div>
+            </a>
+        </div>
+    `;
                             } else if (album.type === "video") {
                                 const youtubeThumbnail = `/images/youtube.png`;
 
