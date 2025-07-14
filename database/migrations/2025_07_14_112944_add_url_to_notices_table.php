@@ -12,7 +12,7 @@ return new class extends Migration
      public function up(): void
     {
         Schema::table('notices', function (Blueprint $table) {
-            $table->string('url')->nullable()->after('some_column');
+            $table->string('url')->nullable()->after('title');
             // Replace 'some_column' with the actual column after which you want to add 'url'
         });
     }
