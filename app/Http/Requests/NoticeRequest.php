@@ -25,6 +25,7 @@ class NoticeRequest extends FormRequest
         return [
             'title'=>'required|min:3',
             'description'=>'nullable',
+            'url'=>'nullable|url',
             'image'=>Route::currentRouteName() == 'notice.store' ? ['required','mimes:png,jpg,jpeg'] : ['mimes:png,jpg,jpeg']
         ];
     }

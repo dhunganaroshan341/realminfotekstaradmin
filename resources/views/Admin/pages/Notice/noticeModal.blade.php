@@ -10,19 +10,27 @@
                 <div class="modal-body">
                     <p id="validationErrors" class="alert alert-danger d-none"></p>
                     <div class="row">
-                        <span class="mt-2 mb-4"><span class="text-danger">Note:</span> (<span class="text-danger">*</span>) symbol represent that the field is required</span>
+                        <span class="mt-2 mb-4"><span class="text-danger">Note:</span> (<span
+                                class="text-danger">*</span>) symbol represent that the field is required</span>
                         <div class="col-md-6">
                             <label for="" class="form-label">Title<span class="text-danger">*</span></label>
                             <input type="text" name="title" id="title" class="form-control" placeholder=""
                                 aria-describedby="helpId" />
-                                <small id="title-error" class="text-danger errorMessage"></small>
+                            <small id="title-error" class="text-danger errorMessage"></small>
                         </div>
+                        <div class="col-md-6">
+                            <label for="url" class="form-label">URL <span class="text-danger">*</span></label>
+                            <input type="url" name="url" id="url" class="form-control"
+                                placeholder="https://example.com" aria-describedby="urlHelp" />
+                            <small id="url-error" class="text-danger errorMessage"></small>
+                        </div>
+
 
                         <div class="col-md-6">
                             <label for="" class="form-label">Image<span class="text-danger">*</span></label>
                             <input type="file" name="image" id="image" class="form-control" placeholder=""
                                 aria-describedby="helpId" />
-                                <small id="image-error" class="text-danger errorMessage"></small>
+                            <small id="image-error" class="text-danger errorMessage"></small>
                             <div id="noticeImage"> </div>
                         </div>
                         <div class="col-md-12 mt-4 mb-2">

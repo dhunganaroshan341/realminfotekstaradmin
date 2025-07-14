@@ -119,6 +119,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status == 200) {
                     $("#title").val(response.message.title);
+                    $("#url").val(response.message.url);
                     if (response.message.image != null) {
                         let image = response.message.image ?? '';
                         $("#noticeImage").html(`
