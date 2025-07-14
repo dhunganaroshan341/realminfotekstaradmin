@@ -60,19 +60,6 @@ $(document).ready(function () {
         $("#notes_user").summernote("code", "");
         $("#userImage").html("");
     }
-
-    $(document).on("click", ".addUserButton", function () {
-        clearModal(); // Clear errors and reset fields
-        $(".submitBtn").show();
-        $("#password").prop("disabled", false);
-        $(".updateBtn").hide();
-        $(".labelPassword").show();
-        $(".form").attr("id", "storeForm");
-        $("#storeForm")[0].reset();
-        $("#formModal").modal("show");
-        addLatestOrderToTheInput(); // Add latest order to the input field
-
-    });
 function addLatestOrderToTheInput() {
     $.ajax({
         type: "get",
@@ -87,6 +74,19 @@ function addLatestOrderToTheInput() {
         },
     });
 }
+    $(document).on("click", ".addUserButton", function () {
+        clearModal(); // Clear errors and reset fields
+        $(".submitBtn").show();
+        $("#password").prop("disabled", false);
+        $(".updateBtn").hide();
+        $(".labelPassword").show();
+        $(".form").attr("id", "storeForm");
+        $("#storeForm")[0].reset();
+        $("#formModal").modal("show");
+        addLatestOrderToTheInput(); // Add latest order to the input field
+
+
+
 
 
     // Add and Store User Data
@@ -136,7 +136,7 @@ function addLatestOrderToTheInput() {
                 },
             });
         });
-
+});
     // Click and Edit User
     $(document).on("click", ".editUserButton", function () {
         clearModal();

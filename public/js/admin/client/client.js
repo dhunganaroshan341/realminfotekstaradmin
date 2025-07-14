@@ -55,26 +55,28 @@ $(document).ready(function () {
         $("#userImage").html("");
     }
 
-    $(document).on("click", ".addClientButton", function () {
-        clearModal(); // Clear errors and reset fields
-        $(".submitBtn").show();
-        $("#password").prop("disabled", false);
-        $(".updateBtn").hide();
-        $(".labelPassword").show();
+   $(document).on("click", ".addClientButton", function () {
+    clearModal(); // Clear errors and reset fields
+    $(".submitBtn").show();
+    $("#password").prop("disabled", false);
+    $(".updateBtn").hide();
+    $(".labelPassword").show();
 
-        $(".form").attr("id", "storeForm"); // safer
-        $("#storeForm")[0].reset();
+    $("#formId").attr("id", "storeForm"); // 🔁 Corrected line
+    let formId = "storeForm"; // ✅ Define this after renaming
 
-        $("#formModal").modal("show");
-
+    $("#storeForm")[0].reset();
+    $("#formModal").modal("show");
 
     // Add and Store User Data
     $(document).off("submit", "#storeForm").on("submit", "#storeForm", function (event) {
-            event.preventDefault();
-            $(".submitBtn").prop("disabled", true);
-            $("#validationErrors").addClass("d-none").html("");
-            let formdata = new FormData(this);
-             if (formId === "storeForm") {
+        event.preventDefault();
+        $(".submitBtn").prop("disabled", true);
+        $("#validationErrors").addClass("d-none").html("");
+
+        let formdata = new FormData(this);
+
+        if (formId === "storeForm") {
             $.ajax({
                 type: "POST",
                 url: "/admin/client/",
@@ -95,7 +97,6 @@ $(document).ready(function () {
                         $("#description").summernote("code", "");
                         $("#formModal").modal("hide");
                         $("#storeForm")[0].reset();
-                        // $("#storeUserData").trigger("reset");
                     }
                 },
                 error: function (response) {
@@ -103,7 +104,7 @@ $(document).ready(function () {
                         let errors = response.responseJSON.errors;
                         let errorMessages = "<ul>";
                         $.each(errors, function (key, value) {
-                            errorMessages += "<li>" + value[0] + "</li>"; // Display the first error for each field
+                            errorMessages += "<li>" + value[0] + "</li>";
                         });
                         errorMessages += "</ul>";
                         $("#validationErrors")
@@ -115,9 +116,9 @@ $(document).ready(function () {
                     $(".submitBtn").prop("disabled", false);
                 },
             });
-             }
-        });
-        });
+        }
+    });
+});
 
     // Click and Edit User
     $(document).on("click", ".editUserButton", function () {
