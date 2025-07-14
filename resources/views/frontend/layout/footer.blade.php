@@ -10,7 +10,7 @@
                         @else --}}
                         <img src="{{ asset('defaultImage/logo_white_gold.png') }}" alt="Default Logo" class="img-fluid"
                             style="filter: drop-shadow(-2px 3px 1px #a1842c)">
-                        @endif
+                        {{-- @endif --}}
                     </div>
                 </div>
             </div>
