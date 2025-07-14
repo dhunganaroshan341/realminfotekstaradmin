@@ -4,9 +4,6 @@ $(document).ready(function () {
         height: 300,
     });
 
-
-
-
     // Data Table
     var table = $("#show-client-data").DataTable({
         processing: true,
@@ -58,28 +55,82 @@ $(document).ready(function () {
         $("#userImage").html("");
     }
 
-  $(document).on("click", ".addClientButton", function () {
-        clearModal();
+    $(document).on("click", ".addClientButton", function () {
+        clearModal(); // Clear errors and reset fields
         $(".submitBtn").show();
+        $("#password").prop("disabled", false);
         $(".updateBtn").hide();
         $(".labelPassword").show();
-        $("#formMode").val("store");
-        $("#password").prop("disabled", false);
-        $("##clientForm")[0].reset();
+
+        $(".form").attr("id", "storeForm"); // safer
+        $("#storeForm")[0].reset();
+
         $("#formModal").modal("show");
     });
 
+    // Add and Store User Data
+    $(document).off("submit", "#storeForm").on("submit", "#storeForm", function (event) {
+            event.preventDefault();
+            $(".submitBtn").prop("disabled", true);
+            $("#validationErrors").addClass("d-none").html("");
+            let formdata = new FormData(this);
+             if (formId === "storeForm") {
+            $.ajax({
+                type: "POST",
+                url: "/admin/client/",
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.success == true) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success",
+                            text: "Client Added Successfully",
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+
+                        table.draw();
+                        $("#description").summernote("code", "");
+                        $("#formModal").modal("hide");
+                        $("#storeForm")[0].reset();
+                        // $("#storeUserData").trigger("reset");
+                    }
+                },
+                error: function (response) {
+                    if (response.status === 422) {
+                        let errors = response.responseJSON.errors;
+                        let errorMessages = "<ul>";
+                        $.each(errors, function (key, value) {
+                            errorMessages += "<li>" + value[0] + "</li>"; // Display the first error for each field
+                        });
+                        errorMessages += "</ul>";
+                        $("#validationErrors")
+                            .removeClass("d-none")
+                            .html(errorMessages);
+                    }
+                },
+                complete: function () {
+                    $(".submitBtn").prop("disabled", false);
+                },
+            });
+             }
+        });
+
+    // Click and Edit User
     $(document).on("click", ".editUserButton", function () {
         clearModal();
         $(".submitBtn").hide();
-        $(".updateBtn").show();
         $(".labelPassword").hide();
-        $("#formMode").val("update");
-        $("##clientForm")[0].reset();
+        $(".updateBtn").show();
+        $(".form").attr("id", "updateForm");
+        $("#updateForm")[0].reset();
         $("#formModal").modal("show");
-
         let id = $(this).data("id");
-        $("##clientForm").data("id", id); // store id in form for update
+
+        // $('#password').attr('required', false);
+        // Fetch User Data
 
         $.ajax({
             type: "get",
@@ -91,75 +142,68 @@ $(document).ready(function () {
                 $("#contact").val(response.message.contact);
                 $("#description").summernote("code", response.message.description);
 
-                if (response.message.image) {
-                    $("#userImage").html(
-                        `<img src="/uploads/${response.message.image}" width="100" height="100">`
-                    );
-                }
-            }
-        });
-    });
-
-    $(document).off("submit", "##clientForm").on("submit", "##clientForm", function (e) {
-        e.preventDefault();
-        $("#validationErrors").addClass("d-none").html("");
-        let mode = $("#formMode").val();
-        let formdata = new FormData(this);
-
-        if (mode === "update") {
-            formdata.append("_method", "put");
-        }
-
-        let id = $(this).data("id");
-        let url = mode === "store" ? "/admin/client" : `/admin/client/${id}`;
-
-        let $btn = mode === "store" ? $(".submitBtn") : $(".updateBtn");
-        $btn.prop("disabled", true);
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: formdata,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                if (response.success === true) {
-                    Swal.fire({
-                        icon: "success",
-                        title: mode === "store" ? "Success" : "Updated",
-                        text: mode === "store" ? "Client Added Successfully" : "Client Updated Successfully",
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
-
-                    table.draw();
-                    $("##clientForm")[0].reset();
-                    $("#description").summernote("code", "");
-                    $("#formModal").modal("hide");
-                }
+                $("#userImage").html(
+                    `<img src="/uploads/${response.message.image}" alt="User Image" width="100" height="100">`
+                );
             },
-            error: function (response) {
-                if (response.status === 422) {
-                    let errors = response.responseJSON.errors;
-                    let errorMessages = "<ul>";
-                    $.each(errors, function (key, value) {
-                        errorMessages += "<li>" + value[0] + "</li>";
-                    });
-                    errorMessages += "</ul>";
-                    $("#validationErrors").removeClass("d-none").html(errorMessages);
-                }
-            },
-            complete: function () {
-                $btn.prop("disabled", false);
-            }
         });
+
+        // Edit and Submit User Data
+        $(document)
+            .off("submit", "#updateForm")
+            .on("submit", "#updateForm", function (event) {
+                event.preventDefault();
+
+                let formdata = new FormData(this);
+                 formdata.append("_method","put");
+                $(".updateBtn").prop("disabled", true);
+                // console.log(formdata);
+                if (formId === "updateForm") {
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/client/" + id,
+                    data: formdata,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response.success == true) {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Updated",
+                                text: "Client Updated Successfully",
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                            $("#formModal").modal("hide");
+                            table.draw();
+                        }
+                    },
+                    error: function (response) {
+                        if (response.status === 422) {
+                            let errors = response.responseJSON.errors;
+                            let errorMessages = "<ul>";
+                            $.each(errors, function (key, value) {
+                                errorMessages += "<li>" + value[0] + "</li>"; // Display the first error for each field
+                            });
+                            errorMessages += "</ul>";
+                            $("#validationErrors")
+                                .removeClass("d-none")
+                                .html(errorMessages);
+                        }
+                    },
+                    complete: function () {
+                        $(".updateBtn").prop("disabled", false);
+                    },
+                });}
+            });
+
     });
 
 
     // Delete User
-   // Delete
     $(document).on("click", ".deleteData", function () {
         var itemId = $(this).attr("data-id");
+        // console.log(itemId);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -172,24 +216,33 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 $.ajax({
                     url: "/admin/client/" + itemId,
-                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    type: "DELETE",
+                    headers:
+                    { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                    type: "delete",
                     success: function (response) {
-                        if (response.success === true) {
-                            Swal.fire("Deleted!", "Client has been deleted!", "success");
+                        if (response.success == true) {
+                            Swal.fire(
+                                "Deleted!",
+                                "Client has been deleted!",
+                                "success"
+                            );
                             table.draw();
                         } else {
                             Swal.fire({
                                 icon: "warning",
                                 title: "Warning",
-                                text: "Client already tagged in another menu",
+                                text: "Client Already Tagged in anothe menu",
                                 showConfirmButton: false,
                                 timer: 1500,
                             });
                         }
                     },
                     error: function () {
-                        Swal.fire("Error!", "An error occurred while deleting the item.", "error");
+                        Swal.fire(
+                            "Error!",
+                            "An error occurred while deleting the item.",
+                            "error"
+                        );
                     },
                 });
             }
