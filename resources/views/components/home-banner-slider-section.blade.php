@@ -13,10 +13,11 @@
                         <div class="container h-100" style="position: relative; z-index: 2;">
                             <div class="row align-items-center d-flex h-100">
                                 <div class="col-md-7">
-                                    <div class="block text-white px-3 px-md-4 py-3">
+                                    <div class="block text-white px-3 px-md-4 py-8">
                                         <div class="divider-blue mb-3"></div>
-                                        <h1 class="mb-3 mt-3">{{ $slide->title }}</h1>
+
                                         <p class="mb-4 text-left">{!! $slide->shortdesc !!}</p>
+                                        <h1 class="mb-3 mt-3">{{ $slide->title }}</h1>
 
                                         @if ($index == 0)
                                             <div class="btn-container">
