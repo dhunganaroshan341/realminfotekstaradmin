@@ -66,7 +66,7 @@ $(document).ready(function () {
         $("#storeForm")[0].reset();
 
         $("#formModal").modal("show");
-    });
+
 
     // Add and Store User Data
     $(document).off("submit", "#storeForm").on("submit", "#storeForm", function (event) {
@@ -116,6 +116,7 @@ $(document).ready(function () {
                 },
             });
              }
+        });
         });
 
     // Click and Edit User
