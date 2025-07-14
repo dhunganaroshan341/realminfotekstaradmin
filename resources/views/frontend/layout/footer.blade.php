@@ -4,12 +4,12 @@
             <div class="col-lg-3 mr-auto col-sm-6 text-center text-lg-start">
                 <div class="widget mb-5 mb-lg-0">
                     <div class="logo mb-4">
-                        @if ($logo)
+                        {{-- @if ($logo)
                             <img src="{{ asset('uploads/' . $logo) }}" alt="Logo" class="img-fluid logo-img"
                                 style="filter: drop-shadow(-2px 3px 1px #a1842c)">
-                        @else
-                            <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="Default Logo" class="img-fluid"
-                                style="filter: drop-shadow(-2px 3px 1px #a1842c)">
+                        @else --}}
+                        <img src="{{ asset('defaultImage/logo_white_gold.png') }}" alt="Default Logo" class="img-fluid"
+                            style="filter: drop-shadow(-2px 3px 1px #a1842c)">
                         @endif
                     </div>
                 </div>
