@@ -158,7 +158,7 @@ $(document).ready(function () {
                  formdata.append("_method","put");
                 $(".updateBtn").prop("disabled", true);
                 // console.log(formdata);
-                if (formId === "updateForm") {
+                // if (formId === "updateForm") {
                 $.ajax({
                     type: "POST",
                     url: "/admin/client/" + id,
@@ -194,7 +194,8 @@ $(document).ready(function () {
                     complete: function () {
                         $(".updateBtn").prop("disabled", false);
                     },
-                });}
+                });
+            // }
             });
 
     });
