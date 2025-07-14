@@ -67,70 +67,30 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    $(document).on("click", ".addClientButton", function () {
-    clearModal(); // Clear errors and reset fields
-    $(".submitBtn").show();
-    $("#password").prop("disabled", false);
-    $(".updateBtn").hide();
-    $(".labelPassword").show();
+    public function store(ClientRequest $request)
+    {
+        try {
 
-    $("#formId").attr("id", "storeForm"); // 🔁 Corrected line
-    let formId = "storeForm"; // ✅ Define this after renaming
+            $folder = 'images/client/';
+            $user = new Client();
+            if ($request->hasFile('image')) {
 
-    $("#storeForm")[0].reset();
-    $("#formModal").modal("show");
+                $imagename = time() . '.' . $request->image->extension();
+                $path = $request->image->storeAs($folder, $imagename, 'public');
+                $user->image = $path;
+            }
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->address = $request->address;
+            $user->contact = $request->contact;
+            $user->description = $request->description;
+            $user->save();
 
-    // Add and Store User Data
-    $(document).off("submit", "#storeForm").on("submit", "#storeForm", function (event) {
-        event.preventDefault();
-        $(".submitBtn").prop("disabled", true);
-        $("#validationErrors").addClass("d-none").html("");
-
-        let formdata = new FormData(this);
-
-        if (formId === "storeForm") {
-            $.ajax({
-                type: "POST",
-                url: "/admin/client/",
-                data: formdata,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response.success == true) {
-                        Swal.fire({
-                            icon: "success",
-                            title: "Success",
-                            text: "Client Added Successfully",
-                            showConfirmButton: false,
-                            timer: 1000
-                        });
-
-                        table.draw();
-                        $("#description").summernote("code", "");
-                        $("#formModal").modal("hide");
-                        $("#storeForm")[0].reset();
-                    }
-                },
-                error: function (response) {
-                    if (response.status === 422) {
-                        let errors = response.responseJSON.errors;
-                        let errorMessages = "<ul>";
-                        $.each(errors, function (key, value) {
-                            errorMessages += "<li>" + value[0] + "</li>";
-                        });
-                        errorMessages += "</ul>";
-                        $("#validationErrors")
-                            .removeClass("d-none")
-                            .html(errorMessages);
-                    }
-                },
-                complete: function () {
-                    $(".submitBtn").prop("disabled", false);
-                },
-            });
+            return response()->json(['success' => true], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage(), 'line' => $e->getLine(), 'moredata' => $e->getCode()]);
         }
-    });
-});
+    }
 
     /**
      * Display the specified resource.
