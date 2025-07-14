@@ -216,16 +216,35 @@ public function update(GalleryAlbumRequest $request, $id)
         }
     }
 
-    public function destroy($id)
-    {
-        try {
-            $album = GalleryAlbum::findOrFail($id);
-            $album->delete();
-            return response()->json(['success' => true]);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+   public function destroy($id)
+{
+    try {
+        $album = GalleryAlbum::findOrFail($id);
+
+        // Get all related media files
+        $mediaFiles = $album->galleryMedia; // assuming relation is named 'galleryMedia'
+
+        foreach ($mediaFiles as $media) {
+            $mediaPath = public_path($media->media_path);
+            if (file_exists($mediaPath)) {
+                unlink($mediaPath); // delete the file
+            }
+            $media->delete(); // delete the DB record
         }
+
+        // Finally delete the album
+        $album->delete();
+
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => $e->getMessage(),
+            'trace' => $e->getTrace()
+        ]);
     }
+}
+
 
     public function getGalleryAlbumData($id, Request $request)
 {
