@@ -227,9 +227,9 @@
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">${album.title}</h5>
                                         ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </a>` : ''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </a>` : ''
                                         }
                                     </div>
                                 </div>
@@ -380,6 +380,10 @@
                 border-color: var(--realm-blue);
                 color: var(--realm-yellow);
                 /* border: none; */
+            }
+
+            .card-body {
+                min-height: 0 !important
             }
 
             #mobileSidebar {
