@@ -65,7 +65,7 @@ $(document).ready(function () {
         $(".labelPassword").show();
         $("#formMode").val("store");
         $("#password").prop("disabled", false);
-        $("#formId")[0].reset();
+        $("##clientForm")[0].reset();
         $("#formModal").modal("show");
     });
 
@@ -75,11 +75,11 @@ $(document).ready(function () {
         $(".updateBtn").show();
         $(".labelPassword").hide();
         $("#formMode").val("update");
-        $("#formId")[0].reset();
+        $("##clientForm")[0].reset();
         $("#formModal").modal("show");
 
         let id = $(this).data("id");
-        $("#formId").data("id", id); // store id in form for update
+        $("##clientForm").data("id", id); // store id in form for update
 
         $.ajax({
             type: "get",
@@ -100,7 +100,7 @@ $(document).ready(function () {
         });
     });
 
-    $(document).off("submit", "#formId").on("submit", "#formId", function (e) {
+    $(document).off("submit", "##clientForm").on("submit", "##clientForm", function (e) {
         e.preventDefault();
         $("#validationErrors").addClass("d-none").html("");
         let mode = $("#formMode").val();
@@ -133,7 +133,7 @@ $(document).ready(function () {
                     });
 
                     table.draw();
-                    $("#formId")[0].reset();
+                    $("##clientForm")[0].reset();
                     $("#description").summernote("code", "");
                     $("#formModal").modal("hide");
                 }
