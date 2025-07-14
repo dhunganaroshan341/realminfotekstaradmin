@@ -17,7 +17,7 @@ class GalleryMediaRequest extends FormRequest
             'gallery_album_id' => 'required|exists:gallery_albums,id',
             'status' => 'required|in:Active,Inactive',
             'media_path' => 'required|string|max:255',
-            'media_path.*' => 'file|mimes:jpeg,png,jpg,gif,pdf|max:10240', // Allow images and PDF (10MB max)
+            'media_path.*' => 'file|mimes:jpeg,png,jpg,gif,pdf', // Allow images and PDF (10MB max)
 
 
         ];

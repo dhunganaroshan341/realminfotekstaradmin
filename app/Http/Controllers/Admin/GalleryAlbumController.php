@@ -66,27 +66,26 @@ class GalleryAlbumController extends Controller
 public function store(GalleryAlbumRequest $request)
 {
     DB::beginTransaction();
+
     try {
         $gallery = GalleryAlbum::create($request->validated());
 
         if ($request->hasFile('media_path')) {
             foreach ($request->media_path as $key => $value) {
                 $file = $request->file('media_path')[$key];
-                $extension = $file->getClientOriginalExtension();
+                $extension = strtolower($file->getClientOriginalExtension());
                 $filename = time() . '_' . $key . '.' . $extension;
 
-                if (in_array(strtolower($extension), ['pdf'])) {
-                    $file->move(public_path('docs/gallery-media'), $filename);
-                    $path = 'docs/gallery-media/' . $filename;
-                } else {
-                    $file->move(public_path('images/gallery-media'), $filename);
-                    $path = 'images/gallery-media/' . $filename;
-                }
+                $folder = $extension === 'pdf'
+                    ? 'docs/gallery-media'
+                    : 'images/gallery-media';
+
+                $file->move(public_path("uploads/{$folder}"), $filename);
+                $path = "uploads/{$folder}/{$filename}";
 
                 GalleryMedia::create([
                     'gallery_album_id' => $gallery->id,
                     'media_path' => $path,
-
                     'status' => 'Active',
                 ]);
             }
@@ -99,6 +98,7 @@ public function store(GalleryAlbumRequest $request)
         return response()->json(['success' => false, 'message' => $e->getMessage()]);
     }
 }
+
 
 
 
@@ -154,40 +154,27 @@ public function store(GalleryAlbumRequest $request)
         }
     }
 
-    public function update(GalleryAlbumRequest $request, $id)
+public function update(GalleryAlbumRequest $request, $id)
 {
     DB::beginTransaction();
     try {
         $album = GalleryAlbum::findOrFail($id);
 
-        // Update album info
+        // Update album info (title, type, etc.)
         $album->update($request->validated());
 
-        // Check if new media files are uploaded
+        // Only append new media files if uploaded
         if ($request->hasFile('media_path')) {
-            // Delete existing media files from storage and DB
-            $existingMedia = GalleryMedia::where('gallery_album_id', $album->id)->get();
-
-            foreach ($existingMedia as $media) {
-                $existingPath = public_path($media->media_path);
-                if (file_exists($existingPath)) {
-                    unlink($existingPath);
-                }
-                $media->delete();
-            }
-
-            // Save new media files
-            foreach ($request->media_path as $key => $value) {
-                $file = $request->file('media_path')[$key];
+            foreach ($request->file('media_path') as $key => $file) {
                 $extension = strtolower($file->getClientOriginalExtension());
                 $filename = time() . '_' . $key . '.' . $extension;
 
                 if ($extension === 'pdf') {
-                    $file->move(public_path('docs/gallery-media'), $filename);
-                    $path = 'docs/gallery-media/' . $filename;
+                    $file->move(public_path('uploads/docs/gallery-media'), $filename);
+                    $path = 'uploads/docs/gallery-media/' . $filename;
                 } else {
-                    $file->move(public_path('images/gallery-media'), $filename);
-                    $path = 'images/gallery-media/' . $filename;
+                    $file->move(public_path('uploads/images/gallery-media'), $filename);
+                    $path = 'uploads/images/gallery-media/' . $filename;
                 }
 
                 GalleryMedia::create([
@@ -206,6 +193,7 @@ public function store(GalleryAlbumRequest $request)
         return response()->json(['success' => false, 'message' => $e->getMessage()]);
     }
 }
+
 
     public function statusToggle($id)
     {
