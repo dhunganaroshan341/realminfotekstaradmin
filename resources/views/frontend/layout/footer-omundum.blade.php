@@ -8,7 +8,7 @@
                 <!-- Logo -->
                 <div class="col-lg-4 mb-3 mb-lg-0">
                     <a class="text-decoration-none" href="{{ url('/') }}">
-                        <img src="https://realm.bivekp23.sg-host.com/defaultImage/realm-logo-white.png"
+                        <img src="https://realm.bivekp23.sg-host.com/defaultImage/realm-logo-white-back(3).png"
                             alt="Realm Infotek Logo" style="max-width: 160px; height: auto;"></a>
                 </div>
 
