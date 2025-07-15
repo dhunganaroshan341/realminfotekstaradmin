@@ -193,10 +193,35 @@
     }
 
     .footer {
+        position: relative;
         margin-top: 100px;
-        background-color: rgba(0, 0, 255, 0.116);
+        background-image: url('your-image-url.jpg');
+        background-size: cover;
+        background-position: center;
         padding-bottom: 5px !important;
+        color: white;
+        /* text color */
+        z-index: 1;
     }
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 255, 0.116);
+        /* blue overlay */
+        z-index: 0;
+    }
+
+    .footer>* {
+        position: relative;
+        z-index: 2;
+        /* make sure content is above overlay */
+    }
+
 
     @media screen and (max-width: 768px) {
         .phone-header {
