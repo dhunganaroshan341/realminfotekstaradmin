@@ -130,6 +130,10 @@
             color: #0d6efd;
         }
 
+        .list a :hover {
+            color: var(--realm-yellow);
+        }
+
         /* .footer {
             background: var(--realm-blue) !important
         } */
