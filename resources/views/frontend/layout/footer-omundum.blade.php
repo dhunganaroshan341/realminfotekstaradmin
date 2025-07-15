@@ -1,6 +1,6 @@
 <!-- footer starts -->
 <footer class="pt-10"
-    style="background-image:url({{ asset('template/yatri_world/main-file/images/bg/bg3.jpg') }}); background-size: cover; background-position: center;">
+    style="background-image:url({{ asset('images/banner-2.jpg') }}); background-size: cover; background-position: center;">
     <div class="footer-upper pb-5">
         <div class="container">
             <div class="row">
