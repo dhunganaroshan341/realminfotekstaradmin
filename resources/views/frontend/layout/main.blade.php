@@ -130,9 +130,9 @@
             color: #0d6efd;
         }
 
-        .footer {
+        /* .footer {
             background: var(--realm-blue) !important
-        }
+        } */
     </style>
 
     @stack('styles')
