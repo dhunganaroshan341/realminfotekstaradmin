@@ -80,13 +80,13 @@
                 <div class="col-lg-4 mb-4">
                     <div class="footer-listing text-white">
                         <h5><i class="fas fa-headset me-2"></i>Support</h5>
-                        <p class="mb-1">
+                        {{-- <p class="mb-1">
                             <i class="fas fa-envelope me-2"></i>
                             <a href="mailto:support@realminfotek.com" class="text-white">support@realminfotek.com</a>
-                        </p>
+                        </p> --}}
                         <p class="mb-1">
                             <i class="fas fa-envelope me-2"></i>
-                            <a href="mailto:booking@realminfotek.com" class="text-white">booking@realminfotek.com</a>
+                            <a href="mailto:info@realminfotek.com" class="text-white">info@realminfotek.com</a>
                         </p>
 
                         <div class="social-links mt-3">
