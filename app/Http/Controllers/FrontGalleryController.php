@@ -112,20 +112,23 @@ public function gallery(Request $request)
         ]);
     }
     public function showClient($id)
-    {
-        $albums = GalleryAlbum::with(['galleryMedia', 'client'])->where('client_id', $id)->where('status','Active')->get();
+{
+    $albums = GalleryAlbum::with(['galleryMedia', 'client'])
+        ->where('client_id', $id)
+        ->where('status', 'Active')
+        ->get();
 
-
-
-        if (!$albums) {
-            return response()->json(['message' => 'Album not found'], 404);
-        }
-
-        return response()->json([
-            'success' => true,
-            'message' => $albums
-        ]);
+    if ($albums->isEmpty()) {
+        return response()->json(['message' => 'Album not found'], 404);
     }
+
+    return response()->json([
+        'success' => true,
+        'message' => $albums
+    ]);
+}
+
+
 
     public function getAllData()
     {

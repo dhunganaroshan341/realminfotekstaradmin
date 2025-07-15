@@ -38,4 +38,15 @@ class GalleryAlbum extends Model
     //     'type' => GalleryTypeEnum::class,
     //     'status' => AlbumStatusEnum::class,
     // ];
+    // In GalleryAlbum.php model
+
+public function getWebsiteThumbnailAttribute()
+{
+    $firstMedia = $this->galleryMedia->first();
+
+    return $firstMedia && !empty($firstMedia->image_path)
+        ? $firstMedia->image_path
+        : '/front/images/website-thumbnail.jpg';
+}
+
 }
