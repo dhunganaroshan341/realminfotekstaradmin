@@ -130,7 +130,7 @@
             color: #0d6efd;
         }
 
-        .list a :hover {
+        li a :hover {
             color: var(--realm-yellow);
         }
 
