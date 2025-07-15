@@ -122,14 +122,18 @@
             <div class="row g-4">
                 <div class="col-12 col-md-6">
                     <div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden">
-                        <iframe src="https://www.google.com/maps/embed?...realm map url..." class="w-100 h-100 border-0"
-                            loading="lazy" allowfullscreen></iframe>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14133.090720599723!2d85.3211786!3d27.6779659!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbd693a1616123b1f!2sRealm+Infotech+Pvt.+Ltd.!5e0!3m2!1sen!2snp!4v1550023265164"
+                            width="600" height="450" frameborder="0" style="border: 0px; pointer-events: none;"
+                            allowfullscreen=""></iframe>
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden">
-                        <iframe src="https://www.google.com/maps/embed?...us map url..." class="w-100 h-100 border-0"
-                            loading="lazy" allowfullscreen></iframe>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2529.541029220355!2d-73.81439622481611!3d40.777705233591966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c28a88e92e8a0b%3A0x1b514763706ff251!2s23rd%20Ave%2C%20Queens%2C%20NY%2C%20USA!5e1!3m2!1sen!2snp!4v1752580546070!5m2!1sen!2snp"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
