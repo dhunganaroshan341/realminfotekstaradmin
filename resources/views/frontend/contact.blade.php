@@ -158,18 +158,18 @@
     <section class="pt-0 mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="ratio ratio-16x9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2529.541029220355!2d-73.81439622481611!3d40.777705233591966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c28a88e92e8a0b%3A0x1b514763706ff251!2s23rd%20Ave%2C%20Queens%2C%20NY%2C%20USA!5e1!3m2!1sen!2snp!4v1752580546070!5m2!1sen!2snp"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4425.791097184029!2d85.31862677628256!3d27.677986976199414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19799ecafa79%3A0xbd693a1616123b1f!2sRealm%20Infotech%20Pvt.%20Ltd.!5e1!3m2!1sen!2snp!4v1743856965231!5m2!1sen!2snp"
+                            class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="ratio ratio-16x9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d10118.162326067408!2d-73.82212104919495!3d40.777716991044414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x89c28a88e92e8a0b%3A0x1b514763706ff251!2s23rd%20Ave%2C%20Flushing%2C%20NY%2011354%2C%20USA!3m2!1d40.777701199999996!2d-73.81182129999999!4m5!1s0x89c28a88e92e8a0b%3A0x1b514763706ff251!2s23rd%20Avenue!3m2!1d40.777701199999996!2d-73.81182129999999!5e1!3m2!1sen!2snp!4v1752580384544!5m2!1sen!2snp"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2529.541029220355!2d-73.81439622481611!3d40.777705233591966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c28a88e92e8a0b%3A0x1b514763706ff251!2s23rd%20Ave%2C%20Queens%2C%20NY%2C%20USA!5e1!3m2!1sen!2snp!4v1752580546070!5m2!1sen!2snp"
                             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
