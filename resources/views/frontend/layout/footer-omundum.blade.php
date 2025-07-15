@@ -7,7 +7,7 @@
                 <!-- Left: About & Newsletter -->
                 <div class="col-lg-4 mb-4">
                     <div class="footer-about text-center text-lg-start">
-                        <img src="{{ asset('/front/images/logo-white.png') }}" alt="Realm Infotek Logo"
+                        <img src="{{ asset('defaultImage/realm-logo-white-back.png') }}" alt="Realm Infotek Logo"
                             style="max-width: 180px;">
                         <p class="mt-3 mb-3 text-white">
                             Realm Infotek is a forward-thinking IT company offering reliable solutions in web
