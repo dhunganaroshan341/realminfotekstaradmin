@@ -33,8 +33,8 @@
                 <div class="col text-center text-white">
                     <p class="mb-0">
                         Realm Infotek is a forward-thinking IT company providing professional solutions in Web
-                        Development, SEO,
-                        Digital Marketing, and Cloud Hosting — connecting innovation between Nepal and the USA.
+                        Development, SEO, Digital Marketing, and Cloud Hosting — connecting innovation between Nepal and
+                        the USA, connecting innovation between Nepal and the USA.
                     </p>
                 </div>
             </div>
