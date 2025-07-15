@@ -74,7 +74,7 @@ $(document).ready(function () {
             $(".submitBtn").prop("disabled", true);
             $("#validationErrors").addClass("d-none").html("");
             let formdata = new FormData(this);
-             if (formId === "storeForm") {
+            //  if (formId === "storeForm") {
             $.ajax({
                 type: "POST",
                 url: "/admin/client/",
@@ -115,7 +115,7 @@ $(document).ready(function () {
                     $(".submitBtn").prop("disabled", false);
                 },
             });
-             }
+            //  }
         });
 
     // Click and Edit User
