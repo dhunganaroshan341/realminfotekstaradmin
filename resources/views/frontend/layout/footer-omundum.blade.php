@@ -1,27 +1,92 @@
 <!-- footer starts -->
-<footer class="pt-10 footer"
+<footer class="pt-5 footer"
     style="background-image:url({{ asset('images/banner-2.jpg') }}); background-size: cover; background-position: center;">
-    <div class="footer-upper pb-5">
+    <div class="footer-upper pb-4">
         <div class="container">
-            <div class="row">
-                <!-- Left: About & Newsletter -->
-                <div class="col-lg-4 mb-4">
-                    <div class="footer-about text-center text-lg-start">
-                        <img src="{{ asset('defaultImage/realm-logo-white-back.png') }}" alt="Realm Infotek Logo"
-                            style="max-width: 180px;">
-                        <p class="mt-3 mb-3 text-white">
-                            Realm Infotek is a forward-thinking IT company offering reliable solutions in web
-                            development, digital marketing, SEO, and cloud hosting for clients in Nepal and abroad.
-                        </p>
+            <!-- Top Row: Logo & Quick Links -->
+            <div class="row align-items-center justify-content-between mb-4 text-center text-lg-start">
+                <!-- Logo -->
+                <div class="col-lg-4 mb-3 mb-lg-0">
+                    <img src="{{ asset('defaultImage/realm-logo-white-back.png') }}" alt="Realm Infotek Logo"
+                        style="max-width: 100px; height: auto;">
+                </div>
 
-                        <form action="#" method="POST" class="newsletter-form mt-3">
-                            @csrf
-                            <div class="input-group">
-                                <input type="email" name="email" class="form-control"
-                                    placeholder="Subscribe to our newsletter" required>
-                                <button class="btn btn-primary" type="submit">Subscribe</button>
-                            </div>
-                        </form>
+                <!-- Quick Links -->
+                <div class="col-lg-8">
+                    <ul class="list list-inline mb-0">
+                        <li class="list-inline-item mx-2"><a href="{{ route('about-us') }}" class="text-white">About
+                                Us</a></li>
+                        <li class="list-inline-item mx-2"><a href="{{ route('gallery') }}"
+                                class="text-white">Portfolio</a></li>
+                        <li class="list-inline-item mx-2"><a href="{{ route('blog') }}" class="text-white">Blog &
+                                News</a></li>
+                        <li class="list-inline-item mx-2"><a href="{{ route('contact-us') }}"
+                                class="text-white">Contact</a></li>
+                        <li class="list-inline-item mx-2"><a href="#" class="text-white">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mid Row: About Text -->
+            <div class="row mb-4">
+                <div class="col text-center text-white">
+                    <p class="mb-0">
+                        Realm Infotek is a forward-thinking IT company providing professional solutions in Web
+                        Development, SEO,
+                        Digital Marketing, and Cloud Hosting — connecting innovation between Nepal and the USA.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Address / Support / Social -->
+            <div class="row justify-content-between text-center text-lg-start">
+                <!-- Nepal Office -->
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-listing text-white">
+                        <h5><i class="fas fa-map-marker-alt me-2"></i>Nepal Office</h5>
+                        <p class="mb-1">New Baneshwor, Kathmandu, Nepal</p>
+                        <p class="mb-1">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            <a href="tel:+97715529237" class="text-white">01-5529237</a>,
+                            <a href="tel:+9779851056649" class="text-white">9851056649</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@realminfotek.com" class="text-white">info@realminfotek.com</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- US Office -->
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-listing text-white">
+                        <h5><i class="fas fa-map-marker-alt me-2"></i>US Office</h5>
+                        <p class="mb-1">23rd Ave, Flushing, NY 11354, USA</p>
+                        <p class="mb-1">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            <a href="tel:+13478909000" class="text-white">+1 347 890 9000</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:us.office@realminfotek.com"
+                                class="text-white">us.office@realminfotek.com</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Support + Social -->
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-listing text-white">
+                        <h5><i class="fas fa-headset me-2"></i>Support</h5>
+                        <p class="mb-1">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:support@realminfotek.com" class="text-white">support@realminfotek.com</a>
+                        </p>
+                        <p class="mb-1">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:booking@realminfotek.com" class="text-white">booking@realminfotek.com</a>
+                        </p>
 
                         <div class="social-links mt-3">
                             <ul class="list-inline">
@@ -37,58 +102,19 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Right: Links + Info Boxes -->
-                <div class="col-lg-8 mb-4">
-                    <!-- Quick Links -->
-                    <div class="footer-links text-center mb-3">
-                        <ul class="list list-inline m-0">
-                            <li class="list-inline-item mx-2"><a href="{{ route('about-us') }}" class="text-white">About
-                                    Us</a></li>
-                            <li class="list-inline-item mx-2"><a href="{{ route('gallery') }}"
-                                    class="text-white">Portfolio</a></li>
-                            <li class="list-inline-item mx-2"><a href="{{ route('blog') }}" class="text-white">Blog &
-                                    News</a></li>
-                            <li class="list-inline-item mx-2"><a href="{{ route('contact-us') }}"
-                                    class="text-white">Contact</a></li>
-                            <li class="list-inline-item mx-2"><a href="#" class="text-white">Terms &
-                                    Conditions</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- 3-column Info -->
-                    <div
-                        class="footer-listing-main d-lg-flex align-items-start justify-content-between mt-4 text-center text-lg-start">
-                        <!-- Nepal Office -->
-                        <div class="footer-listing text-white mb-4 mb-lg-0">
-                            <i class="fa fa-map-marker-alt white mb-1"></i>
-                            <p class="mb-0">New Baneshwor, Kathmandu, Nepal</p>
-                            <p class="mb-0"><a href="tel:+97715529237" class="text-white">01-5529237</a>, <a
-                                    href="tel:+9779851056649" class="text-white">9851056649</a></p>
-                            <p class="mb-0"><a href="mailto:info@realminfotek.com"
-                                    class="text-white">info@realminfotek.com</a></p>
+            <!-- Newsletter -->
+            <div class="row mt-4">
+                <div class="col text-center">
+                    <form action="#" method="POST" class="newsletter-form d-inline-block w-100 w-md-50">
+                        @csrf
+                        <div class="input-group">
+                            <input type="email" name="email" class="form-control"
+                                placeholder="Subscribe to our newsletter" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
                         </div>
-
-                        <!-- US Office -->
-                        <div class="footer-listing text-white mb-4 mb-lg-0">
-                            <i class="fa fa-map-marker-alt white mb-1"></i>
-                            <p class="mb-0">23rd Ave, Flushing, NY 11354, USA</p>
-                            <p class="mb-0"><a href="tel:+13478909000" class="text-white">+1 347 890 9000</a></p>
-                            <p class="mb-0"><a href="mailto:us.office@realminfotek.com"
-                                    class="text-white">us.office@realminfotek.com</a></p>
-                        </div>
-
-                        <!-- Support Box -->
-                        <div class="footer-listing text-white">
-                            <i class="fa fa-headphones white mb-1"></i>
-                            <p class="mb-0"><a href="mailto:support@realminfotek.com"
-                                    class="text-white">support@realminfotek.com</a></p>
-                            <p class="mb-0"><a href="mailto:info@realminfotek.com"
-                                    class="text-white">info@realminfotek.com</a></p>
-                            <p class="mb-0"><a href="mailto:booking@realminfotek.com"
-                                    class="text-white">booking@realminfotek.com</a></p>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
