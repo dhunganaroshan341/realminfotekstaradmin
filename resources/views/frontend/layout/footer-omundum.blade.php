@@ -141,8 +141,18 @@
 @push('styles')
     <style>
         .footer-listing {
-            border: 1px dashed rgba(241, 241, 241, 0.3411764706);
+            border: 1px dashed rgba(241, 241, 241, 0.34);
             padding: 20px;
+        }
+
+        /* Ensure all footer <a> tags turn realm-yellow on hover */
+        .footer a:hover {
+            color: var(--realm-yellow) !important;
+        }
+
+        /* Optional: also apply hover color to social icons */
+        .footer .social-links a:hover i {
+            color: var(--realm-yellow) !important;
         }
     </style>
 @endpush
