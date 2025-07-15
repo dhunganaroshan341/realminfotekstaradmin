@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 @else
-                    @foreach ($testimonials->chunk(2) as $chunkIndex => $chunk)
+                    @foreach ($testimonials->chunk(3) as $chunkIndex => $chunk)
                         <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
                             <div class="row justify-content-center">
                                 @foreach ($chunk as $testimonial)
