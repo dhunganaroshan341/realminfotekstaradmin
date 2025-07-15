@@ -131,7 +131,7 @@
         }
 
         li a :hover {
-            color: var(--realm-yellow);
+            color: var(--text-realm-yellow);
         }
 
         /* .footer {
