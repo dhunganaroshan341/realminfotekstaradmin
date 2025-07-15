@@ -14,15 +14,18 @@
                 <!-- Quick Links -->
                 <div class="col-lg-8">
                     <ul class="list list-inline mb-0">
-                        <li class="list-inline-item mx-2"><a href="{{ route('about-us') }}" class="text-white">About
+                        <li class="list-inline-item mx-2"><a href="{{ route('about-us') }}"
+                                class="text-white footer-a">About
                                 Us</a></li>
                         <li class="list-inline-item mx-2"><a href="{{ route('gallery') }}"
-                                class="text-white">Portfolio</a></li>
-                        <li class="list-inline-item mx-2"><a href="{{ route('blog') }}" class="text-white">Blog &
+                                class="text-white footer-a">Portfolio</a></li>
+                        <li class="list-inline-item mx-2"><a href="{{ route('blog') }}" class="text-white footer-a">Blog
+                                &
                                 News</a></li>
                         <li class="list-inline-item mx-2"><a href="{{ route('contact-us') }}"
-                                class="text-white">Contact</a></li>
-                        <li class="list-inline-item mx-2"><a href="#" class="text-white">Terms & Conditions</a>
+                                class="text-white footer-a">Contact</a></li>
+                        <li class="list-inline-item mx-2"><a href="#" class="text-white footer-a">Terms &
+                                Conditions</a>
                         </li>
                     </ul>
                 </div>

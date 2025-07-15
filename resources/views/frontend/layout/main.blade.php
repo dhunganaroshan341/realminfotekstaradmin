@@ -130,7 +130,7 @@
             color: #0d6efd;
         }
 
-        footer a :hover {
+        .footer-a :hover {
             color: var(--realm-yellow) !important;
         }
 
