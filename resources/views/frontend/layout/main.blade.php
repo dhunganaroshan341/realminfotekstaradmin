@@ -148,7 +148,7 @@
     <main>
         @yield('content')
     </main>
-    @include('frontend.layout.footer')
+    @include('frontend.layout.footer-omundum')
 </body>
 <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
@@ -193,6 +193,7 @@
     }
 
     .footer {
+        margin-top: 100px;
 
         padding-bottom: 5px !important;
     }
