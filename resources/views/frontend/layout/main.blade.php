@@ -211,7 +211,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 255, 0.116);
+        background-color: rgba(14, 14, 72, 0.71);
         /* blue overlay */
         z-index: 0;
     }
