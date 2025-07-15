@@ -22,8 +22,8 @@
                                             class="fab fa-twitter text-white"></i></a></li>
                                 <li class="list-inline-item"><a href="{{ $instagram }}"><i
                                             class="fab fa-instagram text-white"></i></a></li>
-                                <li class="list-inline-item"><a href="{{ $linkedin }}"><i
-                                            class="fab fa-linkedin text-white"></i></a></li>
+                                {{-- <li class="list-inline-item"><a href="{{ $linkedin }}"><i
+                                            class="fab fa-linkedin text-white"></i></a></li> --}}
                             </ul>
                         </div>
                     </div>
