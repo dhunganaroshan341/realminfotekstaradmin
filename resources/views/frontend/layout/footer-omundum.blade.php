@@ -1,5 +1,5 @@
 <!-- footer starts -->
-<footer class="pt-10"
+<footer class="pt-10 footer"
     style="background-image:url({{ asset('images/banner-2.jpg') }}); background-size: cover; background-position: center;">
     <div class="footer-upper pb-5">
         <div class="container">
