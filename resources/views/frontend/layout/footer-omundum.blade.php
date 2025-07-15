@@ -136,9 +136,9 @@
 <!-- footer ends -->
 @push('styles')
     <style>
-        footer .footer-listing-main .footer-listing {
+        .footer-listing {
             border: 1px dashed rgba(241, 241, 241, 0.3411764706);
-            /* padding: 20px; */
+            padding: 20px;
         }
     </style>
 @endpush

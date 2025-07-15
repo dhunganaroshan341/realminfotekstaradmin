@@ -232,6 +232,11 @@
             font-size: 16px;
         }
     }
+
+    .footer-listing {
+        border: 1px dashed rgba(241, 241, 241, 0.3411764706);
+        padding: 20px;
+    }
 </style>
 <script>
     $(document).ready(function() {
