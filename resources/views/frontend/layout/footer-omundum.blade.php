@@ -110,7 +110,7 @@
             </div>
 
             <!-- Newsletter -->
-            <div class="row mt-4 justify-content-center">
+            {{-- <div class="row mt-4 justify-content-center">
                 <div class="col-12 col-md-4 text-center">
                     <form action="#" method="POST" class="newsletter-form w-100">
                         @csrf
@@ -121,7 +121,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>
