@@ -130,8 +130,8 @@
             color: #0d6efd;
         }
 
-        li a :hover {
-            color: var(--text-realm-yellow);
+        footer a :hover {
+            color: var(--text-realm-yellow) !important;
         }
 
         /* .footer {
