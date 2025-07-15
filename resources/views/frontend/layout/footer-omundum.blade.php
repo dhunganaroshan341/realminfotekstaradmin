@@ -1,6 +1,6 @@
 <!-- footer starts -->
 <footer class="pt-5 footer"
-    style="background-image:url({{ asset('assets/images/banner-2.jpg') }}); background-size: cover; background-position: center;">
+    style="background-image:url({{ asset('assets/images/banner2.jpg') }}); background-size: cover; background-position: center;">
     <div class="footer-upper pb-4">
         <div class="container">
             <!-- Top Row: Logo & Quick Links -->
