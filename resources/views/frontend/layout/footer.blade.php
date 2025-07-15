@@ -1,4 +1,4 @@
-<footer class="footer section bg-realm-blue">
+<footer class="footer section bg-realm-blue mt-4">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 mr-auto col-sm-6 text-center text-lg-start">
