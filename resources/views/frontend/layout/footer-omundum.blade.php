@@ -32,9 +32,10 @@
             <div class="row mb-4">
                 <div class="col text-center text-white">
                     <p class="mb-0">
-                        Realm Infotek is a forward-thinking IT company providing professional solutions in Web
-                        Development, SEO, Digital Marketing, and Cloud Hosting — connecting innovation between Nepal and
-                        the USA, connecting innovation between Nepal and the USA.
+                        Realm Infotek is a forward-thinking IT company specializing in Web Development, SEO, Digital
+                        Marketing, and Domain Hosting. We deliver innovative, reliable solutions that help businesses
+                        grow and succeed in the digital world. Our team is dedicated to providing quality service and
+                        tailored strategies to meet each client’s unique needs.
                     </p>
                 </div>
             </div>
