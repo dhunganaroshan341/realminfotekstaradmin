@@ -131,7 +131,7 @@
         }
 
         footer a :hover {
-            color: var(--text-realm-yellow) !important;
+            color: var(--realm-yellow) !important;
         }
 
         /* .footer {
