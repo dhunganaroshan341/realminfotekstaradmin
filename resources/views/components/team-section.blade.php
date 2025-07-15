@@ -4,7 +4,7 @@
 
     <div class="row g-4 justify-content-center">
         @foreach ($members as $member)
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 justify-content-center">
+            <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 team-card overflow-hidden">
                     <div class="ratio ratio-1x1">
                         <img src="{{ !empty($member->image) && file_exists(public_path('uploads/' . $member->image)) ? asset('uploads/' . $member->image) : asset('images/user.png') }}"
