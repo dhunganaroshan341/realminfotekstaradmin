@@ -106,9 +106,9 @@
             </div>
 
             <!-- Newsletter -->
-            <div class="row mt-4">
-                <div class="col text-center">
-                    <form action="#" method="POST" class="newsletter-form d-inline-block w-100 w-md-50">
+            <div class="row mt-4 justify-content-center">
+                <div class="col-12 col-md-4 text-center">
+                    <form action="#" method="POST" class="newsletter-form w-100">
                         @csrf
                         <div class="input-group">
                             <input type="email" name="email" class="form-control"
@@ -118,6 +118,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 
