@@ -8,7 +8,7 @@
                 <!-- Logo -->
                 <div class="col-lg-4 mb-3 mb-lg-0">
                     <img src="https://realm.bivekp23.sg-host.com/defaultImage/realm-logo-white.png"
-                        alt="Realm Infotek Logo" style="max-width: 160px; height: auto;opacity: 0.7;">
+                        alt="Realm Infotek Logo" style="max-width: 160px; height: auto;">
                 </div>
 
                 <!-- Quick Links -->
