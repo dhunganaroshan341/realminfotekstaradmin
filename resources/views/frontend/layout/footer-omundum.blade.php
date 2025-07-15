@@ -7,8 +7,9 @@
             <div class="row align-items-center justify-content-between mb-4 text-center text-lg-start">
                 <!-- Logo -->
                 <div class="col-lg-4 mb-3 mb-lg-0">
-                    <img src="https://realm.bivekp23.sg-host.com/defaultImage/realm-logo-white.png"
-                        alt="Realm Infotek Logo" style="max-width: 160px; height: auto;">
+                    <a class="text-decoration-none" href="{{ url('') }}">
+                        <img src="https://realm.bivekp23.sg-host.com/defaultImage/realm-logo-white.png"
+                            alt="Realm Infotek Logo" style="max-width: 160px; height: auto;"></a>
                 </div>
 
                 <!-- Quick Links -->
