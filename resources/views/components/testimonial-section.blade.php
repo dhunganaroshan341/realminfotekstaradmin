@@ -20,7 +20,7 @@
                         <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
                             <div class="row justify-content-center">
                                 @foreach ($chunk as $testimonial)
-                                    <div class="col-md-5 col-12 mb-4">
+                                    <div class="col-md-4 col-12 mb-4">
                                         <div class="card border-0 text-center h-100 mx-auto" style="max-width: 420px;">
                                             @if (!empty($testimonial->image))
                                                 <img src="{{ asset('uploads/' . $testimonial->image) }}"
