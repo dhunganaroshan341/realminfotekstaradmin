@@ -21,9 +21,9 @@ class TeamMemberSeeder extends Seeder
                 'order' => 3,
             ],
             [
-                'full_name' => 'Biplov Adhikari',
+                'full_name' => 'Biplov Chhettri',
                 'email' => 'biplov@gmail.com',
-                'position' => 'Co-Founder',
+                'position' => 'Co-Founder/Md',
                 'order' => 4,
             ],
             [
@@ -35,7 +35,7 @@ class TeamMemberSeeder extends Seeder
             [
                 'full_name' => 'Kundan Pokhrel',
                 'email' => 'kundan@gmail.com',
-                'position' => 'Backend Engineer',
+                'position' => 'FullStack Engineer',
                 'order' => 6,
             ],
             [
