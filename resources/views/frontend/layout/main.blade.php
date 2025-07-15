@@ -194,7 +194,7 @@
 
     .footer {
         margin-top: 100px;
-
+        background: var(--realm-blue);
         padding-bottom: 5px !important;
     }
 
