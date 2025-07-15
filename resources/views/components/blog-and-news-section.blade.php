@@ -1,14 +1,14 @@
 @if (!empty($posts) && count($posts) > 0)
-    <section class="mt-4  section-3 py-6">
+    <section class="mt-4 section-3 py-6">
         <div class="container">
             <div class="divider mb-3"></div>
             <h2 class="title-color mb-4 h1">{{ $title ?? 'Blogs & News' }}</h2>
 
             <div class="position-relative">
                 <div class="overflow-hidden">
-                    <div id="blogCardSlider" class="d-flex" style="gap: 1rem;">
+                    <div id="blogCardSlider" class="d-flex flex-nowrap" style="gap: 1rem;">
                         @foreach ($posts as $post)
-                            <div class="card border-0 flex-shrink-0 blog-card" style="width: 300px;">
+                            <div class="card border-0 flex-shrink-0 blog-card">
                                 <a href="{{ route('blog-detail', ['id' => $post->id]) }}">
                                     @if (!empty($post->postImages[0]->image))
                                         <img src="{{ asset('uploads/' . $post->postImages[0]->image) }}"
@@ -57,26 +57,33 @@
         </div>
     </section>
 
+    @push('styles')
+        <style>
+            #blogCardSlider {
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .blog-card {
+                flex: 0 0 calc((100% - 2rem) / 3);
+                /* 2rem for 2 gaps of 1rem between 3 cards */
+                max-width: calc((100% - 2rem) / 3);
+            }
+
+            @media (max-width: 768px) {
+                .blog-card {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        </style>
+    @endpush
+
     @push('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const slider = document.getElementById('blogCardSlider');
-                const cards = slider.querySelectorAll('.blog-card');
                 let currentIndex = 0;
-                let cardWidth = cards[0].offsetWidth + 16;
-
-                // Clone first and last few cards for infinite effect
-                for (let i = 0; i < 3; i++) {
-                    const cloneStart = cards[i].cloneNode(true);
-                    const cloneEnd = cards[cards.length - 1 - i].cloneNode(true);
-                    slider.appendChild(cloneStart);
-                    slider.prepend(cloneEnd);
-                }
-
-                let totalCards = slider.querySelectorAll('.blog-card').length;
-                currentIndex = 3;
-                slider.style.transition = 'none';
-                slider.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
+                let cardWidth = slider.querySelector('.blog-card').offsetWidth + 16;
 
                 function updateSliderPosition(smooth = true) {
                     slider.style.transition = smooth ? 'transform 0.5s ease' : 'none';
@@ -87,9 +94,9 @@
                     currentIndex++;
                     updateSliderPosition();
 
-                    if (currentIndex >= totalCards - 3) {
+                    if (currentIndex >= slider.children.length - visibleCards()) {
                         setTimeout(() => {
-                            currentIndex = 3;
+                            currentIndex = 0;
                             updateSliderPosition(false);
                         }, 510);
                     }
@@ -99,9 +106,9 @@
                     currentIndex--;
                     updateSliderPosition();
 
-                    if (currentIndex < 3) {
+                    if (currentIndex < 0) {
                         setTimeout(() => {
-                            currentIndex = totalCards - 4;
+                            currentIndex = slider.children.length - visibleCards();
                             updateSliderPosition(false);
                         }, 510);
                     }
@@ -110,40 +117,20 @@
                 document.getElementById('nextBtn').addEventListener('click', moveNext);
                 document.getElementById('prevBtn').addEventListener('click', movePrev);
 
-                // Auto Slide
                 let interval = setInterval(moveNext, 5000);
 
                 slider.addEventListener('mouseenter', () => clearInterval(interval));
                 slider.addEventListener('mouseleave', () => interval = setInterval(moveNext, 5000));
 
-                // Resize observer to fix cardWidth dynamically
+                function visibleCards() {
+                    return window.innerWidth <= 768 ? 1 : 3;
+                }
+
                 window.addEventListener('resize', () => {
                     cardWidth = slider.querySelector('.blog-card').offsetWidth + 16;
                     updateSliderPosition(false);
                 });
             });
         </script>
-    @endpush
-
-
-
-    @push('styles')
-        <style>
-            .blog-card {
-                width: 100%;
-                max-width: calc(33.333% - 0.66rem);
-                flex: 0 0 auto;
-            }
-
-            #blogCardSlider {
-                transition: transform 0.5s ease-in-out;
-            }
-
-            @media (max-width: 768px) {
-                .blog-card {
-                    max-width: 100%;
-                }
-            }
-        </style>
     @endpush
 @endif
