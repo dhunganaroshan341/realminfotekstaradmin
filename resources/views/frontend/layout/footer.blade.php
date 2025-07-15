@@ -108,8 +108,10 @@
             filter: drop-shadow(-2px 3px 1px #a1842c) !important;
         }
 
-        footer {
-            margin-top: 90px;
+
+        .footer {
+            padding-bottom: 5px !important;
+            margin-top: 100px !important;
         }
     </style>
 @endpush
