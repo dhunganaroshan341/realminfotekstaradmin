@@ -12,7 +12,7 @@
 
     @section('content')
         <button id="galleryToggleBtn" class="gallery-btn btn d-md-none position-fixed end-0"
-            style="top: 90px; z-index: 1100; border: none; background: transparent;" type="button" data-bs-toggle="offcanvas"
+            style="top: 10px; z-index: 1100; border: none; background: transparent;" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
             <i class="fas fa-images me-1 text-realm-yellow" style="font-size: 1.5em;"></i>
         </button>
@@ -235,9 +235,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                        </a>` : ''}
+                                                                                                                                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                </a>` : ''}
                 </div>
             </div>
         </div>
@@ -454,8 +454,8 @@
             }
 
             /* .gallery-btn:hover {
-                            width: auto;
-                        } */
+                                width: auto;
+                            } */
 
             .gallery-btn {
                 overflow: hidden;
