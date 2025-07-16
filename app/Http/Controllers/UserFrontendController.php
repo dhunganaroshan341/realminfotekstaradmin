@@ -242,14 +242,14 @@ public function store(StoreServiceQueryRequest $request)
     $pageBanner = PageBanner::where('page', 'blog')->first();
 
 
-    return view('frontend.privacy', compact(' pageBanner'));
+    return view('frontend.privacy', compact('pageBanner'));
 } public function terms()
 {
     // $content_title = "Blogs";
     $pageBanner = PageBanner::where('page', 'blog')->first();
 
 
-    return view('frontend.term', compact(' pageBanner'));
+    return view('frontend.term', compact('pageBanner'));
 }
 
 }
