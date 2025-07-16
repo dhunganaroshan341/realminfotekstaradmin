@@ -11,11 +11,14 @@
     @endpush
 
     @section('content')
-        <button id="galleryToggleBtn" class="gallery-btn btn btn-outline-primary d-md-none position-fixed end-0"
-            style="top: 90px; z-index: 1100; " type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar"
-            aria-controls="mobileSidebar">
-            <i class="fas fa-images me-1 text-realm-yellow"></i>
+        <button id="galleryToggleBtn" class="gallery-btn btn d-md-none position-fixed end-0"
+            style="top: 90px; z-index: 1100; border: none; background: transparent;" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+            <i class="fas fa-images me-1 text-realm-yellow" style="font-size: 1.5em;"></i>
         </button>
+
+
+
 
         <section class="hero-small">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -232,9 +235,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                </a>` : ''}
+                                                                                                                                                                                                                                                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                        </a>` : ''}
                 </div>
             </div>
         </div>
@@ -450,13 +453,13 @@
                 background: #ffffff91;
             }
 
-            .gallery-btn:hover {
-                width: auto;
-            }
+            /* .gallery-btn:hover {
+                            width: auto;
+                        } */
 
             .gallery-btn {
                 overflow: hidden;
-                width: 22px;
+                width: 30px;
             }
         </style>
     @endpush
