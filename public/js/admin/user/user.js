@@ -97,7 +97,7 @@ function addLatestOrderToTheInput() {
             let formdata = new FormData(this);
             $.ajax({
                 type: "POST",
-                url: "/admin/user/store/",
+                url: "/admin/user/store",
                 data: formdata,
                 contentType: false,
                 processData: false,
