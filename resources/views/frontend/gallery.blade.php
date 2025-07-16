@@ -235,9 +235,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                                        </a>` : ''}
+                                                                                                                                                                                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                </a>` : ''}
                 </div>
             </div>
         </div>
@@ -386,19 +386,22 @@
                 });
             }
         </script>
-
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const btn = document.getElementById('galleryToggleBtn');
+                const footer = document.querySelector('.footer');
 
                 // Initially hide the button
                 btn.style.display = 'none';
 
                 window.addEventListener('scroll', function() {
                     const scrollY = window.scrollY;
+                    const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+                    const windowHeight = window.innerHeight;
 
-                    if (scrollY < 50) {
-                        btn.style.display = 'none'; // Still hidden
+                    // If user hasn't scrolled enough OR footer is in view — hide
+                    if (scrollY < 50 || scrollY + windowHeight >= footerTop) {
+                        btn.style.display = 'none';
                     } else {
                         btn.style.display = 'block';
 
@@ -463,8 +466,8 @@
             }
 
             /* .gallery-btn:hover {
-                                                    width: auto;
-                                                } */
+                                                        width: auto;
+                                                    } */
 
             .gallery-btn {
                 overflow: hidden;
