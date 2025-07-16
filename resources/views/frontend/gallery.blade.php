@@ -11,11 +11,12 @@
     @endpush
 
     @section('content')
-        <button class="gallery-btn btn btn-outline-primary d-md-none position-fixed start-0 top-50 translate-middle-y"
-            style="z-index: 1100; /*! border-radius: 0 50px 50px 0; */ border-color: var(--realm-yellow);" type="button"
-            data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+        <button id="galleryToggleBtn" class="gallery-btn btn btn-outline-primary d-md-none position-fixed start-0"
+            style="top: 30px; z-index: 1100; border-color: var(--realm-yellow);" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
             <i class="fas fa-images me-1 text-realm-yellow"></i>
         </button>
+
         <section class="hero-small">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -231,9 +232,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                    <i class="fas fa-download"></i>
-                                                                                                                                                                                                </a>` : ''}
+                                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                </a>` : ''}
                 </div>
             </div>
         </div>
@@ -381,6 +382,24 @@
                     }
                 });
             }
+        </script>
+
+        <script>
+            window.addEventListener('scroll', function() {
+                const btn = document.getElementById('galleryToggleBtn');
+                const scrollY = window.scrollY;
+
+                if (scrollY < 30) {
+                    btn.style.position = 'fixed';
+                    btn.style.top = '30px';
+                } else if (scrollY >= 30 && scrollY <= 80) {
+                    btn.style.position = 'sticky';
+                    btn.style.top = '0'; // required for sticky to work
+                } else {
+                    btn.style.position = 'fixed';
+                    btn.style.top = '80px';
+                }
+            });
         </script>
     @endpush
     @push('styles')
