@@ -22,7 +22,7 @@
                             </select>
                         </div>
                         <div class="col-md-12 mb-4">
-                            <label for="post_tags" class="form-label">Tags <span class="text-danger">*</span></label>
+                            <label for="tagInput" class="form-label">Tags <span class="text-danger">*</span></label>
                             <div class="input-group mb-2">
                                 <input type="text" id="tagInput" class="form-control" placeholder="Enter tag">
                                 <button type="button" id="addTagButton" class="btn btn-outline-success">Add
@@ -31,6 +31,7 @@
                             <div id="tagContainer" class="d-flex flex-wrap gap-2"></div>
                             <input type="hidden" name="post_tags" id="post_tags" />
                         </div>
+
 
 
                         <div class="col-md-12 mb-4">
