@@ -1,6 +1,6 @@
 <div class="container my-5">
     <div class="divider mb-3 text-center"></div>
-    <h2 class="title-color mb-4 ">Our Clients</h2>
+    <h2 class="title-color mb-4">Our Clients</h2>
     <section class="customer-logos slider">
         @if (!isset($clients) || $clients->isEmpty())
             <div class="text-center">
@@ -15,7 +15,7 @@
                 <div class="slide text-center">
                     <a href="{{ $galleryUrl }}" @if (!$hasAlbums) onclick="return false;" @endif>
                         <img src="{{ $client->image ? 'uploads/' . $client->image : asset('assets/images/logo.png') }}"
-                            alt="{{ $client->name }}" class="logo-img ">
+                            alt="{{ $client->name }}" class="logo-img">
                     </a>
                     <div class="logo-name">{{ $client->name }}</div>
                 </div>
@@ -32,28 +32,28 @@
             font-weight: bold;
         }
 
-        .slick-slide {
+        .customer-logos .slide {
+            height: 150px;
             display: flex !important;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            margin: 0 15px;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
         }
 
-        .logo-img {
-            max-width: 120px;
+        .customer-logos .logo-img {
             max-height: 80px;
-            /* object-fit: cover; */
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 8px;
             display: block;
-            margin: 0 auto;
-            /* border: 2px solid #ddd; */
-            /* background-color: #fff; */
         }
 
-        .logo-name {
-            margin-top: 8px;
+        .customer-logos .logo-name {
             font-size: 14px;
             color: #333;
+            line-height: 1;
+            margin: 0;
             white-space: nowrap;
         }
 
@@ -85,14 +85,14 @@
             const $slider = $('.customer-logos');
 
             $slider.slick({
-                slidesToShow: 4,
+                slidesToShow: 5,
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 1500,
                 arrows: false,
                 dots: false,
                 pauseOnHover: false,
-                draggable: true, // allow dragging
+                draggable: true,
                 responsive: [{
                         breakpoint: 992,
                         settings: {
@@ -114,14 +114,14 @@
                 ]
             });
 
-            // Restart autoplay on swipe/drag end
             $slider.on('swipe', function() {
                 $slider.slick('slickPlay');
             });
+
             $slider.on('touchend mouseup', function() {
                 setTimeout(() => {
                     $slider.slick('slickPlay');
-                }, 100); // slight delay ensures it kicks in
+                }, 100);
             });
         });
     </script>
