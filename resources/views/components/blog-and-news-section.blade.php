@@ -4,47 +4,11 @@
             <div class="divider mb-3"></div>
             <h2 class="title-color mb-4 h1">{{ $title ?? 'Blogs & News' }}</h2>
 
-            <div class="position-relative">
-                <div class="overflow-hidden">
-                    <div id="blogCardSlider" class="d-flex flex-nowrap" style="gap: 1rem;">
-                        @foreach ($posts as $post)
-                            <div class="card border-0 flex-shrink-0 blog-card">
-                                <a href="{{ route('blog-detail', ['id' => $post->id]) }}">
-                                    @if (!empty($post->postImages[0]->image))
-                                        <img src="{{ asset('uploads/' . $post->postImages[0]->image) }}"
-                                            class="card-img-top img-fluid" alt=""
-                                            style="height: 200px; object-fit: cover;">
-                                    @else
-                                        <img src="{{ asset('assets/images/default-blog.jpg') }}"
-                                            class="card-img-top img-fluid" alt=""
-                                            style="height: 200px; object-fit: cover;">
-                                    @endif
-                                </a>
-                                <div class="card-body p-3 d-flex flex-column">
-                                    <h1 class="card-title-blog mt-2 mb-2"
-                                        style="height: 3rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 1.25rem;">
-                                        <a href="{{ route('blog-detail', ['id' => $post->id]) }}"
-                                            class="text-decoration-none text-dark">
-                                            {{ $post->title ?? 'Untitled' }}
-                                        </a>
-                                    </h1>
-                                    <div class="content pt-2 flex-grow-1"
-                                        style="height: 5rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
-                                        <p class="card-text mb-0">
-                                            {{ \Illuminate\Support\Str::limit(strip_tags(html_entity_decode($post->description ?? '')), 100, '...') }}
-                                        </p>
-                                    </div>
-                                    <a href="{{ route('blog-detail', ['id' => $post->id]) }}"
-                                        class="btn btn-primary mt-4 align-self-start">
-                                        Read More <i class="fa-solid fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+            <div class="position-relative overflow-hidden">
+                <div id="blogSliderWrapper" class="overflow-hidden w-100">
+                    <div id="blogCardSlider" class="d-flex" style="gap: 1rem;"></div>
                 </div>
 
-                <!-- Nav Buttons -->
                 <button id="prevBtn"
                     class="btn btn-secondary position-absolute top-50 start-0 translate-middle-y z-2 opacity-50">
                     <i class="fa fa-chevron-left"></i>
@@ -59,13 +23,8 @@
 
     @push('styles')
         <style>
-            #blogCardSlider {
-                transition: transform 0.5s ease-in-out;
-            }
-
             .blog-card {
                 flex: 0 0 calc((100% - 2rem) / 3);
-                /* 2rem for 2 gaps of 1rem between 3 cards */
                 max-width: calc((100% - 2rem) / 3);
             }
 
@@ -75,61 +34,117 @@
                     max-width: 100%;
                 }
             }
+
+            .card-body .card-title-blog {
+                height: 3rem;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+
+            .card-body .content {
+                height: 5rem;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+            }
         </style>
     @endpush
 
     @push('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', () => {
+                const posts = @json($posts);
                 const slider = document.getElementById('blogCardSlider');
-                let currentIndex = 0;
-                let cardWidth = slider.querySelector('.blog-card').offsetWidth + 16;
+                let index = 0;
+                let cardWidth = 0;
+                let visibleCount = window.innerWidth <= 768 ? 1 : 3;
+                let totalCards = posts.length;
 
-                function updateSliderPosition(smooth = true) {
-                    slider.style.transition = smooth ? 'transform 0.5s ease' : 'none';
-                    slider.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
+                // Helper: create blog card
+                function createCard(post) {
+                    const div = document.createElement('div');
+                    div.classList.add('card', 'border-0', 'flex-shrink-0', 'blog-card');
+                    div.innerHTML = `
+                        <a href="/blog-detail/${post.id}">
+                            <img src="${post.post_images?.[0]?.image ? '/uploads/' + post.post_images[0].image : '{{ asset('assets/images/default-blog.jpg') }}'}"
+                                class="card-img-top img-fluid"
+                                style="height: 200px; object-fit: cover;">
+                        </a>
+                        <div class="card-body p-3 d-flex flex-column">
+                            <h1 class="card-title-blog mt-2 mb-2">
+                                <a href="/blog-detail/${post.id}" class="text-decoration-none text-dark">
+                                    ${post.title || 'Untitled'}
+                                </a>
+                            </h1>
+                            <div class="content pt-2 flex-grow-1">
+                                <p class="card-text mb-0">${post.description?.replace(/(<([^>]+)>)/gi, "").substring(0, 100) || ''}...</p>
+                            </div>
+                            <a href="/blog-detail/${post.id}" class="btn btn-primary mt-4 align-self-start">
+                                Read More <i class="fa-solid fa-angle-right"></i>
+                            </a>
+                        </div>`;
+                    return div;
                 }
 
-                function moveNext() {
-                    currentIndex++;
-                    updateSliderPosition();
+                function renderSlider() {
+                    // Clear
+                    slider.innerHTML = "";
 
-                    if (currentIndex >= slider.children.length - visibleCards()) {
-                        setTimeout(() => {
-                            currentIndex = 0;
-                            updateSliderPosition(false);
-                        }, 510);
+                    // Clone last few cards to start
+                    for (let i = totalCards - visibleCount; i < totalCards; i++) {
+                        slider.appendChild(createCard(posts[i]));
                     }
-                }
 
-                function movePrev() {
-                    currentIndex--;
-                    updateSliderPosition();
+                    // Main cards
+                    posts.forEach(post => {
+                        slider.appendChild(createCard(post));
+                    });
 
-                    if (currentIndex < 0) {
-                        setTimeout(() => {
-                            currentIndex = slider.children.length - visibleCards();
-                            updateSliderPosition(false);
-                        }, 510);
+                    // Clone first few cards to end
+                    for (let i = 0; i < visibleCount; i++) {
+                        slider.appendChild(createCard(posts[i]));
                     }
+
+                    cardWidth = slider.querySelector('.blog-card').offsetWidth + 16;
+                    slider.style.transform = `translateX(-${cardWidth * visibleCount}px)`;
                 }
 
-                document.getElementById('nextBtn').addEventListener('click', moveNext);
-                document.getElementById('prevBtn').addEventListener('click', movePrev);
+                function move(direction = 1) {
+                    index += direction;
+                    slider.style.transition = 'transform 0.5s ease';
+                    slider.style.transform = `translateX(-${cardWidth * (index + visibleCount)}px)`;
 
-                let interval = setInterval(moveNext, 5000);
-
-                slider.addEventListener('mouseenter', () => clearInterval(interval));
-                slider.addEventListener('mouseleave', () => interval = setInterval(moveNext, 5000));
-
-                function visibleCards() {
-                    return window.innerWidth <= 768 ? 1 : 3;
+                    // Reset at edges
+                    setTimeout(() => {
+                        if (index >= totalCards) {
+                            index = 0;
+                            slider.style.transition = 'none';
+                            slider.style.transform = `translateX(-${cardWidth * visibleCount}px)`;
+                        }
+                        if (index < 0) {
+                            index = totalCards - 1;
+                            slider.style.transition = 'none';
+                            slider.style.transform = `translateX(-${cardWidth * (index + visibleCount)}px)`;
+                        }
+                    }, 510);
                 }
+
+                document.getElementById('nextBtn').addEventListener('click', () => move(1));
+                document.getElementById('prevBtn').addEventListener('click', () => move(-1));
+
+                let auto = setInterval(() => move(1), 5000);
+                slider.addEventListener('mouseenter', () => clearInterval(auto));
+                slider.addEventListener('mouseleave', () => auto = setInterval(() => move(1), 5000));
 
                 window.addEventListener('resize', () => {
-                    cardWidth = slider.querySelector('.blog-card').offsetWidth + 16;
-                    updateSliderPosition(false);
+                    visibleCount = window.innerWidth <= 768 ? 1 : 3;
+                    renderSlider();
                 });
+
+                renderSlider();
             });
         </script>
     @endpush
