@@ -48,7 +48,10 @@ class UserFrontendController extends Controller
     public function aboutUs()
 {
     // Fetch users whose role is not 'Admin'
-   $members = User::where('role', '!=', 'Admin')->paginate(8); // You can adjust the number as needed
+   $members = User::where('role', '!=', 'Admin')
+    ->orderBy('order')
+    ->paginate(8); // Adjust number as needed
+
 
 
     $pageBanner = PageBanner::where('page', 'about')->first();
