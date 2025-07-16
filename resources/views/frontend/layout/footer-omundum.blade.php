@@ -146,7 +146,7 @@
         }
 
         /* Ensure all footer <a> tags turn realm-yellow on hover */
-        .footer a:hover {
+        .footer-a {
             color: var(--realm-yellow) !important;
         }
 
