@@ -2,7 +2,7 @@
     <section class="mt-4 section-3 py-6">
         <div class="container">
             <div class="divider mb-3"></div>
-            <h2 class="title-color mb-4 h1">{{ $title ?? 'Blogs & News' }}</h2>
+            <h2 class="title-color mb-4 h1 text-center">{{ $title ?? 'Blogs & News' }}</h2>
 
             <div class="position-relative overflow-hidden">
                 <div id="blogSliderWrapper" class="overflow-hidden w-100">
@@ -32,6 +32,10 @@
                 .blog-card {
                     flex: 0 0 100%;
                     max-width: 100%;
+                }
+
+                .card-body .content {
+                    display: none !important;
                 }
             }
 
@@ -63,7 +67,6 @@
                 let visibleCount = window.innerWidth <= 768 ? 1 : 3;
                 let totalCards = posts.length;
 
-                // Helper: create blog card
                 function createCard(post) {
                     const div = document.createElement('div');
                     div.classList.add('card', 'border-0', 'flex-shrink-0', 'blog-card');
@@ -80,9 +83,9 @@
                                 </a>
                             </h1>
                             <div class="content pt-2 flex-grow-1 d-none d-md-block">
-                                <p class="card-text mb-0 ">${post.description?.replace(/(<([^>]+)>)/gi, "").substring(0, 100) || ''}...</p>
+                                <p class="card-text mb-0">${post.description?.replace(/(<([^>]+)>)/gi, "").substring(0, 100) || ''}...</p>
                             </div>
-                            <a href="/blog-detail/${post.id}" class="btn btn-primary mt-4 align-self-start">
+                            <a href="/blog-detail/${post.id}" class="btn btn-primary mt-auto align-self-start">
                                 Read More <i class="fa-solid fa-angle-right"></i>
                             </a>
                         </div>`;
@@ -90,20 +93,16 @@
                 }
 
                 function renderSlider() {
-                    // Clear
                     slider.innerHTML = "";
 
-                    // Clone last few cards to start
                     for (let i = totalCards - visibleCount; i < totalCards; i++) {
                         slider.appendChild(createCard(posts[i]));
                     }
 
-                    // Main cards
                     posts.forEach(post => {
                         slider.appendChild(createCard(post));
                     });
 
-                    // Clone first few cards to end
                     for (let i = 0; i < visibleCount; i++) {
                         slider.appendChild(createCard(posts[i]));
                     }
@@ -117,7 +116,6 @@
                     slider.style.transition = 'transform 0.5s ease';
                     slider.style.transform = `translateX(-${cardWidth * (index + visibleCount)}px)`;
 
-                    // Reset at edges
                     setTimeout(() => {
                         if (index >= totalCards) {
                             index = 0;
