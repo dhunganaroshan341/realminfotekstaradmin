@@ -88,6 +88,13 @@
         </div>
     </div>
 </div>
+<div class="col-md-12 mb-4">
+    <label for="post_tags" class="form-label">Tags <span class="text-danger">*</span></label>
+    <input type="text" id="tagInput" class="form-control" placeholder="Type and press comma or Enter" />
+    <div id="tagContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
+    <input type="hidden" name="post_tags" id="post_tags" />
+</div>
+
 
 {{-- Comment Lists --}}
 <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -109,3 +116,69 @@
         </div>
     </div>
 </div>
+@push('styles')
+    <style>
+        #tagContainer .tag {
+            background-color: #198754;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        #tagContainer .tag .remove-tag {
+            margin-left: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+@endpush
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            let tags = [];
+
+            function renderTags() {
+                $('#tagContainer').empty();
+                tags.forEach((tag, index) => {
+                    $('#tagContainer').append(`
+                    <span class="tag">
+                        ${tag}
+                        <span class="remove-tag" data-index="${index}">&times;</span>
+                    </span>
+                `);
+                });
+                $('#post_tags').val(tags.join(',')); // Store in hidden input
+            }
+
+            $('#tagInput').on('keydown', function(e) {
+                const key = e.key;
+                const value = $(this).val().trim();
+                if ((key === ',' || key === 'Enter') && value !== '') {
+                    e.preventDefault();
+                    if (!tags.includes(value)) {
+                        tags.push(value);
+                        renderTags();
+                    }
+                    $(this).val('');
+                }
+            });
+
+            $(document).on('click', '.remove-tag', function() {
+                const index = $(this).data('index');
+                tags.splice(index, 1);
+                renderTags();
+            });
+
+            // Optional: clear tags on modal close
+            $('#formModal').on('hidden.bs.modal', function() {
+                tags = [];
+                renderTags();
+                $('#tagInput').val('');
+            });
+        });
+    </script>
+@endpush
