@@ -23,3 +23,23 @@
 
     </div>
 @endsection
+@push('styles')
+    <style>
+        #tagContainer .tag {
+            background-color: #198754;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        #tagContainer .tag .remove-tag {
+            margin-left: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+@endpush
