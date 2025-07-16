@@ -235,9 +235,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                        </a>` : ''}
+                                                                                                                                                                                                                                                                                                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                        </a>` : ''}
                 </div>
             </div>
         </div>
@@ -397,7 +397,7 @@
                 window.addEventListener('scroll', function() {
                     const scrollY = window.scrollY;
 
-                    if (scrollY < 30) {
+                    if (scrollY < 50) {
                         btn.style.display = 'none'; // Still hidden
                     } else {
                         btn.style.display = 'block';
@@ -463,8 +463,8 @@
             }
 
             /* .gallery-btn:hover {
-                                            width: auto;
-                                        } */
+                                                    width: auto;
+                                                } */
 
             .gallery-btn {
                 overflow: hidden;
