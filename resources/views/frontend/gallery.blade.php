@@ -231,9 +231,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                            <i class="fas fa-download"></i>
-                                                                                                        </a>` : ''}
+                                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                            <i class="fas fa-download"></i>
+                                                                                                                        </a>` : ''}
                 </div>
             </div>
         </div>
@@ -387,8 +387,9 @@
         <style>
             .client-thumb,
             .realm-logo {
-                max-width: 100px;
+                max-width: 120px;
                 height: 40px !important;
+                object-fit: contain;
             }
 
             .offcanvas {
