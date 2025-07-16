@@ -3,7 +3,7 @@
         <div class="modal-content">
             <form id="formId" class="form" method="POST" enctype="multipart/form-data"
                 action="{{ route('admin.store') }}">
-
+                @csrf
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="">Add User</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -14,7 +14,7 @@
                         <span class="mt-2 mb-2"><span class="text-danger">Note:</span> (<span
                                 class="text-danger">*</span>) symbol represent that the field is required</span>
                         <div class="col-md-6">
-                            @csrf
+
                             <label for="" class="form-label">Full Name<span class="text-danger">*</span></label>
                             <input type="text" name="full_name" id="full_name" class="form-control" placeholder=""
                                 aria-describedby="helpId" />
