@@ -21,6 +21,13 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="col-md-12 mb-4">
+                            <label for="post_tags" class="form-label">Tags <span class="text-danger">*</span></label>
+                            <input type="text" id="tagInput" class="form-control"
+                                placeholder="Type and press comma or Enter" />
+                            <div id="tagContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
+                            <input type="hidden" name="post_tags" id="post_tags" />
+                        </div>
 
                         <div class="col-md-12 mb-4">
                             @csrf
@@ -88,12 +95,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-12 mb-4">
-    <label for="post_tags" class="form-label">Tags <span class="text-danger">*</span></label>
-    <input type="text" id="tagInput" class="form-control" placeholder="Type and press comma or Enter" />
-    <div id="tagContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
-    <input type="hidden" name="post_tags" id="post_tags" />
-</div>
+
 
 
 {{-- Comment Lists --}}
