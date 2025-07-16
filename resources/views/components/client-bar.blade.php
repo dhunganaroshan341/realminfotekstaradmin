@@ -41,13 +41,13 @@
         }
 
         .logo-img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
+            max-width: 120px;
+            max-height: 80px;
+            /* object-fit: cover; */
             display: block;
             margin: 0 auto;
-            border: 2px solid #ddd;
-            background-color: #fff;
+            /* border: 2px solid #ddd; */
+            /* background-color: #fff; */
         }
 
         .logo-name {
