@@ -134,6 +134,10 @@
             color: var(--realm-yellow) !important;
         }
 
+        .footer .active {
+            color: var(--realm-yellow) !important;
+        }
+
         /* .footer {
             background: var(--realm-blue) !important
         } */

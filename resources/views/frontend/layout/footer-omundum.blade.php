@@ -9,33 +9,53 @@
                 <div class="col-lg-4 mb-3 mb-lg-0">
                     <a class="text-decoration-none" href="{{ url('/') }}">
                         <img src="https://realm.bivekp23.sg-host.com/defaultImage/realm-logo-white-back(3).png"
-                            alt="Realm Infotek Logo" style="max-width: 160px; height: auto;"></a>
+                            alt="Realm Infotek Logo" style="max-width: 160px; height: auto;">
+                    </a>
                 </div>
 
                 <!-- Quick Links -->
                 <div class="col-lg-8">
                     <ul class="list list-inline mb-0">
-                        <li class="list-inline-item mx-2"><a href="{{ route('about-us') }}"
-                                class="text-white footer-a">About
-                                Us</a></li>
-                        <li class="list-inline-item mx-2"><a href="{{ route('gallery') }}"
-                                class="text-white footer-a">Portfolio</a></li>
-                        <li class="list-inline-item mx-2"><a href="{{ route('blog') }}" class="text-white footer-a">Blog
-                                &
-                                News</a></li>
-                        <li class="list-inline-item mx-2"><a href="{{ route('contact-us') }}"
-                                class="text-white footer-a">Contact</a></li>
-                        <li class="list-inline-item mx-2"><a href="{{ route('terms') }}"
-                                class="text-white footer-a">Terms &
-                                Conditions</a>
+                        <li class="list-inline-item mx-2">
+                            <a href="{{ route('about-us') }}"
+                                class="text-white footer-a {{ request()->routeIs('about-us') ? 'active' : '' }}">
+                                About Us
+                            </a>
                         </li>
-                        <li class="list-inline-item mx-2"><a href="{{ route('privacyPolicy') }}"
-                                class="text-white footer-a">privacy
-                                policy</a>
+                        <li class="list-inline-item mx-2">
+                            <a href="{{ route('gallery') }}"
+                                class="text-white footer-a {{ request()->routeIs('gallery') ? 'active' : '' }}">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li class="list-inline-item mx-2">
+                            <a href="{{ route('blog') }}"
+                                class="text-white footer-a {{ request()->routeIs('blog') ? 'active' : '' }}">
+                                Blog & News
+                            </a>
+                        </li>
+                        <li class="list-inline-item mx-2">
+                            <a href="{{ route('contact-us') }}"
+                                class="text-white footer-a {{ request()->routeIs('contact-us') ? 'active' : '' }}">
+                                Contact
+                            </a>
+                        </li>
+                        <li class="list-inline-item mx-2">
+                            <a href="{{ route('terms') }}"
+                                class="text-white footer-a {{ request()->routeIs('terms') ? 'active' : '' }}">
+                                Terms & Conditions
+                            </a>
+                        </li>
+                        <li class="list-inline-item mx-2">
+                            <a href="{{ route('privacyPolicy') }}"
+                                class="text-white footer-a {{ request()->routeIs('privacyPolicy') ? 'active' : '' }}">
+                                Privacy Policy
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
+
 
             <!-- Mid Row: About Text -->
             <div class="row mb-4">
