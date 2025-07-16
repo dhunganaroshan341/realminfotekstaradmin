@@ -235,9 +235,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                                                                                </a>` : ''}
+                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                        </a>` : ''}
                 </div>
             </div>
         </div>
@@ -389,18 +389,19 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const btn = document.getElementById('galleryToggleBtn');
-                const footer = document.querySelector('.footer');
 
                 // Initially hide the button
                 btn.style.display = 'none';
 
                 window.addEventListener('scroll', function() {
                     const scrollY = window.scrollY;
-                    const footerTop = footer.getBoundingClientRect().top + window.scrollY;
                     const windowHeight = window.innerHeight;
+                    const docHeight = document.documentElement.scrollHeight;
 
-                    // If user hasn't scrolled enough OR footer is in view — hide
-                    if (scrollY < 50) {
+                    const scrollPercent = (scrollY + windowHeight) / docHeight * 100;
+
+                    // Hide if user hasn’t scrolled enough OR scrolled beyond 95% of the page
+                    if (scrollY < 50 || scrollPercent > 95) {
                         btn.style.display = 'none';
                     } else {
                         btn.style.display = 'block';
@@ -466,8 +467,8 @@
             }
 
             /* .gallery-btn:hover {
-                                                                width: auto;
-                                                            } */
+                                                                    width: auto;
+                                                                } */
 
             .gallery-btn {
                 overflow: hidden;
