@@ -1,7 +1,8 @@
 <div class="modal fade" id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="formId" class="form" method="POST" enctype="multipart/form-data">
+            <form id="formId" class="form" method="POST" enctype="multipart/form-data"
+                action="{{ route('admin.store') }}">
 
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="">Add User</h1>
