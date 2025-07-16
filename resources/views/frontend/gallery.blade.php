@@ -11,8 +11,8 @@
     @endpush
 
     @section('content')
-        <button id="galleryToggleBtn" class="gallery-btn btn btn-outline-primary d-md-none position-fixed start-50"
-            style="top: 30px; z-index: 1100; " type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar"
+        <button id="galleryToggleBtn" class="gallery-btn btn btn-outline-primary d-md-none position-fixed start-100"
+            style="top: 100; z-index: 1100; " type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar"
             aria-controls="mobileSidebar">
             <i class="fas fa-images me-1 text-realm-yellow"></i>
         </button>
@@ -232,9 +232,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                </a>` : ''}
+                                                                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                </a>` : ''}
                 </div>
             </div>
         </div>
