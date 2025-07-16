@@ -235,9 +235,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                                                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                                                                                                                                                                                                                    <i class="fas fa-download"></i>
-                                                                                                                                                                                                                                                                                                                                                </a>` : ''}
+                                                                                                                                                                                                                                                                                                                                                                        <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                                                                                                                                                                                                            <i class="fas fa-download"></i>
+                                                                                                                                                                                                                                                                                                                                                                        </a>` : ''}
                 </div>
             </div>
         </div>
@@ -388,20 +388,29 @@
         </script>
 
         <script>
-            window.addEventListener('scroll', function() {
+            document.addEventListener('DOMContentLoaded', function() {
                 const btn = document.getElementById('galleryToggleBtn');
-                const scrollY = window.scrollY;
 
-                if (scrollY < 30) {
-                    btn.style.position = 'fixed';
-                    btn.style.top = '30px';
-                } else if (scrollY >= 30 && scrollY <= 80) {
-                    btn.style.position = 'sticky';
-                    btn.style.top = '0'; // required for sticky to work
-                } else {
-                    btn.style.position = 'fixed';
-                    btn.style.top = '80px';
-                }
+                // Initially hide the button
+                btn.style.display = 'none';
+
+                window.addEventListener('scroll', function() {
+                    const scrollY = window.scrollY;
+
+                    if (scrollY < 30) {
+                        btn.style.display = 'none'; // Still hidden
+                    } else {
+                        btn.style.display = 'block';
+
+                        if (scrollY >= 30 && scrollY <= 80) {
+                            btn.style.position = 'sticky';
+                            btn.style.top = '0';
+                        } else {
+                            btn.style.position = 'fixed';
+                            btn.style.top = '80px';
+                        }
+                    }
+                });
             });
         </script>
     @endpush
@@ -454,8 +463,8 @@
             }
 
             /* .gallery-btn:hover {
-                                width: auto;
-                            } */
+                                            width: auto;
+                                        } */
 
             .gallery-btn {
                 overflow: hidden;
