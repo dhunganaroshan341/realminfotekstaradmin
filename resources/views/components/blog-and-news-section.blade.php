@@ -44,7 +44,6 @@
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
-                min-height: 3rem;
             }
 
             .card-body .content {
@@ -73,6 +72,12 @@
                 function createCard(post) {
                     const div = document.createElement('div');
                     div.classList.add('card', 'border-0', 'flex-shrink-0', 'blog-card');
+
+                    // Create a temporary div to parse the description and get the text content
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = post.description || '';
+                    const descriptionText = (tempDiv.textContent || tempDiv.innerText || "").substring(0, 100);
+
                     div.innerHTML = `
                         <a href="/blog-detail/${post.id}">
                             <img src="${post.post_images?.[0]?.image ? '/uploads/' + post.post_images[0].image : '{{ asset('assets/images/default-blog.jpg') }}'}"
@@ -80,13 +85,13 @@
                                 style="height: 200px; object-fit: cover;">
                         </a>
                         <div class="card-body p-3 d-flex flex-column">
-                            <h1 class="card-title-blog mt-2 mb-2">
+                            <h4 class="card-title-blog mt-2 mb-2">
                                 <a href="/blog-detail/${post.id}" class="text-decoration-none text-dark">
                                     ${post.title || 'Untitled'}
-                                </a>
-                            </h1>
+                                a>
+                            </h4>
                             <div class="content pt-2 flex-grow-1 d-none d-md-block">
-                                <p class="card-text mb-0">${post.description?.replace(/(<([^>]+)>)/gi, "").substring(0, 100) || ''}</p>
+                                <p class="card-text mb-0">${descriptionText}...</p>
                             </div>
                             <a href="/blog-detail/${post.id}" class="btn btn-primary mt-3 align-self-start">
                                 Read More <i class="fa-solid fa-angle-right"></i>
