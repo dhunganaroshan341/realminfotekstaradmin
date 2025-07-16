@@ -13,50 +13,82 @@ class TeamMemberSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = [
-            [
-                'full_name' => 'Kushal Pokhrel',
-                'email' => 'kushal@gmail.com',
-                'position' => 'Co-Founder / CEO',
-                'order' => 3,
-            ],
-            [
-                'full_name' => 'Biplov Chhettri',
-                'email' => 'biplov@gmail.com',
-                'position' => 'Co-Founder/Md',
-                'order' => 4,
-            ],
-            [
-                'full_name' => 'Subash Duwadi',
-                'email' => 'subash@gmail.com',
-                'position' => 'DevOps Engineer',
-                'order' => 5,
-            ],
-            [
-                'full_name' => 'Kundan Pokhrel',
-                'email' => 'kundan@gmail.com',
-                'position' => 'FullStack Engineer',
-                'order' => 6,
-            ],
-            [
-                'full_name' => 'Suman Chaudhary',
-                'email' => 'suman@gmail.com',
-                'position' => 'SEO Engineer',
-                'order' => 7,
-            ],
-            [
-                'full_name' => 'Anjeela Shrestha',
-                'email' => 'anjeela@gmail.com',
-                'position' => 'Senior Graphic Designer',
-                'order' => 8,
-            ],
-            [
-                'full_name' => 'Roshan Dhungana',
-                'email' => 'roshan@gmail.com',
-                'position' => 'Laravel Developer',
-                'order' => 9,
-            ],
-        ];
+       $users = [
+    [
+        'full_name' => 'Kusal Pokhrel',
+        'email' => 'kusal@gmail.com',
+        'position' => 'CEO',
+        'order' => 1,
+    ],
+    [
+        'full_name' => 'Biplov Chhetri',
+        'email' => 'biplov@gmail.com',
+        'position' => 'Managing Director',
+        'order' => 2,
+    ],
+    [
+        'full_name' => 'Er. Samundra Shrestha',
+        'email' => 'samundra@gmail.com',
+        'position' => 'CTO/Sr. Web Consultant',
+        'order' => 3,
+    ],
+    [
+        'full_name' => 'Suman Chaudhary',
+        'email' => 'suman@gmail.com',
+        'position' => 'SEO & Social Media Handler',
+        'order' => 4,
+    ],
+    [
+        'full_name' => 'Subash Dawadi',
+        'email' => 'subash@gmail.com',
+        'position' => 'DevOps Engineer',
+        'order' => 5,
+    ],
+    [
+        'full_name' => 'Roshan Dhungana',
+        'email' => 'roshan@gmail.com',
+        'position' => 'Web Developer',
+        'order' => 12,
+    ],
+    [
+        'full_name' => 'Angeela Shrestha',
+        'email' => 'angeela@gmail.com',
+        'position' => 'Graphic Designer',
+        'order' => 7,
+    ],
+   [
+    'full_name' => 'Er. Samundra Shrestha',
+    'email' => 'samundra@gmail.com',
+    'position' => 'CTO/Sr. Web Consultant',
+    'order' => 10,
+],
+[
+    'full_name' => 'Ruben Magar',
+    'email' => 'ruben@gmail.com',
+    'position' => 'Graphic Designer',
+    'order' => 11,
+],
+[
+    'full_name' => 'Saroj Dhungana',
+    'email' => 'saroj@gmail.com',
+    'position' => 'Project Lead (Web)',
+    'order' => 9,
+],
+[
+    'full_name' => 'Sabin Karki',
+    'email' => 'sabin@gmail.com',
+    'position' => 'Motion Graphic Designer',
+    'order' => 13,
+],
+[
+    'full_name' => 'Arjun Saud',
+    'email' => 'arjun@gmail.com',
+    'position' => 'Web Designer',
+    'order' => 14,
+],
+
+];
+
 
         foreach ($users as $user) {
             User::updateOrCreate(
