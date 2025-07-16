@@ -25,10 +25,12 @@
                                 News</a></li>
                         <li class="list-inline-item mx-2"><a href="{{ route('contact-us') }}"
                                 class="text-white footer-a">Contact</a></li>
-                        <li class="list-inline-item mx-2"><a href="#" class="text-white footer-a">Terms &
+                        <li class="list-inline-item mx-2"><a href="{{ route('terms') }}"
+                                class="text-white footer-a">Terms &
                                 Conditions</a>
                         </li>
-                        <li class="list-inline-item mx-2"><a href="#" class="text-white footer-a">privacy
+                        <li class="list-inline-item mx-2"><a href="{{ route('privacyPolicy') }}"
+                                class="text-white footer-a">privacy
                                 policy</a>
                         </li>
                     </ul>
