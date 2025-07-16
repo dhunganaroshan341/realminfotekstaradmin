@@ -249,7 +249,7 @@ public function store(StoreServiceQueryRequest $request)
     $pageBanner = PageBanner::where('page', 'blog')->first();
 
 
-    return view('frontend.term', compact('pageBanner'));
+    return view('frontend.terms', compact('pageBanner'));
 }
 
 }
