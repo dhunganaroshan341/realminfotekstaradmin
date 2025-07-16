@@ -13,6 +13,9 @@ $(document).ready(function () {
             {
                 data: "DT_RowIndex",
                 name: "DT_RowIndex",
+            },{
+                data: "order",
+                name: "order",
             },
             {
                 data: "image",
