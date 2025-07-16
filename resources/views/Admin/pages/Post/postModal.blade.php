@@ -23,11 +23,15 @@
                         </div>
                         <div class="col-md-12 mb-4">
                             <label for="post_tags" class="form-label">Tags <span class="text-danger">*</span></label>
-                            <input type="text" id="tagInput" class="form-control"
-                                placeholder="Type and press comma or Enter" />
-                            <div id="tagContainer" class="mt-2 d-flex flex-wrap gap-2"></div>
+                            <div class="input-group mb-2">
+                                <input type="text" id="tagInput" class="form-control" placeholder="Enter tag">
+                                <button type="button" id="addTagButton" class="btn btn-outline-success">Add
+                                    Tag</button>
+                            </div>
+                            <div id="tagContainer" class="d-flex flex-wrap gap-2"></div>
                             <input type="hidden" name="post_tags" id="post_tags" />
                         </div>
+
 
                         <div class="col-md-12 mb-4">
                             @csrf
@@ -138,6 +142,7 @@
         }
     </style>
 @endpush
+
 @push('scripts')
     <script>
         $(document).ready(function() {
@@ -153,19 +158,15 @@
                     </span>
                 `);
                 });
-                $('#post_tags').val(tags.join(',')); // Store in hidden input
+                $('#post_tags').val(tags.join(','));
             }
 
-            $('#tagInput').on('keydown', function(e) {
-                const key = e.key;
-                const value = $(this).val().trim();
-                if ((key === ',' || key === 'Enter') && value !== '') {
-                    e.preventDefault();
-                    if (!tags.includes(value)) {
-                        tags.push(value);
-                        renderTags();
-                    }
-                    $(this).val('');
+            $('#addTagButton').on('click', function() {
+                let value = $('#tagInput').val().trim();
+                if (value && !tags.includes(value)) {
+                    tags.push(value);
+                    renderTags();
+                    $('#tagInput').val('');
                 }
             });
 
@@ -175,7 +176,7 @@
                 renderTags();
             });
 
-            // Optional: clear tags on modal close
+            // Optional: reset tags when modal closes
             $('#formModal').on('hidden.bs.modal', function() {
                 tags = [];
                 renderTags();
