@@ -231,9 +231,9 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">${album.title}</h5>
                     ${hasMedia ? `
-                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
-                                                                                                                                                    <i class="fas fa-download"></i>
-                                                                                                                                                </a>` : ''}
+                                                                                                                                                                                <a href="${downloadLink}" class="btn btn-sm btn-outline-primary" download title="Download PDF">
+                                                                                                                                                                                    <i class="fas fa-download"></i>
+                                                                                                                                                                                </a>` : ''}
                 </div>
             </div>
         </div>
@@ -429,6 +429,15 @@
 
             .list-group-item {
                 background: #ffffff91;
+            }
+
+            .gallery-btn:hover {
+                width: auto;
+            }
+
+            .gallery-btn {
+                overflow: hidden;
+                width: 22px;
             }
         </style>
     @endpush
