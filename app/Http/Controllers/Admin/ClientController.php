@@ -30,12 +30,9 @@ class ClientController extends Controller
                         return ' <td class="py-1"><img src="' . $url . '" width="50" height="50"/></td>';
                     }
                 })
-                ->addColumn('status', function ($status) {
-                    $checked = $status->status == 'active' ? 'checked' : '';
-                    return '<div class="form-check form-switch">
-                    <input class="form-check-input statusIdData d-flex mx-auto" type="checkbox" data-id="' . $status->id . '" role="switch" id="flexSwitchCheckChecked" ' . $checked . '>
-                    </div>';
-                })
+                 ->addColumn('status', fn($status) => '<div class="form-check form-switch">
+                                                        <input class="form-check-input statusIdData d-flex mx-auto" type="checkbox" data-id="' . $status->id . '" role="switch" id="flexSwitchCheckChecked" ' . ($status->status == 'Active' ? 'checked' : '') . '>
+                                                      </div>')
                 ->addColumn('action', function ($data) {
                     return view('Admin.Button.button', compact('data'));
                 })
