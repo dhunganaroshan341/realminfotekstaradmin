@@ -79,8 +79,8 @@
                                     ${post.title || 'Untitled'}
                                 </a>
                             </h1>
-                            <div class="content pt-2 flex-grow-1">
-                                <p class="card-text mb-0">${post.description?.replace(/(<([^>]+)>)/gi, "").substring(0, 100) || ''}...</p>
+                            <div class="content pt-2 flex-grow-1 d-none d-md-block">
+                                <p class="card-text mb-0 ">${post.description?.replace(/(<([^>]+)>)/gi, "").substring(0, 100) || ''}...</p>
                             </div>
                             <a href="/blog-detail/${post.id}" class="btn btn-primary mt-4 align-self-start">
                                 Read More <i class="fa-solid fa-angle-right"></i>
