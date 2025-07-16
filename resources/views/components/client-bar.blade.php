@@ -43,7 +43,7 @@
 
         .customer-logos .logo-img {
             max-height: 80px;
-            width: auto;
+            max-width: 150px;
             object-fit: contain;
             margin-bottom: 8px;
             display: block;
