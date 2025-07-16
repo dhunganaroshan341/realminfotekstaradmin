@@ -225,6 +225,8 @@ Route::get('/blog/detail/{id}', [UserFrontendController::class, 'blogdetail'])->
 Route::get('/blog', [UserFrontendController::class, 'blog'])->name('blog');
 Route::get('/blog/category/{category_id}', [UserFrontendController::class, 'blogsByCategory'])->name('blogsByCategory');
 Route::get('/search-posts', [UserFrontendController::class, 'searchBlogs'])->name('search.posts');
+Route::get('/terms-and-conditions', [UserFrontendController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy', [UserFrontendController::class, 'privacyPolicy'])->name('privacyPolicy');
 
 // Route::get('/post', [UserFrontendController::class, 'post'])->name('post');
 // Route::get('/post/{id}', [UserFrontendController::class, 'singlePost'])->name('single.post');

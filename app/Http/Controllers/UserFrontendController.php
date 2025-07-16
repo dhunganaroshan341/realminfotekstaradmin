@@ -236,4 +236,20 @@ public function store(StoreServiceQueryRequest $request)
 }
 
 
+    public function privacyPolicy()
+{
+    // $content_title = "Blogs";
+    $pageBanner = PageBanner::where('page', 'blog')->first();
+
+
+    return view('frontend.privacy', compact(' pageBanner'));
+} public function terms()
+{
+    // $content_title = "Blogs";
+    $pageBanner = PageBanner::where('page', 'blog')->first();
+
+
+    return view('frontend.term', compact(' pageBanner'));
+}
+
 }

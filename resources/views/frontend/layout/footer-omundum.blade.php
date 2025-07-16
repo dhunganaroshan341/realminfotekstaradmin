@@ -28,6 +28,9 @@
                         <li class="list-inline-item mx-2"><a href="#" class="text-white footer-a">Terms &
                                 Conditions</a>
                         </li>
+                        <li class="list-inline-item mx-2"><a href="#" class="text-white footer-a">privacy
+                                policy</a>
+                        </li>
                     </ul>
                 </div>
             </div>
