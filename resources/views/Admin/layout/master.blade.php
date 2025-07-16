@@ -3,6 +3,7 @@
 
 <header>
     @include('Admin.layout.header')
+    @stack('styles')
 
 </header>
 
@@ -212,6 +213,7 @@
     </div>
     <!-- container-scroller -->
     @include('Admin.layout.footer-script')
+    @stack('scripts')
 
 </body>
 
