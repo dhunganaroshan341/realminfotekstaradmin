@@ -85,7 +85,7 @@ $(document).ready(function () {
     function addLatestOrderToTheInput() {
     $.ajax({
         type: "get",
-        url: "/admin/user/latest-order",
+        url: "/admin/testimonial/latest-order",
         success: function (response) {
             if (response.success) {
                 $("#order").val(response.message ); // Set the order field to the next available number
@@ -103,7 +103,7 @@ $(document).ready(function () {
         $(".updateBtn").hide();
         $(".form").attr("id", "addForm");
         $("#addForm")[0].reset();
-          addLatestOrderToTheInput(); // Add latest order to the input field
+        addLatestOrderToTheInput(); // Add latest order to the input field
     });
 
     $(document).off("submit", "#addForm").on("submit", "#addForm", function (event) {

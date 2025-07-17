@@ -76,7 +76,7 @@ $(document).ready(function () {
 function addLatestOrderToTheInput() {
     $.ajax({
         type: "get",
-        url: "/admin/testimonial/latest-order",
+        url: "/admin/service/latest-order",
         success: function (response) {
             if (response.success) {
                 $("#order").val(response.message ); // Set the order field to the next available number
