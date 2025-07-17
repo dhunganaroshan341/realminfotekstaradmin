@@ -3,6 +3,11 @@
 
 <header>
     @include('Admin.layout.header')
+    <style>
+        #userImage img {
+            object-fit: contain !important;
+        }
+    </style>
     @stack('styles')
 
 </header>
