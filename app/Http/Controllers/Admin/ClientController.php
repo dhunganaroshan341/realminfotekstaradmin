@@ -86,6 +86,7 @@ class ClientController extends Controller
                 $user->image = $path;
             }
             $user->name = $request->name;
+            $user->order = $request->order;
             $user->email = $request->email;
             $user->address = $request->address;
             $user->contact = $request->contact;

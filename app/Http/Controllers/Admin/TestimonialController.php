@@ -17,7 +17,7 @@ class TestimonialController extends Controller
     protected $latestOrder = 1;
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         $this->latestOrder = Client::max('order') ?? 0; // Get the maximum order value
         $this->latestOrder++; // Increment it for the next user
     }
@@ -92,7 +92,7 @@ class TestimonialController extends Controller
     {
         DB::beginTransaction();
         try {
-            $data = $request->only(['name', 'designation', 'address', 'description']);
+            $data = $request->only(['name', 'designation', 'address', 'description','order']);
             if ($request->hasFile('image')) {
                 $path = '/images/testimonial/';
                 $imagename = time() . '.' . $request->image->extension();
@@ -127,6 +127,7 @@ class TestimonialController extends Controller
             $testimonial->name = $request->input('name');
             $testimonial->designation = $request->input('designation');
             $testimonial->description = $request->input('description');
+            $testimonial->order = $request->input('order');
             if ($request->hasFile('image')) {
                 $filepath = '/images/testimonial/';
                 if ($testimonial->image !== null) {

@@ -106,7 +106,7 @@ class ServiceController extends Controller
     public function store(ServiceRequest $request)
     {
         try {
-            $data = $request->only(['name', 'short_desc', 'description']);
+            $data = $request->only(['name', 'short_desc', 'description','order']);
             if ($request->hasFile('image')) {
                 $path = '/images/service/';
                 $imagename = time() . '.' . $request->image->extension();
