@@ -26,6 +26,7 @@ class TestimonalRequest extends FormRequest
             'address'=>'required',
             'designation'=>'required',
             'image'=>$this->route('id') ? 'nullable|image' :'required|image',
+              'order' => 'nullable|integer|min:0', // Non-negative integer validation
         ];
     }
 

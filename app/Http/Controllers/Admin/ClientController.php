@@ -6,6 +6,7 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientRequest;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -14,6 +15,14 @@ class ClientController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    protected $latestOrder = 1;
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->latestOrder = Client::max('order') ?? 0; // Get the maximum order value
+        $this->latestOrder++; // Increment it for the next user
+    }
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -167,6 +176,15 @@ class ClientController extends Controller
             }
             $user->delete();
             return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+    public function latestOrder()
+    {
+        try {
+
+            return response()->json(data: ['success' => true, 'message' => $this->latestOrder]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }

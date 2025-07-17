@@ -67,6 +67,10 @@ Route::middleware('isLogin')->group(function () {
     });
 });
 Route::get('/user/latest-order', [UserController::class, 'latestOrder'])->name('user.latest-order');
+Route::get('/client/latest-order', [ClientController::class, 'latestOrder'])->name('client.latest-order');
+Route::get('/service/latest-order', [ServiceController::class, 'latestOrder'])->name('service.latest-order');
+Route::get('/testimonial/latest-order', [TestimonialController::class, 'latestOrder'])->name('testimonial.latest-order');
+
 
 // User
 

@@ -10,7 +10,8 @@
                 <div class="modal-body">
                     <p id="validationErrors" class="alert alert-danger d-none"></p>
                     <div class="row">
-                        <span class="mt-2 mb-4"><span class="text-danger">Note:</span> (<span class="text-danger">*</span>) symbol represent that the field is required</span>
+                        <span class="mt-2 mb-4"><span class="text-danger">Note:</span> (<span
+                                class="text-danger">*</span>) symbol represent that the field is required</span>
                         <div class="col-md-6">
                             @csrf
                             <input type="hidden" name="id" id="id">
@@ -18,13 +19,19 @@
                             <input type="text" name="name" id="name" class="form-control" placeholder=""
                                 aria-describedby="helpId" />
                         </div>
+                        <div class="col-md-6">
+                            <label for="order" class="form-label">Order<span class="text-danger">*</span></label>
+                            <input type="number" name="order" id="order" class="form-control"
+                                placeholder="Enter display order" aria-describedby="helpId" />
+                        </div>
 
                         <div class="col-md-6">
-                            <label for="" class="form-label">Short Description<span class="text-danger">*</span></label>
+                            <label for="" class="form-label">Short Description<span
+                                    class="text-danger">*</span></label>
                             <input type="text" name="short_desc" id="short_desc" class="form-control" placeholder=""
                                 aria-describedby="helpId" />
                         </div>
-                         <div class="col-md-6">
+                        <div class="col-md-6">
                             <label for="" class="form-label">Image<span class="text-danger">*</span></label>
                             <input type="file" name="image" id="image" class="form-control" placeholder=""
                                 aria-describedby="helpId" />
@@ -32,7 +39,8 @@
                         </div>
 
                         <div class="col-md-12 mt-4 mb-2">
-                            <label for="" class="form-label">Description<span class="text-danger">*</span></label>
+                            <label for="" class="form-label">Description<span
+                                    class="text-danger">*</span></label>
                             <textarea class="form-control summernote" id="description" name="description" rows="4"></textarea>
                         </div>
 

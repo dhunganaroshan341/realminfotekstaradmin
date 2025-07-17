@@ -18,6 +18,13 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      */
+    protected $latestOrder = 1;
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->latestOrder = Service::max('order') ?? 0; // Get the maximum order value
+        $this->latestOrder++; // Increment it for the next user
+    }
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -247,6 +254,14 @@ public function storeServiceQuery(Request $request)
         ]);
     }
 }
+public function latestOrder()
+    {
+        try {
 
+            return response()->json(data: ['success' => true, 'message' => $this->latestOrder]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
 
 }

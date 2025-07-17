@@ -9,6 +9,7 @@
                 <thead>
                     <tr>
                         <th scope="col">S.N</th>
+                        <th> Order </th>
                         <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Short Description</th>
@@ -20,5 +21,4 @@
         </div>
 
     </div>
-
 @endsection

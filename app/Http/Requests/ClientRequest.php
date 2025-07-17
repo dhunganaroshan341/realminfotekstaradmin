@@ -28,6 +28,7 @@ class ClientRequest extends FormRequest
             'address'=>'required',
             'contact'=>'required|min:7',
             'image'=>'image|mimes:png,jpg,jpeg,webp',
+              'order' => 'nullable|integer|min:0', // Non-negative integer validation
         ];
     }
 

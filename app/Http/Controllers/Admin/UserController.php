@@ -26,7 +26,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::orderBy('role', 'asc')->get();
+            $data = User::orderBy('order', 'asc')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('image', function ($item) {

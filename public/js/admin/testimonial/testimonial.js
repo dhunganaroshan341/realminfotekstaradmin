@@ -14,7 +14,11 @@ $(document).ready(function () {
             name: "DT_RowIndex",
             orderable: false,
             searchable: false
-        }, {
+        },  {
+                data: "order",
+                name: "order",
+            },
+        {
             data: "image",
             name: "image",
             orderable: false,
@@ -78,6 +82,20 @@ $(document).ready(function () {
         $("#validationErrors").addClass("d-none").html("");
         $("#testimonialDescription").summernote("code", "");
     }
+    function addLatestOrderToTheInput() {
+    $.ajax({
+        type: "get",
+        url: "/admin/user/latest-order",
+        success: function (response) {
+            if (response.success) {
+                $("#order").val(response.message ); // Set the order field to the next available number
+            }
+        },
+        error: function (xhr) {
+            console.error("Error fetching latest order:", xhr);
+        },
+    });
+}
     $(document).on("click", ".addTestimonialBtn", function () {
         clearModal();
         $("#formModal").modal("show");
@@ -85,6 +103,7 @@ $(document).ready(function () {
         $(".updateBtn").hide();
         $(".form").attr("id", "addForm");
         $("#addForm")[0].reset();
+          addLatestOrderToTheInput(); // Add latest order to the input field
     });
 
     $(document).off("submit", "#addForm").on("submit", "#addForm", function (event) {
@@ -157,6 +176,7 @@ $(document).ready(function () {
                 $("#address").val(response.message.address);
                 $("#testimonialDescription").summernote('code', response.message
                     .description);
+                       $("#order").val(response.message.order);
                 if (response.message.image != null) {
                     $("#testimonialImage").html(
                         `<img src="/uploads/${response.message.image}"

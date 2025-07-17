@@ -43,7 +43,20 @@ $(document).ready(function () {
         $('#tagInput').val('');
     });
 
-
+function addLatestOrderToTheInput() {
+    $.ajax({
+        type: "get",
+        url: "/admin/testimonial/latest-order",
+        success: function (response) {
+            if (response.success) {
+                $("#order").val(response.message ); // Set the order field to the next available number
+            }
+        },
+        error: function (xhr) {
+            console.error("Error fetching latest order:", xhr);
+        },
+    });
+}
 
         // Data Table
         var table = $("#show-client-data").DataTable({
@@ -54,7 +67,10 @@ $(document).ready(function () {
                 {
                     data: "DT_RowIndex",
                     name: "DT_RowIndex",
-                },
+                }, {
+                data: "order",
+                name: "order",
+            },
                 {
                     data: "image",
                     name: "image",
@@ -107,6 +123,7 @@ $(document).ready(function () {
             $("#storeForm")[0].reset();
 
             $("#formModal").modal("show");
+            addLatestOrderToTheInput();
         });
 
         // Add and Store User Data
@@ -182,6 +199,7 @@ $(document).ready(function () {
                     $("#address").val(response.message.address);
                     $("#contact").val(response.message.contact);
                     $("#description").summernote("code", response.message.description);
+                       $("#order").val(response.message.order);
 
                     $("#userImage").html(
                         `<img src="/uploads/${response.message.image}" alt="User Image" width="100" height="100">`

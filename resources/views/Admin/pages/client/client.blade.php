@@ -15,6 +15,7 @@
                             <thead>
                                 <tr>
                                     <th> S.N </th>
+                                    <th> Order </th>
                                     <th> Image </th>
                                     <th> Client Name </th>
                                     <th> Email </th>

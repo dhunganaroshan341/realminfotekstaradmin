@@ -24,6 +24,7 @@ class ServiceRequest extends FormRequest
         return [
             'name'=>'required|min:3',
             'short_desc'=>'required',
+              'order' => 'nullable|integer|min:0', // Non-negative integer validation
         ];
     }
 
