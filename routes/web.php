@@ -66,10 +66,7 @@ Route::middleware('isLogin')->group(function () {
         return redirect()->route('first.index');
     });
 });
-Route::get('/user/latest-order', [UserController::class, 'latestOrder'])->name('user.latest-order');
-Route::get('/client/latest-order', [ClientController::class, 'latestOrder'])->name('client.latest-order');
-Route::get('/service/latest-order', [ServiceController::class, 'latestOrder'])->name('service.latest-order');
-Route::get('/testimonial/latest-order', [TestimonialController::class, 'latestOrder'])->name('testimonial.latest-order');
+
 
 
 // User
@@ -182,6 +179,11 @@ Route::get('/get-call-to-action-data', [CallToActionController::class, 'all'])->
 // page Banner
     Route::resource('page-banner', PageBannerController::class);
     Route::put('/page-banner/{id}/status', [PageBannerController::class, 'statusToggle'])->name('page-banner.status');
+
+    Route::get('/user/latest-order', [UserController::class, 'latestOrder'])->name('user.latest-order');
+Route::get('/client/latest-order', [ClientController::class, 'latestOrder'])->name('client.latest-order');
+Route::get('/service/latest-order', [ServiceController::class, 'latestOrder'])->name('service.latest-order');
+Route::get('/testimonial/latest-order', [TestimonialController::class, 'latestOrder'])->name('testimonial.latest-order');
 
 });
 Route::prefix('/admin/gallery-media')->name('admin.gallery-media.')->group(function () {

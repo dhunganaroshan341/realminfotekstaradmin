@@ -26,25 +26,41 @@ class UserFrontendController extends Controller
 {
 
     public function home()
-    {
-        $frontend = Setting::first();
-        $homeslides = HomeSlide::where('status', 'Active')->get();
-        // dd($homeslides);
-        $testimonials = Testimonial::where('status', 'Active')->get();
-        $notice = Notice::where('status', 'Active')->first();
-        $clients = \App\Models\Client::with('albums')->get();;
-        // dd($notice);
-        $services = Service::where('status', 1)->get();
-        $content_title="Home";
-        $cta = CallToAction::where('page', 'home')->first();
- $posts = Post::with('category', 'postImages')
-            ->latest()
-            ->take(6) // or ->limit(6)
-            ->get();
+{
+    $frontend = Setting::first();
 
-        return view('frontend.home', compact([ 'posts','cta','services','frontend', 'homeslides', 'testimonials', 'notice','content_title','clients']));
+    $homeslides = HomeSlide::where('status', 'Active')->get();
 
-    }
+    $testimonials = Testimonial::where('status', 'Active')
+        ->orderByRaw('ISNULL(`order`), `order` ASC, `id` ASC')
+        ->get();
+
+    $notice = Notice::where('status', 'Active')->first();
+
+    $clients = \App\Models\Client::with('albums')
+        ->orderByRaw('ISNULL(`order`), `order` ASC, `id` ASC')
+        ->get();
+
+    $services = Service::where('status', 1)
+        ->orderByRaw('ISNULL(`order`), `order` ASC, `id` ASC')
+        ->get();
+
+    $content_title = "Home";
+
+    $cta = CallToAction::where('page', 'home')->first();
+
+    $posts = Post::with('category', 'postImages')
+        ->latest()
+        ->take(6)
+        ->get();
+
+    return view('frontend.home', compact([
+        'posts', 'cta', 'services', 'frontend',
+        'homeslides', 'testimonials', 'notice',
+        'content_title', 'clients'
+    ]));
+}
+
     public function aboutUs()
 {
     // Fetch users whose role is not 'Admin'
