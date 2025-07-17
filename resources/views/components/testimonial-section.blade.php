@@ -67,12 +67,12 @@
 
             <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
                 data-bs-slide="prev">
-                <span class="carousel-control-prev-icon text-realm-blue" aria-hidden="true"></span>
+                <span class="carousel-control-prev-icon text-dark" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
                 data-bs-slide="next">
-                <span class="carousel-control-next-icon text-realm-blue" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
@@ -114,6 +114,7 @@
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
             background-size: 100% 100%;
+
         }
     </style>
 @endpush
