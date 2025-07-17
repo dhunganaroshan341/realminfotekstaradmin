@@ -31,7 +31,7 @@ class UserController extends Controller
                 ->addIndexColumn()
                 ->addColumn('image', function ($item) {
                     if ($item->image != null && $item->role == 'Admin') {
-                        $url = asset('storage/' . $item->image); // Get image URL
+                        $url = asset('uploads/' . $item->image); // Get image URL
                         $defaultImage = asset('defaultImage/defaultimage.webp');
                         return ' <td class="py-1"><img src="' . $url . '" width="50" height="50" onerror="this.src=\'' . $defaultImage . '\"/></td>';
                     } elseif (($item->image != null && $item->role == 'User')) {
