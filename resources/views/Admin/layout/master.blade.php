@@ -98,7 +98,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.page-banner.index') }}">
-                                        <i class="mdi mdi-page-layout-header menu-icon"></i> Page Banner
+                                        <i class="mdi mdi-page-layout-header menu-icon"></i> BreadCrumb
                                     </a>
                                 </li>
                                 <li class="nav-item">

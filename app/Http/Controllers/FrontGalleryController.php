@@ -70,14 +70,14 @@ public function gallery(Request $request)
         $albumsWithClients = GalleryAlbum::has('client')
             ->when($type, fn($q) => $q->where('type', $type))
             ->with(['galleryMedia', 'client'])
-            ->get();
+            ->paginate(10);
 
         $clientsWithAlbums = $albumsWithClients->groupBy(fn($album) => $album->client->id);
 
         $albumsWithNoClients = GalleryAlbum::doesntHave('client')
             ->when($type, fn($q) => $q->where('type', $type))
             ->with('galleryMedia')
-            ->get();
+            ->paginate(10);
 
         $clients = Client::with('albums')->get();
 
