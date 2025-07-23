@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Admin\Controllers\BannerSliderVideoController;
 use App\Http\Controllers\Admin\CallToActionController;
 use App\Http\Controllers\Admin\ServiceQueryController;
 use App\Models\User;
@@ -91,7 +92,9 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/home-slide/update/{id}', [HomeSliderController::class, 'update'])->name('admin.homeslide.update');
     Route::get('/admin/home-slide/delete/{id}', [HomeSliderController::class, 'destory'])->name('admin.homeslide.destory');
     Route::get('/admin/home-slide/status/{id}', [HomeSliderController::class, 'statusToggle'])->name('admin.homeslide.status');
-
+    Route::get('/admin/banner-video', [BannerSliderVideoController::class, 'index'])->name('admin.banner.video.index');
+    Route::post('/admin/banner-video/upload', [BannerSliderVideoController::class, 'upload'])->name('admin.banner.video.upload');
+    Route::post('/admin/banner-video/save', [BannerSliderVideoController::class, 'save'])->name('admin.banner.video.save');
 
     // FrontEnd
     Route::get('/admin/front-end', [AdminFrontendController::class, 'index'])->name('admin.frontend');
