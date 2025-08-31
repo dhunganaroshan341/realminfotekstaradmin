@@ -1,97 +1,47 @@
-@php
-    $activeMenuServiceItems = getActiveStatusServices();
-@endphp
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
-<header>
-    {{-- Top Bar --}}
-    <div class="header-top-bar py-2 bg-realm-blue text-white">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-md-6 text-md-start text-center mb-2 mb-md-0">
-                    <a href="mailto:{{ $email }}"
-                        class=" email-header text-realm-yellow text-decoration-none me-3">
-                        <i class="bi bi-envelope-fill me-1"></i>{{ $email }}
-                    </a>
-                </div>
-                <div class="col-md-6 text-md-end text-center">
-                    <a href="tel:{{ $contact }}" class="phone-header text-realm-yellow text-decoration-none">
-                        <i class="bi bi-telephone-fill me-1"></i><span class=""> +977 {{ $contact }}</span>
-                    </a>
-                    <a href="tel:{{ $contact_2 }}" class="phone-header text-realm-yellow text-decoration-none">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Kelly</h1>
+      </a>
 
-                        | <span class="">{{ $contact_2 }}</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Main Navbar --}}
-    {{-- @include('frontend.layout.working-navbar') --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('first.index') }}">
-                @if ($logo)
-                    <img src="{{ asset('uploads/' . $logo) }}" alt="Logo" class="img-fluid">
-                @else
-                    <img src="{{ asset('defaultImage/defaultlogo.png') }}" alt="Default Logo" class="img-fluid">
-                @endif
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmain"
-                aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarmain">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item {{ request()->routeIs('first.index') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('first.index') }}">Home</a>
-                    </li>
-                    <li class="nav-item {{ request()->routeIs('about-us') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('about-us') }}">About</a>
-                    </li>
-                    <li class="nav-item dropdown {{ request()->is('service*') ? 'active' : '' }}">
-                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Services
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                            <li><a href="{{ route('service') }}" class="dropdown-item">All Services</a></li>
-                            @foreach ($activeMenuServiceItems as $service)
-                                <li>
-                                    <a class="dropdown-item {{ request()->is('service/detail/' . $service->id) ? 'active' : '' }}"
-                                        href="{{ route('service-detail', $service->id) }}">
-                                        {{ $service->name }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li class="nav-item {{ request()->is('portfolio*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('gallery') }}">Portfolio</a>
-                    </li>
-                    <li class="nav-item {{ request()->is('blog*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('blog') }}">Blog</a>
-                    </li>
-                    <li class="nav-item {{ request()->is('contact-us*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('contact-us') }}">Contact</a>
-                    </li>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-</header>
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
 
-{{-- If you want breadcrumb, you can place it like this after the header --}}
-{{--
-<div class="container mt-3">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('first.index') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Current Page</li>
-        </ol>
-    </nav>
-</div>
---}}
+    </div>
+  </header>
