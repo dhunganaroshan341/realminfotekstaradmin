@@ -356,26 +356,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function playSong(index) {
 
-        if (!songs[index] || !youtubePlayer) {
-            return;
-        }
-
-        currentIndex = index;
-
-        const song = songs[index];
-
-        youtubePlayer.loadVideoById(song.youtube_id);
-
-        document.getElementById('current-song-title').textContent =
-            song.title;
-
-        document.getElementById('current-song-artist').textContent =
-            song.artist;
-
-        updatePlayButton(true);
-
-        highlightSong(index);
+    if (!songs[index] || !youtubePlayer) {
+        return;
     }
+
+    currentIndex = index;
+
+    const song = songs[index];
+
+    youtubePlayer.loadVideoById({
+        videoId: song.youtube_id,
+        startSeconds: 0
+    });
+
+    document.getElementById('current-song-title').textContent =
+        song.title;
+
+    document.getElementById('current-song-artist').textContent =
+        song.artist;
+
+    highlightSong(index);
+}
 
 
     /*
@@ -384,29 +385,42 @@ document.addEventListener('DOMContentLoaded', () => {
     |--------------------------------------------------------------------------
     */
 
-    function handlePlayerStateChange(event) {
+ function handlePlayerStateChange(event) {
 
-        if (event.data === YT.PlayerState.PLAYING) {
+    switch (event.data) {
+
+        case YT.PlayerState.PLAYING:
 
             updatePlayButton(true);
 
-        }
+            break;
 
 
-        if (event.data === YT.PlayerState.PAUSED) {
+        case YT.PlayerState.PAUSED:
 
             updatePlayButton(false);
 
-        }
+            break;
 
 
-        if (event.data === YT.PlayerState.ENDED) {
+        case YT.PlayerState.ENDED:
 
             playNext();
 
-        }
+            break;
+
+
+        case YT.PlayerState.CUED:
+
+            console.log('Song loaded:', songs[currentIndex].title);
+
+            youtubePlayer.playVideo();
+
+            break;
 
     }
+
+}
 
 
     /*
@@ -415,16 +429,19 @@ document.addEventListener('DOMContentLoaded', () => {
     |--------------------------------------------------------------------------
     */
 
-    function playNext() {
+function playNext() {
 
-        let nextIndex = currentIndex + 1;
+    const nextIndex =
+        (currentIndex + 1) % songs.length;
 
-        if (nextIndex >= songs.length) {
-            nextIndex = 0;
-        }
+    console.log(
+        'Playing next:',
+        songs[nextIndex].title,
+        songs[nextIndex].youtube_id
+    );
 
-        playSong(nextIndex);
-    }
+    playSong(nextIndex);
+}
 
 
     /*

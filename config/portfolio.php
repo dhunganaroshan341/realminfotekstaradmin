@@ -22,26 +22,26 @@ return [
 
     ],
 
-    'songs' => [
+   'songs' => [
 
-        [
-            'title' => 'New Religion',
-            'artist' => 'BeBe RExa',
-            'youtube_id' => 'MBnnWS1zcZI',
-        ],
-
-        [
-            'title' => 'Dracula',
-            'artist' => 'Jennie and Tame Impala',
-            'youtube_id' => 'XD00TJ-6WSw',
-        ],
-
-        [
-            'title' => 'Wake me Up ',
-            'artist' => 'Avici',
-            'youtube_id' => '5y_KJAg8bHI',
-        ],
-
+    [
+        'title' => 'New Religion',
+        'artist' => 'Bebe Rexha',
+        'youtube_id' => 'MBnnWS1zcZI',
     ],
+
+    [
+        'title' => 'Dracula',
+        'artist' => 'Jennie & Tame Impala',
+        'youtube_id' => 'XD00TJ-6WSw',
+    ],
+
+    [
+        'title' => 'Wake Me Up',
+        'artist' => 'Avicii',
+        'youtube_id' => '5y_KJAg8bHI',
+    ],
+
+],
 
 ];
