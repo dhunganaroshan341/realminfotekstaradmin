@@ -32,7 +32,7 @@ class AuthController extends Controller
     }
     public function login()
     {
-        return view('Auth.login');
+        return view('Admin.auth.login');
     }
 
     public function storeLogin(AuthRequest $authRequest)

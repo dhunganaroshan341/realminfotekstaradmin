@@ -14,7 +14,6 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\NoticeController;
-use App\Http\Controllers\UserFrontendController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
@@ -27,6 +26,8 @@ use App\Http\Controllers\Admin\GalleryAlbumController;
 use App\Http\Controllers\Admin\GalleryMediaController;
 use App\Http\Controllers\Admin\PageBannerController;
 use App\Http\Controllers\FrontGalleryController;
+use App\Http\Controllers\UserFrontendController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -115,3 +116,15 @@ Route::get('gallery2',function(){
 Route::get('frontend-tailwind/{page}',function($page){
     return view('frontend-tailwind.'.$page);
 })->name('tailwind');
+
+
+
+Route::get('/projects', [UserFrontendController::class, 'projects'])
+    ->name('projects.index');
+
+
+    Route::get('/writing', [UserFrontendController::class, 'writing'])
+    ->name('writing.index');
+
+Route::get('/writing/{post}', [UserFrontendController::class, 'writingDetail'])
+    ->name('writing.show');

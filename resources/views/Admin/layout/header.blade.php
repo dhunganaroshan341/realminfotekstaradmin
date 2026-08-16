@@ -4,7 +4,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Realm Info Tech | Content Management System </title>
+    <title>Roshan Dhungana | CMS </title>
 
 
     <!-- jQuery -->

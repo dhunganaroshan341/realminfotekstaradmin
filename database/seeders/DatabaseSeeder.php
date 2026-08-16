@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             // HomeSlideSeeder::class,
             // TestimonialSeeder::class,
             // ServiceQuerySeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }

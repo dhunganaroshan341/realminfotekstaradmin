@@ -19,7 +19,7 @@ class CallToActionSeeder extends Seeder
                 ['page' => $page],
                 [
                     'title' => 'Do you need help?',
-                    'description' => 'Realm Infotech Nepal is dedicated to providing exceptional IT solutions including web development, digital marketing, and software services. Contact us to elevate your business with innovative technology and expert support.',
+                    'description' => 'Roshan Dhungana is dedicated to providing exceptional IT solutions including web development, digital marketing, and software services. Contact us to elevate your business with innovative technology and expert support.',
                     'image' => 'hero_cta.jpg',
                     'link' => 'contact-us',
                 ]

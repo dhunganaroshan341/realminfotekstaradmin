@@ -16,6 +16,7 @@ use App\Models\Post;
 use App\Models\HomeSlide;
 use App\Models\Notice;
 use App\Models\PageBanner;
+use App\Models\Project;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Testimonial;
@@ -28,7 +29,9 @@ class UserFrontendController extends Controller
     public function home()
 {
     $frontend = Setting::first();
-
+    $projects = Project::all();
+    $openSource = config('portfolio.open_source');
+    $pageBanner =  PageBanner::where('page','home')->first();
     $homeslides = HomeSlide::where('status', 'Active')->get();
 
     $testimonials = Testimonial::where('status', 'Active')
@@ -36,7 +39,7 @@ class UserFrontendController extends Controller
         ->get();
 
     $notice = Notice::where('status', 'Active')->first();
-
+ $setting = Setting::first();
     $clients = \App\Models\Client::with('albums')
         ->orderByRaw('ISNULL(`order`), `order` ASC, `id` ASC')
         ->get();
@@ -54,10 +57,10 @@ class UserFrontendController extends Controller
         ->take(6)
         ->get();
 
-    return view('frontend.home', compact([
+    return view('frontend.pages.home', compact([
         'posts', 'cta', 'services', 'frontend',
         'homeslides', 'testimonials', 'notice',
-        'content_title', 'clients'
+        'content_title', 'clients','pageBanner','setting','projects','openSource'
     ]));
 }
 
@@ -77,7 +80,7 @@ class UserFrontendController extends Controller
     $pageDescriptionImage = $frontend->about_image;
     $content_title = "About Us";
 
-    return view('frontend.about', compact(
+    return view('frontend.pages.about', compact(
         'pageDescription',
         'pageDescriptionImage',
         'cta',
@@ -96,7 +99,7 @@ class UserFrontendController extends Controller
         $content_title="Services";
         $pageBanner = PageBanner::where('page','services')->first();
 
-        return view('frontend.services', compact('services','content_title','pageBanner'));
+        return view('frontend.pages.services', compact('services','content_title','pageBanner'));
     }
 
     public function servicedetail($id)
@@ -113,7 +116,7 @@ class UserFrontendController extends Controller
         }
         $pageBanner = PageBanner::where('page','services')->first();
 
-        return view('frontend.service-detail', compact('serviceDetail', 'posts','content_title','pageBanner','otherServices'));
+        return view('frontend.pages.service-detail', compact('serviceDetail', 'posts','content_title','pageBanner','otherServices'));
     }
 
     public function blog()
@@ -124,7 +127,7 @@ class UserFrontendController extends Controller
     // 6 posts per page (you can change the number)
     $posts = Post::with('postImages')->where('status', 'Active')->paginate(6);
 
-    return view('frontend.blog', compact('posts', 'content_title', 'pageBanner'));
+    return view('frontend.pages.blog', compact('posts', 'content_title', 'pageBanner'));
 }
   public function blogsByCategory($category_id)
 {
@@ -137,7 +140,7 @@ class UserFrontendController extends Controller
     // 6 posts per page (you can change the number)
     $posts = Post::with('postImages')->where('status', 'Active')->where('category_id',$category_id)->paginate(6);
 
-    return view('frontend.blog', compact('posts', 'category_title','content_title', 'pageBanner'));
+    return view('frontend.pages.blog', compact('posts', 'category_title','content_title', 'pageBanner'));
 }
 
 
@@ -197,7 +200,7 @@ $processedDescription  = $detail->title;
         $processedDescription .= ' → ' . Str::words(strip_tags($pageBanner->title), 5, '...');
     }
 
-    return view('frontend.blog-detail-sean', compact(
+    return view('frontend.pages.blog-detail-sean', compact(
         'detail',
         'images',
         'post',
@@ -229,7 +232,7 @@ public function searchBlogs(Request $request)
         $pageBanner = PageBanner::where('page','contact')->first();
         $services = Service::all();
 
-        return view('frontend.contact',compact('content_title','pageBanner','services'));
+        return view('frontend.pages.contact',compact('content_title','pageBanner','services'));
     }
 
     public function storeContactUs(ContactRequest $request)
@@ -261,14 +264,60 @@ public function store(StoreServiceQueryRequest $request)
     $pageBanner = PageBanner::where('page', 'blog')->first();
 
 
-    return view('frontend.privacy', compact('pageBanner'));
+    return view('frontend.pages.privacy', compact('pageBanner'));
 } public function terms()
 {
     // $content_title = "Blogs";
     $pageBanner = PageBanner::where('page', 'blog')->first();
 
 
-    return view('frontend.terms', compact('pageBanner'));
+    return view('frontend.pages.terms', compact('pageBanner'));
+}
+
+public function projects()
+{
+    $projects = Project::where('is_active', true)
+        ->orderBy('order')
+        ->get();
+
+    $content_title = 'Projects';
+
+    $pageBanner = PageBanner::where('page', 'projects')
+        ->where('section', 'banner')
+        ->where('status', 'Active')
+        ->first();
+
+    return view('frontend.pages.projects', compact(
+        'projects',
+        'content_title',
+        'pageBanner'
+    ));
+}
+
+public function writing()
+{
+    $posts = Post::with(['category', 'postImages'])
+        ->where('status', 'Active')
+        ->latest()
+        ->paginate(8);
+
+    $featuredPost = Post::with(['category', 'postImages'])
+        ->where('status', 'Active')
+        ->latest()
+        ->first();
+
+    $categories = Category::where('status', 'Active')
+        ->withCount('post')
+        ->get();
+
+    $content_title = 'Writing';
+
+    return view('frontend.pages.writing', compact(
+        'posts',
+        'featuredPost',
+        'categories',
+        'content_title'
+    ));
 }
 
 }
