@@ -92,7 +92,17 @@ class UserFrontendController extends Controller
 }
 
 
+public function beyondCode()
+{
+    $setting = Setting::first();
 
+    $content_title = 'Beyond Code';
+
+    return view('frontend.pages.beyond-code', compact(
+        'setting',
+        'content_title'
+    ));
+}
     public function service()
     {
         $services = Service::where('status', 1)->get();
@@ -316,6 +326,18 @@ public function writing()
         'posts',
         'featuredPost',
         'categories',
+        'content_title'
+    ));
+}
+
+public function songs()
+{
+    $content_title = 'Songs';
+
+    $songs = config('portfolio.songs');
+
+    return view('frontend.pages.songs', compact(
+        'songs',
         'content_title'
     ));
 }

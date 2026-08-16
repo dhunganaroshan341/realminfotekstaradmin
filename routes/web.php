@@ -128,3 +128,7 @@ Route::get('/projects', [UserFrontendController::class, 'projects'])
 
 Route::get('/writing/{post}', [UserFrontendController::class, 'writingDetail'])
     ->name('writing.show');
+Route::get('/beyond-code', [UserFrontendController::class, 'beyondCode'])
+    ->name('beyond-code');
+    Route::get('/songs', [UserFrontendController::class, 'songs'])
+    ->name('songs');

@@ -15,3 +15,21 @@
 
     </div>
 </footer>
+
+<script>
+    (() => {
+        const savedTheme = localStorage.getItem('theme');
+
+        const systemDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+        ).matches;
+
+        const theme = savedTheme ?? (
+            systemDark ? 'dark' : 'light'
+        );
+
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    })();
+</script>

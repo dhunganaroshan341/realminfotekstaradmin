@@ -1,273 +1,257 @@
-<section id="contact" class="border-t border-neutral-200">
+<section
+    id="contact"
+    class="transition-colors duration-500 bg-white border-t  border-neutral-200 text-neutral-950 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50"
+>
 
     <div class="px-6 mx-auto max-w-7xl py-28 lg:px-8 lg:py-36">
 
-        <div class="grid gap-16 lg:grid-cols-12 lg:gap-20">
+        {{-- ============================================================
+            Header
+        ============================================================= --}}
+        <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
 
-            {{-- Intro --}}
-            <div class="lg:col-span-7">
+            {{-- Label --}}
+            <div class="lg:col-span-3">
 
-                <p class="text-sm font-medium uppercase tracking-[0.25em] text-neutral-400">
-                    Get in touch
+                <p
+                    class="
+                        text-sm
+                        font-medium
+                        uppercase
+                        tracking-[0.25em]
+                        text-neutral-400
+
+                        dark:text-neutral-500
+                    "
+                >
+                    Contact
                 </p>
-
-                <h2 class="max-w-4xl mt-8 text-5xl font-semibold tracking-tight text-neutral-950 sm:text-6xl lg:text-7xl">
-
-                    Let's build
-                    <span class="text-neutral-400">
-                        something useful.
-                    </span>
-
-                </h2>
-
-                <p class="max-w-xl mt-8 text-lg leading-8 text-neutral-600">
-
-                    Have a project, an idea, or simply want to talk
-                    about technology and building things?
-
-                    I'd love to hear from you.
-
-                </p>
-
-
-                {{-- Direct email --}}
-                @if($setting?->email)
-
-                    <div class="mt-10">
-
-                        <p class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
-                            Email
-                        </p>
-
-                        <a
-                            href="mailto:{{ $setting->email }}"
-                            class="inline-flex items-center gap-3 mt-3 text-lg font-medium group text-neutral-950"
-                        >
-
-                            {{ $setting->email }}
-
-                            <span class="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
-                                ↗
-                            </span>
-
-                        </a>
-
-                    </div>
-
-                @endif
 
             </div>
 
 
-            {{-- Form --}}
-            <div class="lg:col-span-5">
+            {{-- Main Content --}}
+            <div class="lg:col-span-9">
 
-                <form
-                    action="{{ route('store.contact-us') }}"
-                    method="POST"
-                    class="space-y-8"
+                <h2
+                    class="max-w-4xl text-4xl font-semibold tracking-tight  text-neutral-950 sm:text-5xl lg:text-6xl dark:text-neutral-50"
                 >
+                    Have a project in mind?
 
-                    @csrf
+                    <span
+                        class=" text-neutral-400 dark:text-neutral-600"
+                    >
+                        Let's talk.
+                    </span>
+                </h2>
 
 
-                    {{-- Name --}}
+                <p
+                    class="max-w-2xl mt-6 text-lg leading-8  text-neutral-600 dark:text-neutral-400"
+                >
+                    Whether you're building a product, need help with
+                    a Laravel application, or simply want to talk about
+                    an idea, I'd be happy to hear from you.
+                </p>
+
+
+                {{-- ========================================================
+                    Contact Grid
+                ========================================================= --}}
+                <div class="grid gap-12 mt-16 md:grid-cols-2">
+
+
+                    {{-- ====================================================
+                        Contact Information
+                    ===================================================== --}}
                     <div>
 
-                        <label
-                            for="name"
-                            class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400"
+                        <p
+                            class="
+                                text-xs
+                                font-medium
+                                uppercase
+                                tracking-[0.2em]
+                                text-neutral-400
+
+                                dark:text-neutral-500
+                            "
                         >
-                            Name
-                        </label>
+                            Get in touch
+                        </p>
 
-                        <input
-                            id="name"
-                            name="name"
-                            type="text"
-                            value="{{ old('name') }}"
-                            placeholder="Your name"
-                            required
-                            class="w-full px-0 py-3 mt-3 text-base bg-transparent border-0 border-b outline-none border-neutral-300 text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-0"
-                        >
 
-                        @error('name')
+                        {{-- Email --}}
+                        @if($setting?->email)
 
-                            <p class="mt-2 text-xs text-red-500">
-                                {{ $message }}
+                            <div class="mt-6">
+
+                                <a
+                                    href="mailto:{{ $setting->email }}"
+                                    class="text-xl font-medium tracking-tight transition-colors  text-neutral-950 hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-400"
+                                >
+                                    {{ $setting->email }}
+                                </a>
+
+                            </div>
+
+                        @endif
+
+
+                        {{-- Location --}}
+                        @if($setting?->address)
+
+                            <p
+                                class="mt-3 text-sm  text-neutral-500 dark:text-neutral-400"
+                            >
+                                {{ $setting->address }}
                             </p>
 
-                        @enderror
+                        @endif
+
+
+                        {{-- Social Links --}}
+                        <div class="flex flex-wrap gap-5 mt-8">
+
+                            @if($setting?->github_url)
+
+                                <a
+                                    href="{{ $setting->github_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 text-sm font-medium transition-colors  text-neutral-950 hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-400"
+                                >
+                                    GitHub
+                                    <span>↗</span>
+                                </a>
+
+                            @endif
+
+
+                            @if($setting?->facebook_url)
+
+                                <a
+                                    href="{{ $setting->facebook_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 text-sm font-medium transition-colors  text-neutral-950 hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-400"
+                                >
+                                    Facebook
+                                    <span>↗</span>
+                                </a>
+
+                            @endif
+
+
+                            @if($setting?->instagram_url)
+
+                                <a
+                                    href="{{ $setting->instagram_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 text-sm font-medium transition-colors  text-neutral-950 hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-400"
+                                >
+                                    Instagram
+                                    <span>↗</span>
+                                </a>
+
+                            @endif
+
+                        </div>
 
                     </div>
 
 
-                    {{-- Email --}}
-                    <div>
+                    {{-- ====================================================
+                        CTA
+                    ===================================================== --}}
+                    <div
+                        class="
+                            flex
+                            flex-col
+                            justify-between
+                            rounded-[2rem]
+                            bg-neutral-100
+                            p-8
 
-                        <label
-                            for="email"
-                            class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400"
-                        >
-                            Email
-                        </label>
-
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            value="{{ old('email') }}"
-                            placeholder="you@example.com"
-                            required
-                            class="w-full px-0 py-3 mt-3 text-base bg-transparent border-0 border-b outline-none border-neutral-300 text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-0"
-                        >
-
-                        @error('email')
-
-                            <p class="mt-2 text-xs text-red-500">
-                                {{ $message }}
-                            </p>
-
-                        @enderror
-
-                    </div>
-
-
-                    {{-- Subject --}}
-                    <div>
-
-                        <label
-                            for="subject"
-                            class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400"
-                        >
-                            Subject
-                        </label>
-
-                        <input
-                            id="subject"
-                            name="subject"
-                            type="text"
-                            value="{{ old('subject') }}"
-                            placeholder="What would you like to talk about?"
-                            class="w-full px-0 py-3 mt-3 text-base bg-transparent border-0 border-b outline-none border-neutral-300 text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-0"
-                        >
-
-                        @error('subject')
-
-                            <p class="mt-2 text-xs text-red-500">
-                                {{ $message }}
-                            </p>
-
-                        @enderror
-
-                    </div>
-
-
-                    {{-- Message --}}
-                    <div>
-
-                        <label
-                            for="message"
-                            class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400"
-                        >
-                            Message
-                        </label>
-
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="4"
-                            placeholder="Tell me a little about your idea..."
-                            required
-                            class="w-full px-0 py-3 mt-3 text-base bg-transparent border-0 border-b outline-none resize-none border-neutral-300 text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-0"
-                        >{{ old('message') }}</textarea>
-
-                        @error('message')
-
-                            <p class="mt-2 text-xs text-red-500">
-                                {{ $message }}
-                            </p>
-
-                        @enderror
-
-                    </div>
-
-
-                    {{-- Submit --}}
-                    <button
-                        type="submit"
-                        class="inline-flex items-center gap-4 py-4 text-sm font-medium text-white transition rounded-full group bg-neutral-950 px-7 hover:bg-neutral-800"
+                            dark:bg-neutral-900
+                        "
                     >
 
-                        Send message
+                        <div>
 
-                        <span class="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
-                            ↗
-                        </span>
+                            <p
+                                class="text-sm font-medium  text-neutral-950 dark:text-neutral-100"
+                            >
+                                Start a conversation
+                            </p>
 
-                    </button>
 
-                </form>
+                            <p
+                                class="max-w-md mt-3 text-sm leading-7  text-neutral-600 dark:text-neutral-400"
+                            >
+                                Tell me a little about what you're
+                                building and what you're trying to solve.
+                            </p>
+
+                        </div>
+
+
+                        {{-- Email Button --}}
+                        @if($setting?->email)
+
+                            <a
+                                href="mailto:{{ $setting->email }}"
+                                class="inline-flex items-center justify-between w-full gap-4 px-5 py-4 mt-10 text-sm font-medium text-white transition duration-300 rounded-full  bg-neutral-950 hover:bg-neutral-800 dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-neutral-200"
+                            >
+
+                                <span>
+                                    Send me an email
+                                </span>
+
+                                <span>
+                                    ↗
+                                </span>
+
+                            </a>
+
+                        @endif
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        {{-- Social links --}}
-        <div class="pt-8 mt-24 border-t border-neutral-200">
+        {{-- ============================================================
+            Bottom Statement
+        ============================================================= --}}
+        <div
+            class="pt-10 mt-24 border-t  border-neutral-200 dark:border-neutral-800"
+        >
 
-            <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-                <p class="text-sm text-neutral-500">
-                    Find me elsewhere
+                <p
+                    class="text-sm  text-neutral-500 dark:text-neutral-400"
+                >
+                    Open to interesting projects and conversations.
                 </p>
 
 
-                <div class="flex flex-wrap gap-x-7 gap-y-3">
+                <a
+                    href="mailto:{{ $setting?->email }}"
+                    class="inline-flex items-center gap-2 text-sm font-medium transition-colors  text-neutral-950 hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-400"
+                >
+                    {{ $setting?->email }}
 
-                    @if($setting?->github_url)
-
-                        <a
-                            href="{{ $setting->github_url }}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-sm font-medium transition text-neutral-950 hover:text-neutral-500"
-                        >
-                            GitHub ↗
-                        </a>
-
-                    @endif
-
-
-                    @if($setting?->instagram_url)
-
-                        <a
-                            href="{{ $setting->instagram_url }}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-sm font-medium transition text-neutral-950 hover:text-neutral-500"
-                        >
-                            Instagram ↗
-                        </a>
-
-                    @endif
-
-
-                    @if($setting?->linkedin_url)
-
-                        <a
-                            href="{{ $setting->linkedin_url }}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-sm font-medium transition text-neutral-950 hover:text-neutral-500"
-                        >
-                            LinkedIn ↗
-                        </a>
-
-                    @endif
-
-                </div>
+                    <span>
+                        ↗
+                    </span>
+                </a>
 
             </div>
 
